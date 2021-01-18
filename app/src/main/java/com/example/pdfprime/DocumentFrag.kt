@@ -22,9 +22,9 @@ class DocumentFrag : Fragment() {
 
     private fun setListeners(){
         binding.apply {
-//            btnCreCam.setOnClickListener{ view -> view.findNavController().navigate(R.id.action_documentFrag_to_creatorCamFrag) }
-//            btnCreTxt.setOnClickListener{ view -> view.findNavController().navigate(R.id.action_documentFrag_to_creatorTxtFrag) }
-//            btnView.setOnClickListener{ view -> view.findNavController().navigate(R.id.action_documentFrag_to_viewerFrag) }
+            btnCreCam.setOnClickListener{ view -> view.findNavController().navigate(R.id.action_documentFrag_to_creatorCamFrag) }
+            btnCreTxt.setOnClickListener{ view -> view.findNavController().navigate(R.id.action_documentFrag_to_creatorTxtFrag) }
+            btnView.setOnClickListener{ view -> view.findNavController().navigate(R.id.action_documentFrag_to_viewerFrag) }
         }
     }
 
