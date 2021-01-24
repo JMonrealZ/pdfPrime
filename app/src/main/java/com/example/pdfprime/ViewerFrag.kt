@@ -9,6 +9,9 @@ import androidx.databinding.DataBindingUtil
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.databinding.FragmentViewerBinding
 
+/**
+ * This class is used to display any pdf
+ */
 class ViewerFrag : Fragment() {
     private lateinit var binding : FragmentViewerBinding
 

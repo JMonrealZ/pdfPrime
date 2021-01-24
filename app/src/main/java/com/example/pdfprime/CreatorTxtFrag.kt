@@ -9,6 +9,9 @@ import androidx.databinding.DataBindingUtil
 import com.example.pdfprime.databinding.FragmentCreatorTxtBinding
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 
+/**
+ * This fragment is used to create a pdf from scratch (inserting text, images and singatures)
+ */
 class CreatorTxtFrag : Fragment() {
     private lateinit var binding : FragmentCreatorTxtBinding
 

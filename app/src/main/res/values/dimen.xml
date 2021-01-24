@@ -2,4 +2,7 @@
 <resources>
     <!--Floating action button-->
     <dimen name="fabMargin">5dp</dimen>
+
+    <!--Navigation drawer-->
+    <dimen name="navDrawerTitle">25sp</dimen>
 </resources>

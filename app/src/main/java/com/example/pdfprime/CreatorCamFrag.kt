@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.pdfprime.databinding.FragmentCreatorCamBinding
-import com.example.pdfprime.databinding.FragmentDocumentBinding
 
+/**
+ * This fragment is used to create a pdf from camera
+ */
 class CreatorCamFrag : Fragment() {
     private lateinit var binding : FragmentCreatorCamBinding
 
