@@ -27,7 +27,7 @@ class DrawerController: AppCompatImageButton,DrawerLayout.DrawerListener{
             drawerLayout.openDrawer(side)
     }
 
-    fun setDrawerLayout(drawerLayout: DrawerLayout) : DrawerController{
+    fun setDrawerLayout(drawerLayout: DrawerLayout) : DrawerController {
         this.drawerLayout = drawerLayout
         return this
     }

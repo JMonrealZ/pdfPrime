@@ -6,17 +6,17 @@
     app:startDestination="@id/documentFrag">
     <fragment
         android:id="@+id/creatorCamFrag"
-        android:name="com.example.pdfprime.CreatorCamFrag"
+        android:name="com.example.pdfprime.presentation.creatorCam.CreatorCamFrag"
         android:label="CreatorCamFrag"
         tools:layout="@layout/fragment_creator_cam"/>
     <fragment
         android:id="@+id/creatorTxtFrag"
-        android:name="com.example.pdfprime.CreatorTxtFrag"
+        android:name="com.example.pdfprime.presentation.creatorTxt.CreatorTxtFrag"
         android:label="CreatorTxtFrag"
         tools:layout="@layout/fragment_creator_txt"/>
     <fragment
         android:id="@+id/documentFrag"
-        android:name="com.example.pdfprime.DocumentFrag"
+        android:name="com.example.pdfprime.presentation.myDocuments.DocumentFrag"
         android:label="DocumentFrag"
         tools:layout="@layout/fragment_document">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewerFrag"
-        android:name="com.example.pdfprime.ViewerFrag"
+        android:name="com.example.pdfprime.presentation.viewer.ViewerFrag"
         android:label="ViewerFrag"
         tools:layout="@layout/fragment_viewer"/>
 </navigation>
