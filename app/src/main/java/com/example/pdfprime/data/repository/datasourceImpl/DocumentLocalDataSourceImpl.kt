@@ -24,4 +24,8 @@ class DocumentLocalDataSourceImpl(private val documentsDao: DocumentsDao) : Docu
     override suspend fun insertPdfToDatabase(document: Document) {
         return documentsDao.insertNewDocument(document)
     }
+
+    override suspend fun deleteAll() {
+        return documentsDao.deleteAll()
+    }
 }

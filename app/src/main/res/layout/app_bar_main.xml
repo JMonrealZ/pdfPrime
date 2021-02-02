@@ -24,7 +24,7 @@
 
                 <com.example.pdfprime.DrawerController
                     android:id="@+id/dcMenu"
-                    android:src="@drawable/ic_trash_24"
+                    android:src="@drawable/ic_menu_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"/>
@@ -32,6 +32,15 @@
             </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <include layout="@layout/content_main" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNewDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_add_24"
+        android:layout_gravity="bottom|end"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

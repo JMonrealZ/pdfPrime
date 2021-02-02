@@ -8,4 +8,5 @@ interface DocumentLocalDataSource {
     suspend fun deletePdfFromDatabase(idDoc : Int)
     suspend fun updateNamePdfFromDatabase(newName : String, idDoc : Int)
     suspend fun insertPdfToDatabase(document: Document)
+    suspend fun deleteAll()
 }

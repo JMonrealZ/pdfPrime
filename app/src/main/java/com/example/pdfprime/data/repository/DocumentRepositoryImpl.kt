@@ -26,5 +26,9 @@ class DocumentRepositoryImpl(private val documentLocalDataSource: DocumentLocalD
         documentLocalDataSource.insertPdfToDatabase(document)
     }
 
+    override suspend fun deleteAll() {
+        documentLocalDataSource.deleteAll()
+    }
+
 
 }

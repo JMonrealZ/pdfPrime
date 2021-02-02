@@ -16,6 +16,7 @@ import com.example.pdfprime.R
 import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.presentation.di.Injector
+import kotlinx.android.synthetic.main.fragment_document.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,11 +33,11 @@ class DocumentFrag : Fragment() {
     lateinit var myDocumentsViewModel : MyDocumentsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        insertNewDocTest()
         initVariables(inflater,container)
         initRecyclerView()
         setListeners()
         setObservers()
+//        insertNewDocTest()
         return binding.root
     }
 
@@ -73,11 +74,19 @@ class DocumentFrag : Fragment() {
 
     private fun insertNewDocTest() {
         CoroutineScope(Dispatchers.IO).launch{
-            myDocumentsViewModel.insertPdf(Document(1,"test",85))
+            myDocumentsViewModel.insertPdf(Document(4,"test",85))
         }
     }
 
     private fun setListeners(){
+//        binding.fabNewDoc.setOnClickListener{
+//            Toast.makeText(context,"test clic",Toast.LENGTH_LONG).show()
+//        }
+        binding.btnDeleteAll.setOnClickListener{
+            CoroutineScope(Dispatchers.IO).launch {
+                myDocumentsViewModel.deleteAll()
+            }
+        }
     }
 
     private fun documentClickListener(document: Document){

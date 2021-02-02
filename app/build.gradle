@@ -70,4 +70,7 @@ dependencies {
 
     implementation "com.google.dagger:dagger:2.29.1"
     kapt "com.google.dagger:dagger-compiler:2.29.1"
+
+    //pdfBox - java's repository for editing pdfs
+    implementation 'com.tom_roush:pdfbox-android:1.8.10.1'
 }

@@ -20,4 +20,7 @@ interface DocumentsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNewDocument(document : Document)
 
+    @Query("DELETE FROM DOCUMENTS")
+    suspend fun deleteAll()
+
 }

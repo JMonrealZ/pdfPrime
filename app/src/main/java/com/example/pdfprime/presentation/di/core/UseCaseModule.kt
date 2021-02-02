@@ -32,4 +32,9 @@ class UseCaseModule {
     fun provideUpdateNamePdfUseCase(documentRepository: DocumentRepository) : UpdateNamePdfUseCase{
         return UpdateNamePdfUseCase(documentRepository)
     }
+
+    @Provides
+    fun deleteAllUseCase(documentRepository: DocumentRepository) : DeleteAllUseCase{
+        return DeleteAllUseCase(documentRepository)
+    }
 }

@@ -9,7 +9,8 @@ class MyDocumentsViewModel(
     private val getPdfsUseCase: GetPdfsUseCase,
     private val updateNamePdfUseCase: UpdateNamePdfUseCase,
     private val deletePdfUseCase: DeletePdfUseCase,
-    private val insertPdfUseCase: InsertPdfUseCase
+    private val insertPdfUseCase: InsertPdfUseCase,
+    private val deleteAllUseCase: DeleteAllUseCase
 ) : ViewModel(){
     fun getPdfs() = liveData{
         val documents = getPdfsUseCase.execute()
@@ -26,5 +27,9 @@ class MyDocumentsViewModel(
 
     suspend fun insertPdf(documet : Document){
         insertPdfUseCase.execute(documet)
+    }
+
+    suspend fun deleteAll(){
+        deleteAllUseCase.execute()
     }
 }
