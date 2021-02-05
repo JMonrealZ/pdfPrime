@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.pdfprime.databinding.ActivityMainBinding
+import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 
 /**
  * This class is used to hold current fragment
@@ -14,6 +16,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
+    private lateinit var bottomSheetNewDoc : BottomSheetNewDoc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +34,15 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        /*Setting config for drawer layout*/
+        /*Settings for drawer layout*/
         dcMenu.setDrawerLayout(drawerLayout)
         dcMenu.getDrawerLayout().addDrawerListener(dcMenu)
         dcMenu.setOnClickListener{ dcMenu.changeState() }
+
+        /*New document - floating action button*/
+        binding.appBarMain.fabNewDoc.setOnClickListener{
+            bottomSheetNewDoc = BottomSheetNewDoc()
+            bottomSheetNewDoc.show(supportFragmentManager, "MY_BOTTOM_SHEET")
+        }
     }
 }

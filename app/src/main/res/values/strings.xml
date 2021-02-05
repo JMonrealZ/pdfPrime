@@ -5,4 +5,8 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
 
+    <string name="titleNewDoc">Crear un nuevo documento</string>
+    <string name="titleButtonNewDocCam">Cámara</string>
+    <string name="titleButtonNewDocTxt">Editor de texto</string>
+
 </resources>

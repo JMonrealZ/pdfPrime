@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -16,7 +15,6 @@ import com.example.pdfprime.R
 import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.presentation.di.Injector
-import kotlinx.android.synthetic.main.fragment_document.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +29,7 @@ class DocumentFrag : Fragment() {
     lateinit var adapter : DocumentRecyclerViewAdapter
 //    private lateinit var documents : List<Document>
     lateinit var myDocumentsViewModel : MyDocumentsViewModel
+//    private lateinit var buttonSheetNewDoc : ButtonSheetNewDoc
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
@@ -39,6 +38,44 @@ class DocumentFrag : Fragment() {
         setObservers()
 //        insertNewDocTest()
         return binding.root
+    }
+
+    private fun initVariables(inflater: LayoutInflater, container: ViewGroup?) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_document,container,false)
+
+        (activity?.application as Injector).createMyDocumentsSubComponent()
+            .inject(this)
+
+        myDocumentsViewModel = ViewModelProvider(this,factory).get(MyDocumentsViewModel::class.java)
+
+        adapter = DocumentRecyclerViewAdapter(listOf<Document>(),{docSelected : Document -> documentClickListener(docSelected)})
+    }
+
+    private fun initRecyclerView() {
+        binding.rvDocuments.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = this@DocumentFrag.adapter
+        }
+//        binding.rvDocuments.
+
+    }
+
+    private fun setListeners(){
+//        binding.fabNewDoc.setOnClickListener{
+//            Toast.makeText(context,"test clic",Toast.LENGTH_LONG).show()
+//        }
+        binding.apply {
+            btnDeleteAll.setOnClickListener {
+                CoroutineScope(Dispatchers.IO).launch {
+                    myDocumentsViewModel.deleteAll()
+                }
+            }
+//            btnBottonSheet.setOnClickListener{
+//                buttonSheetNewDoc = ButtonSheetNewDoc()
+//                buttonSheetNewDoc.show(requireActivity().supportFragmentManager, "MY_BOTTOM_SHEET")
+//            }
+
+        }
     }
 
     private fun setObservers() {
@@ -52,40 +89,9 @@ class DocumentFrag : Fragment() {
         })
     }
 
-    private fun initRecyclerView() {
-        binding.rvDocuments.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = this@DocumentFrag.adapter
-        }
-//        binding.rvDocuments.
-
-    }
-
-    private fun initVariables(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_document,container,false)
-
-        (activity?.application as Injector).createMyDocumentsSubComponent()
-            .inject(this)
-
-        myDocumentsViewModel = ViewModelProvider(this,factory).get(MyDocumentsViewModel::class.java)
-
-       adapter = DocumentRecyclerViewAdapter(listOf<Document>(),{docSelected : Document -> documentClickListener(docSelected)})
-    }
-
     private fun insertNewDocTest() {
         CoroutineScope(Dispatchers.IO).launch{
             myDocumentsViewModel.insertPdf(Document(4,"test",85))
-        }
-    }
-
-    private fun setListeners(){
-//        binding.fabNewDoc.setOnClickListener{
-//            Toast.makeText(context,"test clic",Toast.LENGTH_LONG).show()
-//        }
-        binding.btnDeleteAll.setOnClickListener{
-            CoroutineScope(Dispatchers.IO).launch {
-                myDocumentsViewModel.deleteAll()
-            }
         }
     }
 
