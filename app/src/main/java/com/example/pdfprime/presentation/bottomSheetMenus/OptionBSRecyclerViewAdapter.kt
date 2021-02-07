@@ -35,8 +35,9 @@ class OptionBSViewHolder(val view : View, private val newDocInterface: NewDocInt
         }
         view.setOnClickListener{
             when(option.idOption){
-                1 -> newDocInterface.newDocCamera()
-                2 -> newDocInterface.newDocText()
+                1 -> newDocInterface.newDocDispositivo()
+                2 -> newDocInterface.newDocCamera()
+                3 -> newDocInterface.newDocText()
             }
         }
     }

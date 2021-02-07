@@ -29,7 +29,8 @@ class App : Application() , Injector{
 
     init{
         newDocBottomSheetOptions = ArrayList()
-        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_camera_24,1,R.string.titleButtonNewDocCam))
-        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_keyboard_24,2,R.string.titleButtonNewDocTxt))
+        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_note_add_24,1,R.string.titleButtonNewDocDis))
+        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_camera_24,2,R.string.titleButtonNewDocCam))
+        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_keyboard_24,3,R.string.titleButtonNewDocTxt))
     }
 }

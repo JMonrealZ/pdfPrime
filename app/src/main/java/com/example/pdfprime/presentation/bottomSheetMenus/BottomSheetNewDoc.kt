@@ -1,9 +1,11 @@
 package com.example.pdfprime.presentation.bottomSheetMenus
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
@@ -31,4 +33,24 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(), NewDocInterface{
         NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorTxtFrag)
         super.dismiss()
     }
+
+    override fun newDocDispositivo() {
+//        openFileBrowser()
+        super.dismiss()
+    }
+
+    fun openFileBrowser(){
+        val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
+        fileIntent.type = "*/*"
+        startActivityForResult(fileIntent,1)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == 1)
+            Toast.makeText(context,data.toString(), Toast.LENGTH_LONG).show()
+
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
 }
