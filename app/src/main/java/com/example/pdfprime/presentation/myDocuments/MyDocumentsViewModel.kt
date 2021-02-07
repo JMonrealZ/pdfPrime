@@ -12,6 +12,9 @@ class MyDocumentsViewModel(
     private val insertPdfUseCase: InsertPdfUseCase,
     private val deleteAllUseCase: DeleteAllUseCase
 ) : ViewModel(){
+
+
+
     fun getPdfs() = liveData{
         val documents = getPdfsUseCase.execute()
         emit(documents)

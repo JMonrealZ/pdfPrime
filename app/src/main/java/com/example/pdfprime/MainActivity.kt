@@ -48,13 +48,4 @@ class MainActivity : AppCompatActivity() {
             bottomSheetNewDoc.show(supportFragmentManager, "MY_BOTTOM_SHEET")
         }
     }
-
-//    override fun newDocCamera() {
-////        Toast.makeText(applicationContext,"new doc cam",Toast.LENGTH_LONG).show()
-//
-//    }
-//
-//    override fun newDocText() {
-////        Toast.makeText(applicationContext,"new doc text",Toast.LENGTH_LONG).show()
-//    }
 }

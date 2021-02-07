@@ -28,9 +28,7 @@ class DocumentFrag : Fragment() {
     @Inject lateinit var factory : MyDocumentsViewModelFactory
     lateinit var binding : FragmentDocumentBinding
     lateinit var adapter : DocumentRecyclerViewAdapter
-//    private lateinit var documents : List<Document>
     lateinit var myDocumentsViewModel : MyDocumentsViewModel
-//    private lateinit var buttonSheetNewDoc : ButtonSheetNewDoc
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
@@ -57,26 +55,15 @@ class DocumentFrag : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = this@DocumentFrag.adapter
         }
-//        binding.rvDocuments.
-
     }
 
     private fun setListeners(){
-//        binding.fabNewDoc.setOnClickListener{
-//            Toast.makeText(context,"test clic",Toast.LENGTH_LONG).show()
-//        }
         binding.apply {
             btnDeleteAll.setOnClickListener {
-//                CoroutineScope(Dispatchers.IO).launch {
-//                    myDocumentsViewModel.deleteAll()
-//                }
-
+                CoroutineScope(Dispatchers.IO).launch {
+                    myDocumentsViewModel.deleteAll()
+                }
             }
-//            btnBottonSheet.setOnClickListener{
-//                buttonSheetNewDoc = ButtonSheetNewDoc()
-//                buttonSheetNewDoc.show(requireActivity().supportFragmentManager, "MY_BOTTOM_SHEET")
-//            }
-
         }
     }
 
