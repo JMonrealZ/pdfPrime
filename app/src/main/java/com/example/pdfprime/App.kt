@@ -1,6 +1,8 @@
 package com.example.pdfprime
 
 import android.app.Application
+import android.graphics.drawable.Drawable
+import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetOption
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.di.core.AppComponent
 import com.example.pdfprime.presentation.di.core.AppModule
@@ -19,5 +21,15 @@ class App : Application() , Injector{
 
     override fun createMyDocumentsSubComponent(): MyDocumentsSubcomponent {
         return appComponent.myDocumentsSubcomponent().create()
+    }
+
+    companion object{
+        lateinit var newDocBottomSheetOptions : ArrayList<BottomSheetOption>
+    }
+
+    init{
+        newDocBottomSheetOptions = ArrayList()
+        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_camera_24,1,R.string.titleButtonNewDocCam))
+        newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_keyboard_24,2,R.string.titleButtonNewDocTxt))
     }
 }

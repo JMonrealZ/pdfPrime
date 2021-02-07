@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.pdfprime.databinding.ActivityMainBinding
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
+import com.example.pdfprime.presentation.bottomSheetMenus.NewDocInterface
+import com.example.pdfprime.presentation.myDocuments.DocumentFrag
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.app_bar_main.view.*
@@ -41,8 +44,17 @@ class MainActivity : AppCompatActivity() {
 
         /*New document - floating action button*/
         binding.appBarMain.fabNewDoc.setOnClickListener{
-            bottomSheetNewDoc = BottomSheetNewDoc()
+            bottomSheetNewDoc = BottomSheetNewDoc()//App.newDocBottomSheetOptions,
             bottomSheetNewDoc.show(supportFragmentManager, "MY_BOTTOM_SHEET")
         }
     }
+
+//    override fun newDocCamera() {
+////        Toast.makeText(applicationContext,"new doc cam",Toast.LENGTH_LONG).show()
+//
+//    }
+//
+//    override fun newDocText() {
+////        Toast.makeText(applicationContext,"new doc text",Toast.LENGTH_LONG).show()
+//    }
 }

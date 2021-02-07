@@ -5,4 +5,7 @@
 
     <!--Navigation drawer-->
     <dimen name="navDrawerTitle">25sp</dimen>
+
+    <!--Bottom sheet dialog fragment menu-->
+    <dimen name="imgSizeSquareBS">40dp</dimen>
 </resources>

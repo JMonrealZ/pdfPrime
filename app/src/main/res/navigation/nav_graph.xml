@@ -20,18 +20,23 @@
         android:label="DocumentFrag"
         tools:layout="@layout/fragment_document">
         <action
-            android:id="@+id/action_documentFrag_to_creatorCamFrag"
-            app:destination="@id/creatorCamFrag" />
+            android:id="@+id/action_documentFrag_to_viewerFrag"
+            app:destination="@id/viewerFrag" />
         <action
             android:id="@+id/action_documentFrag_to_creatorTxtFrag"
             app:destination="@id/creatorTxtFrag" />
         <action
-            android:id="@+id/action_documentFrag_to_viewerFrag"
-            app:destination="@id/viewerFrag" />
+            android:id="@+id/action_documentFrag_to_creatorCamFrag"
+            app:destination="@id/creatorCamFrag" />
     </fragment>
     <fragment
         android:id="@+id/viewerFrag"
         android:name="com.example.pdfprime.presentation.viewer.ViewerFrag"
         android:label="ViewerFrag"
         tools:layout="@layout/fragment_viewer"/>
+    <fragment
+        android:id="@+id/bottomSheetNewDoc"
+        android:name="com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc"
+        android:label="BottomSheetNewDoc"
+        tools:layout="@layout/bottom_sheet_new_doc"/>
 </navigation>

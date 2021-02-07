@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 //import androidx.lifecycle.ViewModelProviders
 import com.example.pdfprime.R
@@ -66,9 +67,10 @@ class DocumentFrag : Fragment() {
 //        }
         binding.apply {
             btnDeleteAll.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    myDocumentsViewModel.deleteAll()
-                }
+//                CoroutineScope(Dispatchers.IO).launch {
+//                    myDocumentsViewModel.deleteAll()
+//                }
+
             }
 //            btnBottonSheet.setOnClickListener{
 //                buttonSheetNewDoc = ButtonSheetNewDoc()
@@ -99,5 +101,6 @@ class DocumentFrag : Fragment() {
         Toast.makeText(context,"test con ${document.name}",Toast.LENGTH_LONG).show()
     }
 
-    companion object {}
+    companion object {
+    }
 }

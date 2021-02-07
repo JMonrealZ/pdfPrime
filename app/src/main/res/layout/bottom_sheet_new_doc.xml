@@ -15,7 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-<!--    <LinearLayout-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--    <LinearLayout-->
 <!--        android:id="@+id/llNewDocCamera"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -29,20 +34,20 @@
 <!--    </LinearLayout>-->
 
 
-    <Button
-        android:id="@+id/btnNewDocCam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/titleButtonNewDocCam"
-        android:drawableStart="@drawable/ic_camera_24"
-        android:backgroundTint="@android:color/white"/>
+<!--    <Button-->
+<!--        android:id="@+id/btnNewDocCam"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/titleButtonNewDocCam"-->
+<!--        android:drawableStart="@drawable/ic_camera_24"-->
+<!--        android:backgroundTint="@android:color/white"/>-->
 
-    <Button
-        android:id="@+id/btnNewDocTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/titleButtonNewDocTxt"
-        android:drawableStart="@drawable/ic_keyboard_24"
-        android:backgroundTint="@android:color/white"/>
+<!--    <Button-->
+<!--        android:id="@+id/btnNewDocTxt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/titleButtonNewDocTxt"-->
+<!--        android:drawableStart="@drawable/ic_keyboard_24"-->
+<!--        android:backgroundTint="@android:color/white"/>-->
 
 </LinearLayout>
