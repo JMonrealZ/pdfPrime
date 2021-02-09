@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
 class BottomSheetNewDoc() : BottomSheetDialogFragment(), NewDocInterface{
     private lateinit var adapter : OptionBSRecyclerViewAdapter
+    private lateinit var parentFrag: Fragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         adapter = OptionBSRecyclerViewAdapter(App.newDocBottomSheetOptions,this)
@@ -35,22 +37,17 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(), NewDocInterface{
     }
 
     override fun newDocDispositivo() {
-//        openFileBrowser()
+        openFileBrowser()
         super.dismiss()
+    }
+
+    fun setParent(fragment: Fragment){
+        parentFrag = fragment
     }
 
     fun openFileBrowser(){
         val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
         fileIntent.type = "*/*"
-        startActivityForResult(fileIntent,1)
+        parentFrag.startActivityForResult(fileIntent,1)
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == 1)
-            Toast.makeText(context,data.toString(), Toast.LENGTH_LONG).show()
-
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
-
 }

@@ -17,7 +17,7 @@ interface DocumentsDao {
     @Query("UPDATE DOCUMENTS SET NAME_DOC = :newName WHERE INDEX_DOC = :idDoc")
     suspend fun updateNameDocument(newName : String, idDoc : Int)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertNewDocument(document : Document)
 
     @Query("DELETE FROM DOCUMENTS")

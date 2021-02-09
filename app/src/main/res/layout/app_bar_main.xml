@@ -32,15 +32,30 @@
             </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+<!--    <include layout="@layout/content_main" />-->
+    <LinearLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabNewDoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_add_24"
-        android:layout_gravity="bottom|end"/>
+        <fragment
+            android:id="@+id/hostFragmentContainer"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+
+            app:navGraph="@navigation/nav_graph"/>
+    </LinearLayout>
+
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fabNewDoc"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:clickable="true"-->
+<!--        app:srcCompat="@drawable/ic_add_24"-->
+<!--        android:layout_gravity="bottom|end"/>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

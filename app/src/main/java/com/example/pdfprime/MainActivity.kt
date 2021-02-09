@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.app_bar_main.view.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
-    private lateinit var bottomSheetNewDoc : BottomSheetNewDoc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +41,5 @@ class MainActivity : AppCompatActivity() {
         dcMenu.setDrawerLayout(drawerLayout)
         dcMenu.getDrawerLayout().addDrawerListener(dcMenu)
         dcMenu.setOnClickListener{ dcMenu.changeState() }
-
-        /*New document - floating action button*/
-        binding.appBarMain.fabNewDoc.setOnClickListener{
-            bottomSheetNewDoc = BottomSheetNewDoc()//App.newDocBottomSheetOptions,
-            bottomSheetNewDoc.show(supportFragmentManager, "MY_BOTTOM_SHEET")
-        }
     }
 }
