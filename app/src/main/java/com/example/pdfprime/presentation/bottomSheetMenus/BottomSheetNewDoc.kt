@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
 import com.example.pdfprime.R
@@ -21,7 +22,8 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(), NewDocInterface{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         adapter = OptionBSRecyclerViewAdapter(App.newDocBottomSheetOptions,this)
         val view =  inflater.inflate(R.layout.bottom_sheet_new_doc,container,false)
-        view.rvOptions.layoutManager = LinearLayoutManager(context)
+        //view.rvOptions.layoutManager = LinearLayoutManager(context)
+        view.rvOptions.layoutManager = GridLayoutManager(context,3)
         view.rvOptions.adapter = adapter
         return view
     }

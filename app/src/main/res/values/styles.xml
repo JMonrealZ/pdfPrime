@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ImageViewCircularShape">
+        <item name="cornerSize">50%</item>
+<!--        <item name="android:layout_margin">2dp</item>-->
+<!--        <item name="borderWidth">1dp</item>-->
+<!--        <item name="civ_border_color">@color/colorSeparatorItems</item>-->
+<!--        <item name="backgroundColor">@android:color/holo_blue_bright</item>-->
+
+    </style>
+
 </resources>
