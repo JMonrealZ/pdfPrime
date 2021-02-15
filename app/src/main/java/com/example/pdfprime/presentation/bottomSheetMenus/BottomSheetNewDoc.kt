@@ -49,7 +49,7 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(), NewDocInterface{
 
     fun openFileBrowser(){
         val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
-        fileIntent.type = "*/*"
+        fileIntent.type = "application/pdf"
         parentFrag.startActivityForResult(fileIntent,1)
     }
 }

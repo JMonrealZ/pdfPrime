@@ -1,7 +1,7 @@
 package com.example.pdfprime.presentation.myDocuments
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.domain.usecase.*
 
@@ -13,23 +13,30 @@ class MyDocumentsViewModel(
     private val deleteAllUseCase: DeleteAllUseCase
 ) : ViewModel(){
 
+    var pdfs : MutableLiveData<List<Document>> = MutableLiveData()
 
+    fun getObservers() : MutableLiveData<List<Document>>{
+        return pdfs
+    }
 
-    fun getPdfs() = liveData{
-        val documents = getPdfsUseCase.execute()
-        emit(documents)
+    suspend fun getPdfs(){
+        val docs = getPdfsUseCase.execute()
+        pdfs.postValue(docs)
     }
 
     suspend fun updateNamePdf(newName : String, idDoc : Int){
         updateNamePdfUseCase.execute(newName, idDoc)
+        getPdfs()
     }
 
     suspend fun deletePdf(idDoc: Int){
         deletePdfUseCase.execute(idDoc)
+        getPdfs()
     }
 
     suspend fun insertPdf(documet : Document){
         insertPdfUseCase.execute(documet)
+        getPdfs()
     }
 
     suspend fun deleteAll(){

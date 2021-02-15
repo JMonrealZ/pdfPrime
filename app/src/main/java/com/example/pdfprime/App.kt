@@ -1,7 +1,8 @@
 package com.example.pdfprime
 
 import android.app.Application
-import android.graphics.drawable.Drawable
+import android.content.Context
+import android.widget.Toast
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetOption
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.di.core.AppComponent
@@ -24,10 +25,13 @@ class App : Application() , Injector{
     }
 
     companion object{
+        lateinit var direcStoragePdf : String
         lateinit var newDocBottomSheetOptions : ArrayList<BottomSheetOption>
     }
 
     init{
+        direcStoragePdf = "PDFS"
+
         newDocBottomSheetOptions = ArrayList()
         newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_note_add_24,1,R.string.titleButtonNewDocDis))
         newDocBottomSheetOptions.add(BottomSheetOption(R.drawable.ic_camera_24,2,R.string.titleButtonNewDocCam))

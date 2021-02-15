@@ -1,6 +1,8 @@
 package com.example.pdfprime.presentation.myDocuments
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,20 +10,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pdfprime.App
 //import androidx.lifecycle.ViewModelProviders
 import com.example.pdfprime.R
 import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
 import com.example.pdfprime.presentation.di.Injector
+import com.google.android.material.slider.Slider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
 import javax.inject.Inject
 
 /**
@@ -38,7 +42,6 @@ class DocumentFrag : Fragment() {
         initVariables(inflater,container)
         initRecyclerView()
         setListeners()
-
         //insertNewDocTest()
         setObservers()
         return binding.root
@@ -75,12 +78,17 @@ class DocumentFrag : Fragment() {
                 fragmentManager?.let { it1 -> bottomSheetNewDoc.show(it1,"MY_BOTTOM_SHEET") }
                 bottomSheetNewDoc.setParent(this@DocumentFrag)
             }
+
         }
     }
 
     private fun setObservers() {
-        val responseLiveData = myDocumentsViewModel.getPdfs()
-        responseLiveData.observe(viewLifecycleOwner, Observer {
+        //Init list of pdfs on viewmodel
+        CoroutineScope(Dispatchers.IO).launch{
+            myDocumentsViewModel.getPdfs()
+        }
+
+        myDocumentsViewModel.getObservers().observe(viewLifecycleOwner, Observer {
             if(it != null){
                 adapter.setList(it)
             }
@@ -122,10 +130,32 @@ class DocumentFrag : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == 1)
-            Toast.makeText(context,data.toString(), Toast.LENGTH_LONG).show()
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            data?.data?.also { it ->
+                savePdfOnDisk(it,"test3.pdf")
+                val newDoc = Document(3,"test3.pdf",54)
+                CoroutineScope(Dispatchers.IO).launch{
+                    myDocumentsViewModel.insertPdf(newDoc)
+                }
+            }
+        }else{
 
+        }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun savePdfOnDisk(uri : Uri, name : String){
+        val pdfBytes = context?.contentResolver?.openInputStream(uri)?.buffered().use {
+            it?.readBytes()
+        }
+
+        val path = context?.filesDir
+        val directory = File(path,App.direcStoragePdf)
+        directory.mkdir()
+        val file = File(directory,name)
+        FileOutputStream(file).use {
+            it.write(pdfBytes)
+        }
     }
 
     companion object {

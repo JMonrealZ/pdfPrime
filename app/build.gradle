@@ -74,6 +74,9 @@ dependencies {
     //pdfBox - java's repository for editing pdfs
     implementation 'com.tom_roush:pdfbox-android:1.8.10.1'
 
+    //pdfViewer
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
     //Make circle images
 //    implementation 'de.hdodenhof:circleimageview:3.1.0'
 //    implementation 'com.mikhaellopez:circularimageview:4.2.0'
