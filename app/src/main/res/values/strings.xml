@@ -9,5 +9,11 @@
     <string name="titleButtonNewDocDis">Dispositivo</string>
     <string name="titleButtonNewDocCam">Cámara</string>
     <string name="titleButtonNewDocTxt">Editor de texto</string>
+    <string name="titleButtonSaveDoc">Guardar</string>
+    <string name="titleButtonDiscardDoc">Descartar</string>
+
+    <string name="txtWriteSomething">Por favor escribe un nombre valido</string>
+    <string name="txtFileAlreadyExists">Ya existe un nombre guardado con este nombre</string>
+
 
 </resources>

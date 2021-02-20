@@ -20,6 +20,8 @@ import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
 import com.example.pdfprime.presentation.di.Injector
+import com.example.pdfprime.presentation.dialogs.Dialogs
+import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.google.android.material.slider.Slider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,7 +33,7 @@ import javax.inject.Inject
 /**
  * This fragment is used to show a pdf summary in a list to edit them
  */
-class DocumentFrag : Fragment() {
+class DocumentFrag : Fragment() ,  NameDocDialogInterface{
     @Inject lateinit var factory : MyDocumentsViewModelFactory
     lateinit var binding : FragmentDocumentBinding
     lateinit var adapter : DocumentRecyclerViewAdapter
@@ -131,12 +133,8 @@ class DocumentFrag : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == 1 && resultCode == Activity.RESULT_OK){
-            data?.data?.also { it ->
-                savePdfOnDisk(it,"test3.pdf")
-                val newDoc = Document(3,"test3.pdf",54)
-                CoroutineScope(Dispatchers.IO).launch{
-                    myDocumentsViewModel.insertPdf(newDoc)
-                }
+            data?.data?.also {
+                    it -> Dialogs.createSelectNameDoc(this@DocumentFrag,context,layoutInflater,it)
             }
         }else{
 
@@ -160,4 +158,15 @@ class DocumentFrag : Fragment() {
 
     companion object {
     }
+
+    override fun onNameDocSelected(name: String, uri: Uri, size: Int) {
+        savePdfOnDisk(uri,name)
+        val newDoc = Document(0,name,size)
+        CoroutineScope(Dispatchers.IO).launch{
+            myDocumentsViewModel.insertPdf(newDoc)
+        }
+        Dialogs.dissmis()
+    }
+
+
 }

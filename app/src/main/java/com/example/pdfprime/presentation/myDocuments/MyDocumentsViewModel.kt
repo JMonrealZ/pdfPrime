@@ -41,5 +41,6 @@ class MyDocumentsViewModel(
 
     suspend fun deleteAll(){
         deleteAllUseCase.execute()
+        getPdfs()
     }
 }
