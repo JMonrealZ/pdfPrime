@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF5533</color>
     
     <color name="colorSeparatorItems">#BDBEBF</color>
+
+    <color name="colorBackDocDetails">#4DBDBEBF</color>
 </resources>

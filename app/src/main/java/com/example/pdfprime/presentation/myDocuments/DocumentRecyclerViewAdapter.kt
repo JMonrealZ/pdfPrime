@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pdfprime.R
 import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.presentation.utils.Renderer
 import kotlinx.android.synthetic.main.list_item_document.view.*
 
 class DocumentRecyclerViewAdapter(private var documents : List<Document>,
@@ -37,6 +38,7 @@ class DocumentViewHolder(val view : View) : RecyclerView.ViewHolder(view){
         view.apply {
             tvDocName.text = document.name
             tvDocSize.text = if(document.size > 1024) (document.size / 1024).toString() + " MB" else  document.size.toString() + " KB"
+            ivFirstPage.setImageBitmap(Renderer.renderPage(context,document.name,0))
             setOnClickListener{clickListener(document)}
         }
 //        view.

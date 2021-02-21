@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
 //import androidx.lifecycle.ViewModelProviders
@@ -62,7 +63,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface{
 
     private fun initRecyclerView() {
         binding.rvDocuments.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context,2)//LinearLayoutManager(context)
             adapter = this@DocumentFrag.adapter
         }
     }
