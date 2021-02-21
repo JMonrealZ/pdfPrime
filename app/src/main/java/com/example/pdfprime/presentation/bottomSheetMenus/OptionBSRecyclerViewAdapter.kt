@@ -10,13 +10,15 @@ import kotlinx.android.synthetic.main.bottom_sheet_item_list.view.*
 import kotlinx.android.synthetic.main.bottom_sheet_item_list_rounded.view.*
 
 class OptionBSRecyclerViewAdapter(private var options : List<BottomSheetOption>,
-                                  private var newDocInterface: NewDocInterface)
+                                  /*private var newDocInterface: NewDocInterface,*/
+                                  private val clickListener : (BottomSheetOption)->Unit
+
+)
     : RecyclerView.Adapter<OptionBSViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionBSViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        //val listItem = layoutInflater.inflate(R.layout.bottom_sheet_item_list,parent,false)
         val listItem = layoutInflater.inflate(R.layout.bottom_sheet_item_list_rounded,parent,false)
-        return OptionBSViewHolder(listItem, newDocInterface)
+        return OptionBSViewHolder(listItem, clickListener/*newDocInterface*/)
     }
 
     override fun getItemCount(): Int {
@@ -29,24 +31,21 @@ class OptionBSRecyclerViewAdapter(private var options : List<BottomSheetOption>,
 
 }
 
-class OptionBSViewHolder(val view : View, private val newDocInterface: NewDocInterface) : RecyclerView.ViewHolder(view){
+class OptionBSViewHolder(val view : View, private val clickListener:(BottomSheetOption)->Unit/*private val newDocInterface: NewDocInterface*/)
+    : RecyclerView.ViewHolder(view){
     fun bind(option : BottomSheetOption){
         view.apply {
-//            ivOption.setImageResource(option.idIcon)
-//            tvOption.text = context.getString(option.idTxtOption)
-//            civOption.background = Dra
-//            civOption.drawable = resources.getDrawable(option.idIcon)
-//            civOption.setImageResource(option.idIcon)
             sivOption.setImageResource(option.idIcon)
             tvOptionRounded.text = context.getString(option.idTxtOption)
 
         }
         view.setOnClickListener{
-            when(option.idOption){
-                1 -> newDocInterface.newDocDispositivo()
-                2 -> newDocInterface.newDocCamera()
-                3 -> newDocInterface.newDocText()
-            }
+//            when(option.idOption){
+//                1 -> newDocInterface.newDocDispositivo()
+//                2 -> newDocInterface.newDocCamera()
+//                3 -> newDocInterface.newDocText()
+//            }
+            clickListener(option)
         }
     }
 }
