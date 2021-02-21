@@ -20,6 +20,8 @@ import com.example.pdfprime.R
 import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
+import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetSelectedDoc
+import com.example.pdfprime.presentation.bottomSheetMenus.DocOperationInterface
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
@@ -30,16 +32,18 @@ import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject
+import kotlin.concurrent.fixedRateTimer
 
 /**
  * This fragment is used to show a pdf summary in a list to edit them
  */
-class DocumentFrag : Fragment() ,  NameDocDialogInterface{
+class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface{
     @Inject lateinit var factory : MyDocumentsViewModelFactory
     lateinit var binding : FragmentDocumentBinding
     lateinit var adapter : DocumentRecyclerViewAdapter
     lateinit var myDocumentsViewModel : MyDocumentsViewModel
     lateinit var bottomSheetNewDoc : BottomSheetNewDoc
+    lateinit var bottomSheetSelectedDoc: BottomSheetSelectedDoc
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
@@ -78,7 +82,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface{
 
             fabNewDoc.setOnClickListener{
                 bottomSheetNewDoc = BottomSheetNewDoc()//App.newDocBottomSheetOptions,
-                fragmentManager?.let { it1 -> bottomSheetNewDoc.show(it1,"MY_BOTTOM_SHEET") }
+                fragmentManager?.let { it1 -> bottomSheetNewDoc.show(it1,"BOTTOM_SHEET_NEWDOC") }
                 bottomSheetNewDoc.setParent(this@DocumentFrag)
             }
 
@@ -129,7 +133,9 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface{
     }
 
     private fun documentClickListener(document: Document){
-        Toast.makeText(context,"test con ${document.name}",Toast.LENGTH_LONG).show()
+//        Toast.makeText(context,"test con ${document.name}",Toast.LENGTH_LONG).show()
+        bottomSheetSelectedDoc = BottomSheetSelectedDoc(document,this)
+        fragmentManager?.let { it1 -> bottomSheetSelectedDoc.show(it1,"BOTTOM_SHEET_DOCSELECTED") }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -167,6 +173,20 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface{
             myDocumentsViewModel.insertPdf(newDoc)
         }
         Dialogs.dissmis()
+    }
+
+    override fun onEditDoc(document: Document) {
+
+    }
+
+    override fun onShareDoc(document: Document) {
+
+    }
+
+    override fun onDeleteDoc(document: Document) {
+        CoroutineScope(Dispatchers.IO).launch{
+            myDocumentsViewModel.deletePdf(document.id)
+        }
     }
 
 

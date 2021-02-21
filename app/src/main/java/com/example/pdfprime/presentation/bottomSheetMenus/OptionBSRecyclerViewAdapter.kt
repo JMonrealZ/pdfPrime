@@ -10,15 +10,12 @@ import kotlinx.android.synthetic.main.bottom_sheet_item_list.view.*
 import kotlinx.android.synthetic.main.bottom_sheet_item_list_rounded.view.*
 
 class OptionBSRecyclerViewAdapter(private var options : List<BottomSheetOption>,
-                                  /*private var newDocInterface: NewDocInterface,*/
-                                  private val clickListener : (BottomSheetOption)->Unit
-
-)
+                                  private val clickListener : (BottomSheetOption)->Unit)
     : RecyclerView.Adapter<OptionBSViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionBSViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.bottom_sheet_item_list_rounded,parent,false)
-        return OptionBSViewHolder(listItem, clickListener/*newDocInterface*/)
+        return OptionBSViewHolder(listItem, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -40,11 +37,6 @@ class OptionBSViewHolder(val view : View, private val clickListener:(BottomSheet
 
         }
         view.setOnClickListener{
-//            when(option.idOption){
-//                1 -> newDocInterface.newDocDispositivo()
-//                2 -> newDocInterface.newDocCamera()
-//                3 -> newDocInterface.newDocText()
-//            }
             clickListener(option)
         }
     }

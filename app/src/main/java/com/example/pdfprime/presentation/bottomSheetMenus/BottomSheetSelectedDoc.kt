@@ -12,17 +12,20 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
 import com.example.pdfprime.R
+import com.example.pdfprime.data.model.Document
 import com.example.pdfprime.presentation.utils.Constants
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
-class BottomSheetNewDoc() : BottomSheetDialogFragment(){
+class BottomSheetSelectedDoc(
+    private val documentSelected : Document,
+    private val docOperationInterface: DocOperationInterface
+) : BottomSheetDialogFragment(){
     private lateinit var adapter : OptionBSRecyclerViewAdapter
-    private lateinit var parentFrag: Fragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         adapter = OptionBSRecyclerViewAdapter(
-            App.newDocBottomSheetOptions,
+            App.clickDocBottomSheetOptions,
             {optionSelected : BottomSheetOption -> onOptionSelected(optionSelected)}
         )
         val view =  inflater.inflate(R.layout.bottom_sheet_new_doc,container,false)
@@ -33,20 +36,10 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(){
 
     private fun onOptionSelected( option : BottomSheetOption){
         when(option.idOption){
-            Constants.NEWDOC_DIS -> openFileBrowser()
-            Constants.NEWDOC_CAM -> NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorCamFrag)
-            Constants.NEWDOC_TXT -> NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorTxtFrag)
+            Constants.DOC_EDIT -> docOperationInterface.onEditDoc(documentSelected)
+            Constants.DOC_SHARE -> docOperationInterface.onShareDoc(documentSelected)
+            Constants.DOC_DELETE -> docOperationInterface.onDeleteDoc(documentSelected)
         }
         super.dismiss()
-    }
-
-    fun setParent(fragment: Fragment){
-        parentFrag = fragment
-    }
-
-    fun openFileBrowser(){
-        val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
-        fileIntent.type = "application/pdf"
-        parentFrag.startActivityForResult(fileIntent,1)
     }
 }

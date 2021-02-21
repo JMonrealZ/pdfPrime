@@ -1,18 +1,12 @@
 package com.example.pdfprime
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.example.pdfprime.databinding.ActivityMainBinding
-import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
-import com.example.pdfprime.presentation.bottomSheetMenus.NewDocInterface
-import com.example.pdfprime.presentation.myDocuments.DocumentFrag
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.app_bar_main.view.*
 
 /**
  * This class is used to hold current fragment
