@@ -1,5 +1,6 @@
 package com.example.pdfprime.presentation.myDocuments
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,8 +27,11 @@ class DocumentRecyclerViewAdapter(private var documents : List<Document>,
         holder.bind(documents[position],clickListener)
     }
 
-    fun setList(newList : List<Document>){
+    fun setList(newList : List<Document>,context : Context){
         documents = newList
+        documents.forEach{
+            it.firstPage = Renderer.renderPage(context,it.name,0)
+        }
         notifyDataSetChanged()
     }
 
@@ -38,7 +42,7 @@ class DocumentViewHolder(val view : View) : RecyclerView.ViewHolder(view){
         view.apply {
             tvDocName.text = document.name
             tvDocSize.text = if(document.size > 1024) (document.size / 1024).toString() + " MB" else  document.size.toString() + " KB"
-            ivFirstPage.setImageBitmap(Renderer.renderPage(context,document.name,0))
+            ivFirstPage.setImageBitmap(document.firstPage)
             setOnClickListener{clickListener(document)}
         }
 //        view.

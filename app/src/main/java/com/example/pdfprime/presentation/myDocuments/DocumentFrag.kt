@@ -97,7 +97,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
 
         myDocumentsViewModel.getObservers().observe(viewLifecycleOwner, Observer {
             if(it != null){
-                adapter.setList(it)
+                context?.let { it1 -> adapter.setList(it, it1) }
             }
             else
                 Toast.makeText(context,"nothing found",Toast.LENGTH_LONG).show()
