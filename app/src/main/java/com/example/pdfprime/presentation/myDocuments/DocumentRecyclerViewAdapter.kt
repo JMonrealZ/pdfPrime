@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pdfprime.R
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.presentation.utils.Renderer
 import kotlinx.android.synthetic.main.list_item_document.view.*
 

@@ -1,14 +1,9 @@
 package com.example.pdfprime.presentation.myDocuments
 
-import android.graphics.pdf.PdfRenderer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.domain.usecase.*
-import com.example.pdfprime.presentation.utils.Renderer
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 class MyDocumentsViewModel(
     private val getPdfsUseCase: GetPdfsUseCase,

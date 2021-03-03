@@ -2,7 +2,7 @@ package com.example.pdfprime.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 
 @Database(entities = [Document::class],
     version = 1,

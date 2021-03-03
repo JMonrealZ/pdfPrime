@@ -7,4 +7,6 @@
     <color name="colorSeparatorItems">#BDBEBF</color>
 
     <color name="colorBackDocDetails">#8CBDBEBF</color>
+
+    <color name="closeBackground">#FF0000</color>
 </resources>

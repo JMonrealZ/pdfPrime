@@ -1,7 +1,7 @@
 package com.example.pdfprime.data.db
 
 import androidx.room.*
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 
 @Dao
 interface DocumentsDao {

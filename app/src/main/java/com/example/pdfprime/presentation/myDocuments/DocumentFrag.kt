@@ -13,11 +13,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
 //import androidx.lifecycle.ViewModelProviders
 import com.example.pdfprime.R
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.databinding.FragmentDocumentBinding
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetSelectedDoc
@@ -25,14 +24,12 @@ import com.example.pdfprime.presentation.bottomSheetMenus.DocOperationInterface
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
-import com.google.android.material.slider.Slider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject
-import kotlin.concurrent.fixedRateTimer
 
 /**
  * This fragment is used to show a pdf summary in a list to edit them
@@ -155,7 +152,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         }
 
         val path = context?.filesDir
-        val directory = File(path,App.direcStoragePdf)
+        val directory = File(path,App.storagePdf)
         directory.mkdir()
         val file = File(directory,name)
         FileOutputStream(file).use {

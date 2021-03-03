@@ -1,7 +1,7 @@
 package com.example.pdfprime.data.repository.datasourceImpl
 
 import com.example.pdfprime.data.db.DocumentsDao
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.data.repository.datasource.DocumentLocalDataSource
 
 class DocumentLocalDataSourceImpl(private val documentsDao: DocumentsDao) : DocumentLocalDataSource{

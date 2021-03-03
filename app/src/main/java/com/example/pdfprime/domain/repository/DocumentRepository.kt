@@ -1,6 +1,6 @@
 package com.example.pdfprime.domain.repository
 
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 
 interface DocumentRepository{
     suspend fun getPdfs() : List<Document>

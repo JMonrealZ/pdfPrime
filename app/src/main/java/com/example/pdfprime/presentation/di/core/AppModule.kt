@@ -1,12 +1,16 @@
 package com.example.pdfprime.presentation.di.core
 
 import android.content.Context
+import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(subcomponents = [MyDocumentsSubcomponent::class])
+@Module(subcomponents = [
+    MyDocumentsSubcomponent::class,
+    CreatorCamSubcomponent::class
+])
 class AppModule(private val context: Context) {
 
     @Singleton
@@ -14,4 +18,5 @@ class AppModule(private val context: Context) {
     fun provideApplicationContext():Context{
         return context.applicationContext
     }
+
 }

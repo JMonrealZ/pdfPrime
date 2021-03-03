@@ -1,18 +1,13 @@
 package com.example.pdfprime.presentation.bottomSheetMenus
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
 import com.example.pdfprime.R
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.presentation.utils.Constants
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*

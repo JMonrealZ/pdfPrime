@@ -6,6 +6,7 @@ import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.di.core.AppComponent
 import com.example.pdfprime.presentation.di.core.AppModule
 import com.example.pdfprime.presentation.di.core.DaggerAppComponent
+import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import com.example.pdfprime.presentation.utils.Constants
 
@@ -23,14 +24,22 @@ class App : Application() , Injector{
         return appComponent.myDocumentsSubcomponent().create()
     }
 
+    override fun createCreatorCamSubComponent(): CreatorCamSubcomponent {
+        return appComponent.creatorCamSubcomponent().create()
+    }
+
     companion object{
-        lateinit var direcStoragePdf : String
+        lateinit var storagePdf : String
+        lateinit var storagePagPdf : String
+        lateinit var storageFirstPagePdf : String
         lateinit var newDocBottomSheetOptions : ArrayList<BottomSheetOption>
         lateinit var clickDocBottomSheetOptions : ArrayList<BottomSheetOption>
     }
 
     init{
-        direcStoragePdf = "PDFS"
+        storagePdf = "PDFS"
+        storagePagPdf = "IMAGES"
+        storageFirstPagePdf = "FIRSTPAGE"
 
         newDocBottomSheetOptions = ArrayList()
         newDocBottomSheetOptions.apply {

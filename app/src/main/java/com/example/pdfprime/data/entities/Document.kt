@@ -1,12 +1,10 @@
-package com.example.pdfprime.data.model
+package com.example.pdfprime.data.entities
 
 import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import java.lang.reflect.Constructor
-import java.sql.Date
 
 @Entity(tableName = "DOCUMENTS")
 data class Document(

@@ -1,6 +1,6 @@
 package com.example.pdfprime.data.repository.datasource
 
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 
 interface DocumentLocalDataSource {
     suspend fun getPdfsFromDatabase() : List<Document>

@@ -1,6 +1,6 @@
 package com.example.pdfprime.data.repository
 
-import com.example.pdfprime.data.model.Document
+import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.data.repository.datasource.DocumentLocalDataSource
 import com.example.pdfprime.domain.repository.DocumentRepository
 
