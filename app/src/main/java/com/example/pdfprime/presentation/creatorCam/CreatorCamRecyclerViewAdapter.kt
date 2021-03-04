@@ -23,13 +23,17 @@ class CreatorCamRecyclerViewAdapter(private var pages : List<Page>) : RecyclerVi
         holder.bind(pages[position])
     }
 
+    fun setList(newList : List<Page>){
+        pages = newList
+        notifyDataSetChanged()
+    }
 
 }
 
 class PageViewHolder(val view : View) : RecyclerView.ViewHolder(view){
     fun bind(page: Page){
         view.apply {
-//            ivClose
+            ivImage.setImageBitmap(page.image)
         }
     }
 }

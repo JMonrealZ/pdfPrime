@@ -8,7 +8,12 @@
         android:id="@+id/creatorCamFrag"
         android:name="com.example.pdfprime.presentation.creatorCam.CreatorCamFrag"
         android:label="CreatorCamFrag"
-        tools:layout="@layout/fragment_creator_cam"/>
+        tools:layout="@layout/fragment_creator_cam">
+        <argument
+            android:name="DOCUMENT"
+            app:argType="string"
+            android:defaultValue='' />
+    </fragment>
     <fragment
         android:id="@+id/creatorTxtFrag"
         android:name="com.example.pdfprime.presentation.creatorTxt.CreatorTxtFrag"

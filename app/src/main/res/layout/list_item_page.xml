@@ -17,14 +17,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/ivClose"
+    <TextView
+        android:id="@+id/ivDeletePage"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_circle_close"
-        android:layout_margin="1dp"/>
+        android:background="@drawable/bg_circle_close"
+        android:layout_margin="1dp"
+        android:text="X"
+        android:textColor="@android:color/white"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/tvPageNumber"
@@ -33,5 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/bg_circle_page_number"
-        android:layout_margin="1dp"/>
+        android:layout_margin="1dp"
+        android:text="1"
+        android:textColor="@android:color/white"
+        android:gravity="center"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

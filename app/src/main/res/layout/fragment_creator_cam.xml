@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".presentation.creatorCam.CreatorCamFrag">
 
-    <TextView
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Creator cam fragment" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPages"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Creator cam fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
 </layout>

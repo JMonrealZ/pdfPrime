@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pdfprime.App
 //import androidx.lifecycle.ViewModelProviders
@@ -24,6 +25,7 @@ import com.example.pdfprime.presentation.bottomSheetMenus.DocOperationInterface
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
+import com.example.pdfprime.presentation.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -173,7 +175,9 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     }
 
     override fun onEditDoc(document: Document) {
-
+        val bundle = Bundle()
+        bundle.putString(Constants.DOCUMENT,document.name)
+        NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
     }
 
     override fun onShareDoc(document: Document) {
