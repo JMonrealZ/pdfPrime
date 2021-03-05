@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentCreatorCamBinding
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.utils.Constants
-import com.example.pdfprime.presentation.utils.Renderer
-import java.util.ArrayList
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -30,6 +33,7 @@ class CreatorCamFrag : Fragment() {
         initVariables(inflater,container)
         initRecyclerView()
         setListeners()
+        setObservers()
         return binding.root
     }
 
@@ -39,18 +43,13 @@ class CreatorCamFrag : Fragment() {
         (activity?.application as Injector).createCreatorCamSubComponent().inject(this)
 
         creatorCamViewModel = ViewModelProvider(this,factory).get(CreatorCamViewModel::class.java)
+        binding.creatorCamViewModel = creatorCamViewModel
+        binding.lifecycleOwner = this
 
         adapter = CreatorCamRecyclerViewAdapter(listOf<Page>())
 
-        if(arguments != null){
+        if(arguments != null)
             document2Edit = requireArguments().getString(Constants.DOCUMENT,"")
-            var pages = ArrayList<Page>()
-            var images = Renderer.renderPages(context,document2Edit)
-            for(image in 0 until images.size){
-                pages.add(Page(images[image],image.toString(),image,image,false))
-            }
-            adapter.setList(pages)
-        }
 
     }
 
@@ -63,6 +62,38 @@ class CreatorCamFrag : Fragment() {
 
     private fun setListeners(){
 
+    }
+
+    private fun setObservers(){
+        creatorCamViewModel.pagesObserver().observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                adapter.setList(it)
+            }
+            else
+                Toast.makeText(context,"couldn't render pages", Toast.LENGTH_LONG).show()
+        })
+        creatorCamViewModel.isLoadingObserver().observe(viewLifecycleOwner, Observer {
+            binding.apply {
+                if(it){
+                    pb.visibility = View.VISIBLE
+                    rvPages.visibility = View.GONE
+                }else{
+                    pb.visibility = View.GONE
+                    rvPages.visibility = View.VISIBLE
+                }
+            }
+        })
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(document2Edit.isNotEmpty()){
+            CoroutineScope(Dispatchers.IO).launch { context?.let {
+                creatorCamViewModel.renderPages(document2Edit,
+                    it
+                )
+            } }
+        }
     }
 
     companion object {}

@@ -7,15 +7,15 @@ import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RendererCoroutines {
+object RendererCoroutines {
     private lateinit var pdfRenderer : PdfRenderer
     private lateinit var pages : ArrayList<Bitmap>
 
-    suspend fun renderPage(direc : File, fileName : String) : ArrayList<Bitmap>{
+    fun renderPages(direc : File, fileName : String) : ArrayList<Bitmap>{
         val file = File(direc,fileName)
         val parcelFileDescriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
         if (parcelFileDescriptor != null)
-            pdfRenderer = PdfRenderer(Renderer.parcelFileDescriptor)
+            pdfRenderer = PdfRenderer(parcelFileDescriptor)
         pages = ArrayList()
         val totalPages = pdfRenderer.pageCount
         for (i in 0 until totalPages) {
