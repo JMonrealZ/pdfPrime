@@ -8,4 +8,6 @@
 
     <!--Bottom sheet dialog fragment menu-->
     <dimen name="imgSizeSquareBS">40dp</dimen>
+
+    <dimen name="pbHeight">35dp</dimen>
 </resources>

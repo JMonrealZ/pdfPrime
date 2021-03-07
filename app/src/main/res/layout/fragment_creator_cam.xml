@@ -14,16 +14,39 @@
     android:layout_height="match_parent"
     tools:context=".presentation.creatorCam.CreatorCamFrag">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <ProgressBar
-        android:id="@+id/pb"
-        style="@android:style/Widget.ProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    <ProgressBar-->
+<!--        android:id="@+id/pb"-->
+<!--        style="@android:style/Widget.ProgressBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/pbHeight"/>-->
 
+    <LinearLayout
+        android:id="@+id/llLoading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/skvpb"
+            style="@style/SpinKitView.Large.Wave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tvRenderingProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtPreviewRendering"
+            android:textAlignment="center"/>
+    </LinearLayout>
 </FrameLayout>
 </layout>

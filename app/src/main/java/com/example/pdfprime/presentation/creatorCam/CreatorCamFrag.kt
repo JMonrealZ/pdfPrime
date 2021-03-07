@@ -14,6 +14,8 @@ import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentCreatorCamBinding
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.utils.Constants
+import com.github.ybq.android.spinkit.sprite.Sprite
+import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,11 +48,10 @@ class CreatorCamFrag : Fragment() {
         binding.creatorCamViewModel = creatorCamViewModel
         binding.lifecycleOwner = this
 
-        adapter = CreatorCamRecyclerViewAdapter(listOf<Page>())
+        adapter = CreatorCamRecyclerViewAdapter(arrayListOf())
 
         if(arguments != null)
             document2Edit = requireArguments().getString(Constants.DOCUMENT,"")
-
     }
 
     private fun initRecyclerView() {
@@ -58,6 +59,8 @@ class CreatorCamFrag : Fragment() {
             layoutManager = GridLayoutManager(context,2)
             adapter = this@CreatorCamFrag.adapter
         }
+
+
     }
 
     private fun setListeners(){
@@ -67,7 +70,7 @@ class CreatorCamFrag : Fragment() {
     private fun setObservers(){
         creatorCamViewModel.pagesObserver().observe(viewLifecycleOwner, Observer {
             if(it != null){
-                adapter.setList(it)
+                adapter.setList(it.toMutableList())
             }
             else
                 Toast.makeText(context,"couldn't render pages", Toast.LENGTH_LONG).show()
@@ -75,13 +78,20 @@ class CreatorCamFrag : Fragment() {
         creatorCamViewModel.isLoadingObserver().observe(viewLifecycleOwner, Observer {
             binding.apply {
                 if(it){
-                    pb.visibility = View.VISIBLE
+//                    pb.visibility = View.VISIBLE
+//                    skvpv.visibility = View.VISIBLE
                     rvPages.visibility = View.GONE
+                    llLoading.visibility = View.VISIBLE
+
                 }else{
-                    pb.visibility = View.GONE
+//                    skvpv.visibility = View.GONE
                     rvPages.visibility = View.VISIBLE
+                    llLoading.visibility = View.GONE
                 }
             }
+        })
+        creatorCamViewModel.isLoadingMessageObserver().observe(viewLifecycleOwner, Observer {
+            binding.tvRenderingProgress.text = it
         })
     }
 

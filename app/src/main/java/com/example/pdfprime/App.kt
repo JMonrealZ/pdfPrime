@@ -1,6 +1,7 @@
 package com.example.pdfprime
 
 import android.app.Application
+import android.content.Context
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetOption
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.di.core.AppComponent
@@ -34,6 +35,7 @@ class App : Application() , Injector{
         lateinit var storageFirstPagePdf : String
         lateinit var newDocBottomSheetOptions : ArrayList<BottomSheetOption>
         lateinit var clickDocBottomSheetOptions : ArrayList<BottomSheetOption>
+        lateinit var appContext : Context
     }
 
     init{
@@ -55,5 +57,6 @@ class App : Application() , Injector{
             add(BottomSheetOption(R.drawable.ic_delete_24,Constants.DOC_DELETE,R.string.titleButtonDeleteDoc))
         }
 
+        appContext = this
     }
 }

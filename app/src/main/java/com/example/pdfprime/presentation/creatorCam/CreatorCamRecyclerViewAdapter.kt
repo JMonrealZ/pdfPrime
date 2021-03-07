@@ -10,7 +10,7 @@ import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.presentation.myDocuments.DocumentViewHolder
 import kotlinx.android.synthetic.main.list_item_page.view.*
 
-class CreatorCamRecyclerViewAdapter(private var pages : List<Page>) : RecyclerView.Adapter<PageViewHolder>(){
+class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : RecyclerView.Adapter<PageViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_page,parent,false)
@@ -27,26 +27,27 @@ class CreatorCamRecyclerViewAdapter(private var pages : List<Page>) : RecyclerVi
         holder.bind(pages[position])
     }
 
-    fun setList(newList : List<Page>){
+    fun setList(newList : MutableList<Page>){
         pages = newList
         notifyDataSetChanged()
     }
 
     fun onDeletePageClickListener(page : Page){
-        pages[page.pageNumber].delete = true
-        notifyDataSetChanged()
+        pages.remove(page)
+        for(pageNumber in 0 until pages.size){    //updating pageNumber
+            pages[pageNumber].pageNumber = pageNumber
+        }
+        notifyItemRemoved(page.pageNumber)
+
     }
 }
 
 class PageViewHolder(val view : View,private val clickListener : (Page)->Unit) : RecyclerView.ViewHolder(view){
     fun bind(page: Page){
         view.apply {
-            when(page.delete) {
-                true -> ivImage.setImageBitmap(null)
-                false -> ivImage.setImageBitmap(page.image)
-            }
-            tvPageNumber.text = (page.pageNumber + 1).toString()
-            tvDeletePage.setOnClickListener{clickListener(page)}
+                ivImage.setImageBitmap(page.image)
+                tvPageNumber.text = (page.pageNumber + 1).toString()
+                tvDeletePage.setOnClickListener { clickListener(page)}
         }
     }
 }

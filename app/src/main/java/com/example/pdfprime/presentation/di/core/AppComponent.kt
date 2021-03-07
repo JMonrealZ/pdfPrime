@@ -1,5 +1,6 @@
 package com.example.pdfprime.presentation.di.core
 
+import android.content.Context
 import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import dagger.Component

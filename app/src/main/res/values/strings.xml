@@ -19,5 +19,5 @@
     <string name="txtWriteSomething">Por favor escribe un nombre valido</string>
     <string name="txtFileAlreadyExists">Ya existe un nombre guardado con este nombre</string>
 
-
+    <string name="txtPreviewRendering">Renderizando %s de %s</string>
 </resources>
