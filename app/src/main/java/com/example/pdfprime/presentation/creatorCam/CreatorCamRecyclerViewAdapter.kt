@@ -37,8 +37,11 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : Rec
         for(pageNumber in 0 until pages.size){    //updating pageNumber
             pages[pageNumber].pageNumber = pageNumber
         }
-        notifyItemRemoved(page.pageNumber)
+        notifyDataSetChanged()
+    }
 
+    fun getPages() : MutableList<Page>{
+        return pages
     }
 }
 

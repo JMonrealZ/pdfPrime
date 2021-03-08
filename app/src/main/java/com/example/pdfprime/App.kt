@@ -10,6 +10,7 @@ import com.example.pdfprime.presentation.di.core.DaggerAppComponent
 import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import com.example.pdfprime.presentation.utils.Constants
+import com.tom_roush.pdfbox.util.PDFBoxResourceLoader
 
 class App : Application() , Injector{
     private lateinit var appComponent:AppComponent

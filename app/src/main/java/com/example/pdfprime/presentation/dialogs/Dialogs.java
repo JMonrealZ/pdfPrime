@@ -63,6 +63,50 @@ public class Dialogs {
         dialog.show();
     }
 
+    public static void createSelectNameDoc(final Fragment fragment, final Context ctx, LayoutInflater layoutInflater){
+
+        //Getting info from file(uri)
+//        Cursor cursor = ctx.getContentResolver().query(uri,null,null,null,null);
+//        int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+//        int sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
+//        cursor.moveToFirst();
+//        String name = cursor.getString(nameIndex);
+//        final int size = (int) (cursor.getLong(sizeIndex) / 1024L);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        View customLayout = layoutInflater.inflate(R.layout.dialog_new_doc, null);
+        builder.setView(customLayout);
+
+        TextView tvTitleDialog = customLayout.findViewById(R.id.tvTitleDialog);
+        final TextView tvFeedbackDialog = customLayout.findViewById(R.id.tvFeedbackDialog);
+        final EditText etDocNameDialog = customLayout.findViewById(R.id.etDocNameDialog);
+        Button btnCancelDialog = customLayout.findViewById(R.id.btnCancelDialog);
+        Button btnSaveDialog = customLayout.findViewById(R.id.btnSaveDialog);
+        etDocNameDialog.setText("Document");
+
+        /*final AlertDialog */dialog = builder.create();
+
+        btnSaveDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nameSelected = etDocNameDialog.getText().toString();
+                if(nameSelected.length() > 0)
+                    ((NameDocDialogInterface)fragment).onNameDocSelected(nameSelected + ".pdf",null,0);
+                else {
+                    tvFeedbackDialog.setText(R.string.txtWriteSomething);
+                }
+            }
+        });
+
+        btnCancelDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
     public static void dissmis(){
         assert dialog != null : "Tried to dismiss dialog when is null";
         dialog.dismiss();

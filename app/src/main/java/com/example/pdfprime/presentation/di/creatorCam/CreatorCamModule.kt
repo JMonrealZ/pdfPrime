@@ -11,7 +11,7 @@ class CreatorCamModule {
 
     @CreatorCamScope
     @Provides
-    fun provideCreatorCamViewModelFactory(insertPdfUseCase: InsertPdfUseCase) : CreatorCamViewModelFactory {
-        return CreatorCamViewModelFactory(insertPdfUseCase)
+    fun provideCreatorCamViewModelFactory(insertPdfUseCase: InsertPdfUseCase/*, createPdfUseCase: CreatePdfUseCase*/) : CreatorCamViewModelFactory {
+        return CreatorCamViewModelFactory(insertPdfUseCase/*,createPdfUseCase*/)
     }
 }

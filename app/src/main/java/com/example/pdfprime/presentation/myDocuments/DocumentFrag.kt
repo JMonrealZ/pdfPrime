@@ -165,8 +165,10 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     companion object {
     }
 
-    override fun onNameDocSelected(name: String, uri: Uri, size: Int) {
-        savePdfOnDisk(uri,name)
+    override fun onNameDocSelected(name: String, uri: Uri?, size: Int) {
+        if (uri != null) {
+            savePdfOnDisk(uri,name)
+        }
         val newDoc = Document(0,name,size)
         CoroutineScope(Dispatchers.IO).launch{
             myDocumentsViewModel.insertPdf(newDoc)
