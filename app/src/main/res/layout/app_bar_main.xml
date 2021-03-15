@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--LAYOUT FOR COLLAPSING TOOLBAR-->
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
+<!--    This is for custom actionBar(Toolbar)-->
 <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     android:minHeight="0dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+        android:visibility="gone"/>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
-
-                <com.example.pdfprime.DrawerController
-                    android:id="@+id/dcMenu"
-                    android:src="@drawable/ic_menu_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"/>
-
-            </androidx.appcompat.widget.Toolbar>
+    <com.example.pdfprime.DrawerController
+        android:id="@+id/dcMenu"
+        android:src="@drawable/ic_menu_24"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    <include layout="@layout/content_main" />-->
     <LinearLayout
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
@@ -44,18 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-
             app:navGraph="@navigation/nav_graph"/>
     </LinearLayout>
-
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fabNewDoc"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:clickable="true"-->
-<!--        app:srcCompat="@drawable/ic_add_24"-->
-<!--        android:layout_gravity="bottom|end"/>-->
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

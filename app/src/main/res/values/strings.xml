@@ -21,5 +21,6 @@
 
     <string name="txtPreviewRendering">Renderizando %s de %s</string>
     <string name="txtPreviewCreating">Extrayendo página %s de %s</string>
+    <string name="txtCreatingDocument">Creando nuevo documento...</string>
 
 </resources>

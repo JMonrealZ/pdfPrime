@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
 class BottomSheetSelectedDoc(
-    private val documentSelected : Document,
+    private var documentSelected : Document,
     private val docOperationInterface: DocOperationInterface
 ) : BottomSheetDialogFragment(){
     private lateinit var adapter : OptionBSRecyclerViewAdapter
@@ -36,5 +36,9 @@ class BottomSheetSelectedDoc(
             Constants.DOC_DELETE -> docOperationInterface.onDeleteDoc(documentSelected)
         }
         super.dismiss()
+    }
+
+    fun setDocument(document : Document){
+        documentSelected = document
     }
 }

@@ -37,18 +37,18 @@ class DrawerController: AppCompatImageButton,DrawerLayout.DrawerListener{
     }
 
     override fun onDrawerStateChanged(newState: Int) {
-        Log.e("BUTTOM DRAWER: ", "onDrawerStateChanged")
+//        Log.e("BUTTOM DRAWER: ", "onDrawerStateChanged")
     }
 
     override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-        Log.e("BUTTOM DRAWER: ", "onDrawerSlide")
+//        Log.e("BUTTOM DRAWER: ", "onDrawerSlide")
     }
 
     override fun onDrawerClosed(drawerView: View) {
-        Log.e("BUTTOM DRAWER: ", "onDrawerClosed")
+//        Log.e("BUTTOM DRAWER: ", "onDrawerClosed")
     }
 
     override fun onDrawerOpened(drawerView: View) {
-        Log.e("BUTTOM DRAWER: ", "onDrawerOpened")
+//        Log.e("BUTTOM DRAWER: ", "onDrawerOpened")
     }
 }

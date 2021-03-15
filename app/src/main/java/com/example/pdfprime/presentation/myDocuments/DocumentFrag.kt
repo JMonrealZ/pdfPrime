@@ -62,6 +62,8 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         myDocumentsViewModel = ViewModelProvider(this,factory).get(MyDocumentsViewModel::class.java)
 
         adapter = DocumentRecyclerViewAdapter(listOf<Document>(),{docSelected : Document -> documentClickListener(docSelected)})
+
+        bottomSheetSelectedDoc = BottomSheetSelectedDoc(Document(),this)
     }
 
     private fun initRecyclerView() {
@@ -132,8 +134,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     }
 
     private fun documentClickListener(document: Document){
-//        Toast.makeText(context,"test con ${document.name}",Toast.LENGTH_LONG).show()
-        bottomSheetSelectedDoc = BottomSheetSelectedDoc(document,this)
+        bottomSheetSelectedDoc.setDocument(document)
         fragmentManager?.let { it1 -> bottomSheetSelectedDoc.show(it1,"BOTTOM_SHEET_DOCSELECTED") }
     }
 

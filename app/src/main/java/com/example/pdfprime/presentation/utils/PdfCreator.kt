@@ -10,6 +10,7 @@ import java.io.File
 
 object PdfCreator {
     fun createPdf(direc : File,oldDocName : String,list : MutableList<Page>,progressUpdater: ProgressUpdater) : PDDocument{
+        progressUpdater.onProgressUpdate(App.appContext.getString(R.string.txtCreatingDocument))
         PDFBoxResourceLoader.init(App.appContext);
         var oldDoc = PDDocument.load(File(direc,oldDocName))
         var newDoc = PDDocument();
@@ -17,7 +18,7 @@ object PdfCreator {
             newDoc.addPage(oldDoc.getPage(it.originalPage))
             progressUpdater.onProgressUpdate(
                 String.format(
-                    App.appContext.getString(R.string.txtPreviewRendering),
+                    App.appContext.getString(R.string.txtPreviewCreating),
                     it.pageNumber,
                     list.size
                 )
