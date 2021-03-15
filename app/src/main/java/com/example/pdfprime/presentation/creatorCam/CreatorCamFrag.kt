@@ -65,6 +65,9 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                         it
                     ) }
                 }
+            }else{
+                //Todo: se creara un pdf desde la camara
+
             }
         }
     }
@@ -80,7 +83,13 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
 
     private fun setListeners(){
         binding.apply {
-            btnAceptar.setOnClickListener{
+            ibCancel.setOnClickListener{
+
+            }
+            ibCamera.setOnClickListener{
+
+            }
+            ibAccept.setOnClickListener{
                 val direc = File(context?.filesDir,App.storagePdf)
                 CoroutineScope(Dispatchers.IO).launch {
                     creatorCamViewModel?.createPdf(direc,document2Edit,adapter.getPages())
@@ -100,14 +109,11 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
         creatorCamViewModel.isLoadingObserver().observe(viewLifecycleOwner, Observer {
             binding.apply {
                 if(it){
-//                    pb.visibility = View.VISIBLE
-//                    skvpv.visibility = View.VISIBLE
-                    rvPages.visibility = View.GONE
+                    llContent.visibility = View.GONE
                     llLoading.visibility = View.VISIBLE
 
                 }else{
-//                    skvpv.visibility = View.GONE
-                    rvPages.visibility = View.VISIBLE
+                    llContent.visibility = View.VISIBLE
                     llLoading.visibility = View.GONE
                 }
             }

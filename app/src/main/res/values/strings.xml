@@ -25,7 +25,7 @@
 
     <!--Texto de botones de navegacion-->
     <string name="titleButtonHome">Inicio</string>
-    <string name="titleButtonCamara">Camara</string>
+    <string name="titleButtonCamara">Cámara</string>
     <string name="titleButtonRateUs">Calificanos</string>
     <string name="titleButtonReachUs">Contacto</string>
     <string name="titleButtonThanks">Agradecimientos</string>
