@@ -21,6 +21,14 @@
 
     <string name="txtPreviewRendering">Renderizando %s de %s</string>
     <string name="txtPreviewCreating">Extrayendo página %s de %s</string>
-    <string name="txtCreatingDocument">Creando nuevo documento...</string>
+    <string name="txtCreatingDocument">Creando nuevo documento…</string>
+
+    <!--Texto de botones de navegacion-->
+    <string name="titleButtonHome">Inicio</string>
+    <string name="titleButtonCamara">Camara</string>
+    <string name="titleButtonRateUs">Calificanos</string>
+    <string name="titleButtonReachUs">Contacto</string>
+    <string name="titleButtonThanks">Agradecimientos</string>
+    <string name="titleButtonAboutUs">Acerca de nosotros</string>
 
 </resources>

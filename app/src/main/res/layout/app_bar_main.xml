@@ -13,7 +13,7 @@
 <!--    This is for custom actionBar(Toolbar)-->
 <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="?attr/actionBarSize"
     android:fitsSystemWindows="true"
     android:minHeight="0dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -24,12 +24,27 @@
         app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
         android:visibility="gone"/>
 
-    <com.example.pdfprime.DrawerController
-        android:id="@+id/dcMenu"
-        android:src="@drawable/ic_menu_24"
-        android:layout_width="wrap_content"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.example.pdfprime.DrawerController
+            android:id="@+id/dcMenu"
+            android:src="@drawable/ic_menu_24"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:id="@+id/ivLogotipo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:src="@drawable/pdf_prime"/>
+    </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout

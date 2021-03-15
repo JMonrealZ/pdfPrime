@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    <group android:checkableBehavior="single">-->
-
     <item
         android:id="@+id/documentFrag"
-        android:title="Inicio" />
+        android:title="@string/titleButtonHome"
+        android:icon="@drawable/ic_home_24"/>
+
+    <item
+        android:id="@+id/creatorCamFrag"
+        android:title="@string/titleButtonCamara"
+        android:icon="@drawable/ic_camera_24"/>
 
     <item
         android:id="@+id/btnRateUs"
-        android:title="Calificanos"
-        android:icon="@drawable/ic_trash_24"/>
+        android:title="@string/titleButtonRateUs"
+        android:icon="@drawable/ic_star_24"/>
 
     <item
         android:id="@+id/btnReachUs"
-        android:title="Contacto"
-        android:icon="@drawable/ic_trash_24"/>
+        android:title="@string/titleButtonReachUs"
+        android:icon="@drawable/ic_email_24"/>
+
+    <item
+        android:id="@+id/btnThanks"
+        android:title="@string/titleButtonThanks"
+        android:icon="@drawable/ic_emoji_people_24"/>
+
     <item
         android:id="@+id/btnAboutUs"
-        android:title="Contacto"
-        android:icon="@drawable/ic_trash_24"/>
-
-
-<!--    </group>-->
-
+        android:title="@string/titleButtonAboutUs"
+        android:icon="@drawable/ic_person_24"/>
 </menu>
