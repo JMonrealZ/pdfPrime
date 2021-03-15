@@ -193,5 +193,11 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         }
     }
 
+    override fun onOpenDoc(document: Document) {
+        val bundle = Bundle()
+        bundle.putString(Constants.DOCUMENT,document.name)
+        NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_viewerFrag,bundle)
+    }
+
 
 }

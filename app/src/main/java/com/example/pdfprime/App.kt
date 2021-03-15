@@ -9,6 +9,7 @@ import com.example.pdfprime.presentation.di.core.AppModule
 import com.example.pdfprime.presentation.di.core.DaggerAppComponent
 import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
+import com.example.pdfprime.presentation.di.viewer.ViewerSubcomponent
 import com.example.pdfprime.presentation.utils.Constants
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader
 
@@ -28,6 +29,10 @@ class App : Application() , Injector{
 
     override fun createCreatorCamSubComponent(): CreatorCamSubcomponent {
         return appComponent.creatorCamSubcomponent().create()
+    }
+
+    override fun createViewerSubComponent(): ViewerSubcomponent {
+        return appComponent.viewerSubcomponent().create()
     }
 
     companion object{
@@ -53,6 +58,7 @@ class App : Application() , Injector{
 
         clickDocBottomSheetOptions = ArrayList()
         clickDocBottomSheetOptions.apply {
+            add(BottomSheetOption(R.drawable.ic_open_in_full_24,Constants.DOC_OPEN,R.string.titleButtonOpenDoc))
             add(BottomSheetOption(R.drawable.ic_edit_24,Constants.DOC_EDIT,R.string.titleButtonEditDoc))
             add(BottomSheetOption(R.drawable.ic_share_24,Constants.DOC_SHARE,R.string.titleButtonShareDoc))
             add(BottomSheetOption(R.drawable.ic_delete_24,Constants.DOC_DELETE,R.string.titleButtonDeleteDoc))

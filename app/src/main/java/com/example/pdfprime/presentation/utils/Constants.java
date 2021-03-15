@@ -9,6 +9,7 @@ public class Constants {
     public static final int DOC_EDIT = 101;
     public static final int DOC_SHARE = 102;
     public static final int DOC_DELETE = 103;
+    public static final int DOC_OPEN = 104;
 
     //Name of data between destinations
     public static final String DOCUMENT = "DOCUMENT";

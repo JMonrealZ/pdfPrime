@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".presentation.viewer.ViewerFrag">
 
-    <TextView
+    <com.github.barteksc.pdfviewer.PDFView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Viewer fragment" />
+        android:id="@+id/pdfViewer"
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
 </layout>

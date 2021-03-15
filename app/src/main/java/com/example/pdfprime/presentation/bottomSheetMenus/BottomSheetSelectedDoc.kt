@@ -34,6 +34,7 @@ class BottomSheetSelectedDoc(
             Constants.DOC_EDIT -> docOperationInterface.onEditDoc(documentSelected)
             Constants.DOC_SHARE -> docOperationInterface.onShareDoc(documentSelected)
             Constants.DOC_DELETE -> docOperationInterface.onDeleteDoc(documentSelected)
+            Constants.DOC_OPEN -> docOperationInterface.onOpenDoc(documentSelected)
         }
         super.dismiss()
     }

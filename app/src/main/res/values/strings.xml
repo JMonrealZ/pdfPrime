@@ -15,6 +15,7 @@
     <string name="titleButtonEditDoc">Editar</string>
     <string name="titleButtonShareDoc">Compartir</string>
     <string name="titleButtonDeleteDoc">Eliminar</string>
+    <string name="titleButtonOpenDoc">Abrir</string>
 
     <string name="txtWriteSomething">Por favor escribe un nombre valido</string>
     <string name="txtFileAlreadyExists">Ya existe un nombre guardado con este nombre</string>
