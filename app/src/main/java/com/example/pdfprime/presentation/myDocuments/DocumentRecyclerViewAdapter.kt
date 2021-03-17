@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.presentation.utils.Renderer
 import kotlinx.android.synthetic.main.list_item_document.view.*
+import java.io.File
 
 class DocumentRecyclerViewAdapter(private var documents : List<Document>,
                                   private val clickListener : (Document)->Unit) : RecyclerView.Adapter<DocumentViewHolder>(){
@@ -42,7 +45,10 @@ class DocumentViewHolder(val view : View) : RecyclerView.ViewHolder(view){
         view.apply {
             tvDocName.text = document.name
             tvDocSize.text = if(document.size > 1024) (document.size / 1024).toString() + " MB" else  document.size.toString() + " KB"
-            ivFirstPage.setImageBitmap(document.firstPage)
+            //ivFirstPage.setImageBitmap(document.firstPage)
+            val directory = File(App.appContext.filesDir,App.storageFirstPagePdf)
+            Glide.with(this).load(File(directory,document.name
+                .substring(0,document.name.length - 3) + "png")).into(ivFirstPage)
             setOnClickListener{clickListener(document)}
         }
 //        view.

@@ -2,6 +2,7 @@ package com.example.pdfprime.presentation.myDocuments
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,9 +27,11 @@ import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.RendererCoroutines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject
@@ -169,6 +172,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     override fun onNameDocSelected(name: String, uri: Uri?, size: Int) {
         if (uri != null) {
             savePdfOnDisk(uri,name)
+            RendererCoroutines.createFistPage(name)
         }
         val newDoc = Document(0,name,size)
         CoroutineScope(Dispatchers.IO).launch{
