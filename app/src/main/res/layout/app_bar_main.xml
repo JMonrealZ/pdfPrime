@@ -42,8 +42,7 @@
             android:id="@+id/ivLogotipo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:src="@drawable/pdf_prime"/>
+            android:layout_weight="10"/>
     </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

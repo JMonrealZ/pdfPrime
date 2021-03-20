@@ -24,7 +24,8 @@
         app:menu="@menu/menu"
         android:layout_gravity="start">
 
-        <com.example.pdfprime.presentation.CustomControls.CustomTextView
+        <TextView
+            android:id="@+id/tvVersion"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_gravity="bottom|center_horizontal"/>
