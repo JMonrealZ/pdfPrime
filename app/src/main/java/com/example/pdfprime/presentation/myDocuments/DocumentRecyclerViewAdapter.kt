@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.data.entities.Document
@@ -32,9 +33,9 @@ class DocumentRecyclerViewAdapter(private var documents : List<Document>,
 
     fun setList(newList : List<Document>,context : Context){
         documents = newList
-        documents.forEach{
-            it.firstPage = Renderer.renderPage(context,it.name,0)
-        }
+//        documents.forEach{
+//            it.firstPage = Renderer.renderPage(context,it.name,0)
+//        }
         notifyDataSetChanged()
     }
 
@@ -47,8 +48,10 @@ class DocumentViewHolder(val view : View) : RecyclerView.ViewHolder(view){
             tvDocSize.text = if(document.size > 1024) (document.size / 1024).toString() + " MB" else  document.size.toString() + " KB"
             //ivFirstPage.setImageBitmap(document.firstPage)
             val directory = File(App.appContext.filesDir,App.storageFirstPagePdf)
-            Glide.with(this).load(File(directory,document.name
-                .substring(0,document.name.length - 3) + "png")).into(ivFirstPage)
+            Glide.with(this)
+                .load(File(directory,document.name.substring(0,document.name.length - 3) + "png"))
+                .centerInside()
+                .into(ivFirstPage)
             setOnClickListener{clickListener(document)}
         }
 //        view.

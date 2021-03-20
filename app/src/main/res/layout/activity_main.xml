@@ -22,7 +22,14 @@
         android:layout_height="match_parent"
         app:headerLayout="@layout/menu_header"
         app:menu="@menu/menu"
-        android:layout_gravity="start" />
+        android:layout_gravity="start">
 
-</androidx.drawerlayout.widget.DrawerLayout>
+        <com.example.pdfprime.presentation.CustomControls.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom|center_horizontal"/>
+
+    </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
