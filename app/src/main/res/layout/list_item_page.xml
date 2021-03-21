@@ -29,15 +29,15 @@
         android:textColor="@android:color/white"
         android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/tvPageNumber"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/bg_circle_page_number"
-        android:layout_margin="1dp"
-        android:text="1"
-        android:textColor="@android:color/white"
-        android:gravity="center"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tvPageNumber"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:background="@drawable/bg_circle_page_number"-->
+<!--        android:layout_margin="1dp"-->
+<!--        android:text="1"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:gravity="center"/>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

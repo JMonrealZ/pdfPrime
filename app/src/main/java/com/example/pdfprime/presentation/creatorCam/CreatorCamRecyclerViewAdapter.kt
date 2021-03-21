@@ -37,7 +37,7 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : Rec
         for(pageNumber in 0 until pages.size){    //updating pageNumber
             pages[pageNumber].pageNumber = pageNumber
         }
-        notifyDataSetChanged()
+        notifyItemRemoved(page.pageNumber)
     }
 
     fun getPages() : MutableList<Page>{
@@ -49,7 +49,7 @@ class PageViewHolder(val view : View,private val clickListener : (Page)->Unit) :
     fun bind(page: Page){
         view.apply {
                 ivImage.setImageBitmap(page.image)
-                tvPageNumber.text = (page.pageNumber + 1).toString()
+//                tvPageNumber.text = (page.pageNumber + 1).toString()
                 tvDeletePage.setOnClickListener { clickListener(page)}
         }
     }

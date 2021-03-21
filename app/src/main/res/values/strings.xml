@@ -31,5 +31,6 @@
     <string name="titleButtonReachUs">Contacto</string>
     <string name="titleButtonThanks">Agradecimientos</string>
     <string name="titleButtonAboutUs">Acerca de nosotros</string>
+    <string name="titleButtonSettings">Ajustes</string>
 
 </resources>
