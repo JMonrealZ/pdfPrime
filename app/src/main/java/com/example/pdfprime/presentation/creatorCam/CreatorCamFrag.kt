@@ -20,6 +20,7 @@ import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
 import com.example.pdfprime.presentation.utils.PdfCreator
+import com.example.pdfprime.presentation.utils.PdfCreator2
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.coroutines.CoroutineScope
@@ -84,6 +85,7 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     private fun setListeners(){
         binding.apply {
             ibCancel.setOnClickListener{
+                PdfCreator2.createPdf().save(File(File(App.appContext.filesDir,App.storagePdf),"testABC3.pdf"))
 
             }
             ibCamera.setOnClickListener{

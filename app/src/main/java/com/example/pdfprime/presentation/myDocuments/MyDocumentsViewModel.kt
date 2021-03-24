@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.domain.usecase.*
+import com.example.pdfprime.presentation.utils.Multiselection
 
 class MyDocumentsViewModel(
     private val getPdfsUseCase: GetPdfsUseCase,
@@ -11,12 +12,17 @@ class MyDocumentsViewModel(
     private val deletePdfUseCase: DeletePdfUseCase,
     private val insertPdfUseCase: InsertPdfUseCase,
     private val deleteAllUseCase: DeleteAllUseCase
-) : ViewModel(){
+) : ViewModel(), Multiselection{
 
     var pdfs : MutableLiveData<List<Document>> = MutableLiveData()
+    var isMultiselection : MutableLiveData<Boolean> = MutableLiveData(false)
 
-    fun getObservers() : MutableLiveData<List<Document>>{
+    fun getPdfObserver() : MutableLiveData<List<Document>>{
         return pdfs
+    }
+
+    fun getIsmultiselectionObserver() : MutableLiveData<Boolean>{
+        return isMultiselection
     }
 
     suspend fun getPdfs(){
@@ -42,5 +48,37 @@ class MyDocumentsViewModel(
     suspend fun deleteAll(){
         deleteAllUseCase.execute()
         getPdfs()
+    }
+
+    override fun onMultiselection(position: Int) {
+//        pdfs.value?.get(position)!!.isSelected = true
+        val newPdfs = pdfs.value
+        newPdfs?.get(position)!!.isSelected = true
+        isMultiselection.postValue(true)
+        pdfs.postValue(newPdfs)
+    }
+
+    override fun isMultiselection(): Boolean {
+        return isMultiselection.value!!
+    }
+
+    fun newElementDocumentQueue(document: Document){
+//        val newPdfs = pdfs.value
+//        newPdfs?.get(value)!!.isSelected = true
+//        pdfs.postValue(newPdfs)
+        val newPdfs = pdfs.value
+        newPdfs?.forEach {
+            if(it == document)
+                it.isSelected = !it.isSelected
+        }
+        pdfs.postValue(newPdfs)
+    }
+
+    fun multiselectionOff(){
+
+    }
+
+    fun getInterface() : Multiselection{
+        return this
     }
 }

@@ -6,21 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.data.entities.Document
-import com.example.pdfprime.presentation.utils.Renderer
+import com.example.pdfprime.presentation.utils.Multiselection
 import kotlinx.android.synthetic.main.list_item_document.view.*
 import java.io.File
 
 class DocumentRecyclerViewAdapter(private var documents : List<Document>,
-                                  private val clickListener : (Document)->Unit) : RecyclerView.Adapter<DocumentViewHolder>(){
+                                  private val clickListener : (Document)->Unit,
+                                  private val multiselection: Multiselection) : RecyclerView.Adapter<DocumentViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_document,parent,false)
-        return DocumentViewHolder(listItem)
+        return DocumentViewHolder(listItem,multiselection)
     }
 
     override fun getItemCount(): Int {
@@ -39,9 +39,10 @@ class DocumentRecyclerViewAdapter(private var documents : List<Document>,
         notifyDataSetChanged()
     }
 
+
 }
 
-class DocumentViewHolder(val view : View) : RecyclerView.ViewHolder(view){
+class DocumentViewHolder(val view : View, val multiselection: Multiselection) : RecyclerView.ViewHolder(view){
     fun bind(document : Document, clickListener: (Document) -> Unit){
         view.apply {
             tvDocName.text = document.name
@@ -53,11 +54,29 @@ class DocumentViewHolder(val view : View) : RecyclerView.ViewHolder(view){
                 .centerInside()
                 .into(ivFirstPage)
             setOnClickListener{clickListener(document)}
+            setOnLongClickListener(onLongClickListener)
+            if(multiselection.isMultiselection()){
+                ivSelected.visibility = View.VISIBLE
+                var resource : Int = 0
+                resource = if(document.isSelected)
+                    R.drawable.ic_selected
+                else
+                    R.drawable.bg_unselected
+                ivSelected.setImageResource(resource)
+            }else{
+                ivSelected.visibility = View.GONE
+            }
+
         }
 //        view.
 //        view.
         //todo: Hay que pasar este fomrato string a xml strings
         //view.tvDateCre.text = document.datecre.toString()
 
+    }
+
+    private val onLongClickListener = View.OnLongClickListener() {
+        multiselection.onMultiselection(adapterPosition)
+        true
     }
 }

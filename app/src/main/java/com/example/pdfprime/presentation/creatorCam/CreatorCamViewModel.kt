@@ -48,7 +48,7 @@ class CreatorCamViewModel(
         var images = RendererCoroutines.renderPages(direc,docName,this)
         var newPages = ArrayList<Page>()
         for(image in 0 until images.size) {
-            newPages.add(Page(images[image], image.toString(), image, image, false))
+            newPages.add(Page(docName,images[image], image.toString(), image, image))
         }
         pages.postValue(newPages)
         isLoading.postValue(false)

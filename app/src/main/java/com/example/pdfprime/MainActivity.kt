@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
         val header = binding.navView.getHeaderView(0);
         Glide.with(this).load(Uri.parse("file:///android_asset/pdfPrime.png"))
             .into(header.ivMenuHeader)
-        Glide.with(this).load(Uri.parse("file:///android_asset/pdfPrime.png"))
-            .into(binding.appBarMain.ivLogotipo)
+//        Glide.with(this).load(Uri.parse("file:///android_asset/pdfPrime.png"))
+//            .into(binding.appBarMain.ivLogotipo)
 
         binding.navView.tvVersion.text = packageManager.getPackageInfo(packageName,0).versionName
     }

@@ -1,14 +1,17 @@
 package com.example.pdfprime.presentation.creatorCam
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pdfprime.R
 import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.presentation.myDocuments.DocumentViewHolder
 import kotlinx.android.synthetic.main.list_item_page.view.*
+import kotlinx.android.synthetic.main.menu_header.view.*
 
 class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : RecyclerView.Adapter<PageViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageViewHolder {
@@ -48,7 +51,8 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : Rec
 class PageViewHolder(val view : View,private val clickListener : (Page)->Unit) : RecyclerView.ViewHolder(view){
     fun bind(page: Page){
         view.apply {
-                ivImage.setImageBitmap(page.image)
+            Glide.with(this).load(page.image).into(ivImage)
+//                ivImage.setImageBitmap(page.image)
 //                tvPageNumber.text = (page.pageNumber + 1).toString()
                 tvDeletePage.setOnClickListener { clickListener(page)}
         }

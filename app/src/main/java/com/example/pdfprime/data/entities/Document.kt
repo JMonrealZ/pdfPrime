@@ -12,8 +12,8 @@ data class Document(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "INDEX_DOC") var id: Int,
     @ColumnInfo(name = "NAME_DOC") var name : String,
     @ColumnInfo(name = "SIZE_DOC") var size : Int,
-    @Ignore var firstPage : Bitmap? = null
-
+    @Ignore var firstPage : Bitmap? = null,
+    @Ignore var isSelected : Boolean = false
     ){
-    constructor():this(id=0,name = "",size = 0,firstPage = null)
+    constructor():this(id=0,name = "",size = 0,firstPage = null,isSelected = false)
 }

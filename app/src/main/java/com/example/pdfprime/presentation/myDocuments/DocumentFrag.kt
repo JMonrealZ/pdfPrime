@@ -2,7 +2,6 @@ package com.example.pdfprime.presentation.myDocuments
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,7 +30,6 @@ import com.example.pdfprime.presentation.utils.RendererCoroutines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject
@@ -64,7 +62,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
 
         myDocumentsViewModel = ViewModelProvider(this,factory).get(MyDocumentsViewModel::class.java)
 
-        adapter = DocumentRecyclerViewAdapter(listOf<Document>(),{docSelected : Document -> documentClickListener(docSelected)})
+        adapter = DocumentRecyclerViewAdapter(listOf<Document>(),{docSelected : Document -> documentClickListener(docSelected)},myDocumentsViewModel.getInterface())
 
         bottomSheetSelectedDoc = BottomSheetSelectedDoc(Document(),this)
     }
@@ -98,13 +96,17 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         CoroutineScope(Dispatchers.IO).launch{
             myDocumentsViewModel.getPdfs()
         }
-
-        myDocumentsViewModel.getObservers().observe(viewLifecycleOwner, Observer {
+        myDocumentsViewModel.getPdfObserver().observe(viewLifecycleOwner, Observer {
             if(it != null){
                 context?.let { it1 -> adapter.setList(it, it1) }
             }
             else
                 Toast.makeText(context,"nothing found",Toast.LENGTH_LONG).show()
+        })
+        myDocumentsViewModel.getIsmultiselectionObserver().observe(viewLifecycleOwner, Observer{
+            if(it != null){
+                adapter.notifyDataSetChanged()
+            }
         })
     }
 
@@ -137,8 +139,17 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     }
 
     private fun documentClickListener(document: Document){
-        bottomSheetSelectedDoc.setDocument(document)
-        fragmentManager?.let { it1 -> bottomSheetSelectedDoc.show(it1,"BOTTOM_SHEET_DOCSELECTED") }
+        if(myDocumentsViewModel.isMultiselection())
+            myDocumentsViewModel.newElementDocumentQueue(document)
+        else {
+            bottomSheetSelectedDoc.setDocument(document)
+            fragmentManager?.let { it1 ->
+                bottomSheetSelectedDoc.show(
+                    it1,
+                    "BOTTOM_SHEET_DOCSELECTED"
+                )
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

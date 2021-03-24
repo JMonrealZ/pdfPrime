@@ -11,7 +11,7 @@ import java.io.File
 object PdfCreator {
     fun createPdf(direc : File,oldDocName : String,list : MutableList<Page>,progressUpdater: ProgressUpdater) : PDDocument{
         progressUpdater.onProgressUpdate(App.appContext.getString(R.string.txtCreatingDocument))
-        PDFBoxResourceLoader.init(App.appContext);
+        PDFBoxResourceLoader.init(App.appContext)
         var oldDoc = PDDocument.load(File(direc,oldDocName))
         var newDoc = PDDocument();
         list.forEach{
