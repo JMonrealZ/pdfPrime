@@ -62,6 +62,15 @@ class MyDocumentsViewModel(
         return isMultiselection.value!!
     }
 
+    fun cancelMultiselection(){
+        val newPdfs = pdfs.value
+        newPdfs?.forEach {
+            it.isSelected = false
+        }
+        pdfs.postValue(newPdfs)
+        isMultiselection.postValue(false)
+    }
+
     fun newElementDocumentQueue(document: Document){
 //        val newPdfs = pdfs.value
 //        newPdfs?.get(value)!!.isSelected = true
@@ -72,10 +81,6 @@ class MyDocumentsViewModel(
                 it.isSelected = !it.isSelected
         }
         pdfs.postValue(newPdfs)
-    }
-
-    fun multiselectionOff(){
-
     }
 
     fun getInterface() : Multiselection{

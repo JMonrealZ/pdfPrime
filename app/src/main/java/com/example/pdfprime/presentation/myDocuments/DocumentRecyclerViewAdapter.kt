@@ -39,6 +39,16 @@ class DocumentRecyclerViewAdapter(private var documents : List<Document>,
         notifyDataSetChanged()
     }
 
+    fun getDocsSelected() : String{
+        var docs = ""
+        documents.forEach {
+            if(it.isSelected)
+                docs += it.name + ","
+        }
+        docs = docs.substring(0,docs.length - 1)    //deleting final comma
+        return docs
+    }
+
 
 }
 

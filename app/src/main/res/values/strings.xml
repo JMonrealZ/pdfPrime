@@ -21,6 +21,7 @@
     <string name="txtFileAlreadyExists">Ya existe un nombre guardado con este nombre</string>
 
     <string name="txtPreviewRendering">Renderizando %s de %s</string>
+    <string name="txtPreviewRenderingDocument">%s,renderizando %s de %s</string>
     <string name="txtPreviewCreating">Extrayendo página %s de %s</string>
     <string name="txtCreatingDocument">Creando nuevo documento…</string>
 

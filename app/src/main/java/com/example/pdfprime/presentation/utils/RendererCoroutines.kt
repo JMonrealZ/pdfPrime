@@ -33,7 +33,8 @@ object RendererCoroutines {
 
             progressUpdater.onProgressUpdate(
                 String.format(
-                    App.appContext.resources.getString(R.string.txtPreviewRendering),
+                    App.appContext.resources.getString(R.string.txtPreviewRenderingDocument),
+                    fileName,
                     i,
                     totalPages
                 )

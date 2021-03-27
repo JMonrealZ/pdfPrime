@@ -1,19 +1,15 @@
 package com.example.pdfprime.presentation.creatorCam
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pdfprime.R
-import com.example.pdfprime.data.entities.Document
-import com.example.pdfprime.presentation.myDocuments.DocumentViewHolder
 import kotlinx.android.synthetic.main.list_item_page.view.*
-import kotlinx.android.synthetic.main.menu_header.view.*
 
-class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : RecyclerView.Adapter<PageViewHolder>(){
+class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
+                                    private var pageOperationInterface: PageOperationInterface) : RecyclerView.Adapter<PageViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_page,parent,false)
@@ -21,6 +17,8 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : Rec
             {pageSelected : Page -> onDeletePageClickListener(pageSelected)}
         )
     }
+
+    private lateinit var deletedPage : Page
 
     override fun getItemCount(): Int {
         return pages.size
@@ -31,17 +29,32 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>) : Rec
     }
 
     fun setList(newList : MutableList<Page>){
-        pages = newList
-        notifyDataSetChanged()
+        //Todo: Como distinguir cuando se elimina una pagina de cuando se carga por primera vez? Guardando page eliminada
+        //todo: en una variable global?
+        if(newList.size == (pages.size - 1)){
+            //A page has been deleted
+            pages.remove(deletedPage)
+            notifyItemRemoved(deletedPage.pageNumber)
+            pages = newList
+        }
+        else {
+            pages = newList
+            notifyDataSetChanged()
+        }
     }
 
-    fun onDeletePageClickListener(page : Page){
-        pages.remove(page)
-        for(pageNumber in 0 until pages.size){    //updating pageNumber
-            pages[pageNumber].pageNumber = pageNumber
-        }
-        notifyItemRemoved(page.pageNumber)
+    private fun onDeletePageClickListener(page : Page){
+        deletedPage = page
+        pageOperationInterface.onDeletePage(page)
     }
+
+//    fun deletePage(page : Page){
+//        pages.remove(page)
+//        for(pageNumber in 0 until pages.size){    //updating pageNumber
+//            pages[pageNumber].pageNumber = pageNumber
+//        }
+//        notifyItemRemoved(page.pageNumber)
+//    }
 
     fun getPages() : MutableList<Page>{
         return pages

@@ -14,15 +14,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentCreatorCamBinding
-import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
-import com.example.pdfprime.presentation.utils.PdfCreator
 import com.example.pdfprime.presentation.utils.PdfCreator2
-import com.github.ybq.android.spinkit.sprite.Sprite
-import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,7 +33,7 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     private lateinit var binding : FragmentCreatorCamBinding
     private lateinit var adapter : CreatorCamRecyclerViewAdapter
     private lateinit var creatorCamViewModel: CreatorCamViewModel
-    private lateinit var document2Edit : String
+    private lateinit var documents2Edit : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
@@ -56,13 +52,13 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
         binding.creatorCamViewModel = creatorCamViewModel
         binding.lifecycleOwner = this
 
-        adapter = CreatorCamRecyclerViewAdapter(arrayListOf())
+        adapter = CreatorCamRecyclerViewAdapter(arrayListOf(),creatorCamViewModel.getInterface())
 
         if(arguments != null) {
-            document2Edit = requireArguments().getString(Constants.DOCUMENT, "")
-            if(document2Edit.isNotEmpty()){
+            documents2Edit = requireArguments().getString(Constants.DOCUMENT, "")
+            if(documents2Edit.isNotEmpty()){
                 CoroutineScope(Dispatchers.IO).launch { context?.let {
-                    creatorCamViewModel.renderPages(document2Edit,
+                    creatorCamViewModel.renderPages(documents2Edit,
                         it
                     ) }
                 }
@@ -85,16 +81,17 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     private fun setListeners(){
         binding.apply {
             ibCancel.setOnClickListener{
-                PdfCreator2.createPdf().save(File(File(App.appContext.filesDir,App.storagePdf),"testABC3.pdf"))
-
+                //PdfCreator2.createPdf().save(File(File(App.appContext.filesDir,App.storagePdf),"testABC3.pdf"))
+                Toast.makeText(context,"Cancelar",Toast.LENGTH_LONG).show()
             }
             ibCamera.setOnClickListener{
 
             }
             ibAccept.setOnClickListener{
-                val direc = File(context?.filesDir,App.storagePdf)
+                //val direc = File(context?.filesDir,App.storagePdf)
                 CoroutineScope(Dispatchers.IO).launch {
-                    creatorCamViewModel?.createPdf(direc,document2Edit,adapter.getPages())
+                    //creatorCamViewModel?.createPdf(direc,documents2Edit,adapter.getPages())
+                    creatorCamViewModel?.createPdf()
                 }
             }
         }

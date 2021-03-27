@@ -81,13 +81,23 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
                     myDocumentsViewModel.deleteAll()
                 }
             }
-
             fabNewDoc.setOnClickListener{
                 bottomSheetNewDoc = BottomSheetNewDoc()//App.newDocBottomSheetOptions,
                 fragmentManager?.let { it1 -> bottomSheetNewDoc.show(it1,"BOTTOM_SHEET_NEWDOC") }
                 bottomSheetNewDoc.setParent(this@DocumentFrag)
             }
+            ibCancelMultiselection.setOnClickListener{
+                myDocumentsViewModel.cancelMultiselection()
+            }
+            ibDeleteMultiselection.setOnClickListener{
 
+            }
+            ibEditMultiselection.setOnClickListener{
+                val bundle = Bundle()
+                bundle.putString(Constants.DOCUMENT,adapter.getDocsSelected())
+                NavHostFragment.findNavController(this@DocumentFrag).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
+                myDocumentsViewModel.cancelMultiselection()
+            }
         }
     }
 
@@ -106,6 +116,11 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         myDocumentsViewModel.getIsmultiselectionObserver().observe(viewLifecycleOwner, Observer{
             if(it != null){
                 adapter.notifyDataSetChanged()
+                binding.apply {
+                    llMultiselection.visibility = if (it) View.VISIBLE else View.GONE
+                    fabNewDoc.visibility = if (it) View.GONE else View.VISIBLE
+                }
+
             }
         })
     }
