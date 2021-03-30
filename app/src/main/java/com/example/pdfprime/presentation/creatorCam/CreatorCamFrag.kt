@@ -1,7 +1,11 @@
 package com.example.pdfprime.presentation.creatorCam
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +14,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pdfprime.App
 import com.example.pdfprime.R
@@ -19,10 +24,18 @@ import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
 import com.example.pdfprime.presentation.utils.PdfCreator2
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.DexterBuilder
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+import java.util.jar.Manifest
 import javax.inject.Inject
 
 /**
@@ -81,11 +94,28 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     private fun setListeners(){
         binding.apply {
             ibCancel.setOnClickListener{
-                //PdfCreator2.createPdf().save(File(File(App.appContext.filesDir,App.storagePdf),"testABC3.pdf"))
-                Toast.makeText(context,"Cancelar",Toast.LENGTH_LONG).show()
+                NavHostFragment.findNavController(this@CreatorCamFrag).navigate(R.id.action_creatorCamFrag_to_documentFrag)
             }
             ibCamera.setOnClickListener{
+                Dexter.withContext(activity)
+                    .withPermission(android.Manifest.permission.CAMERA)
+                    .withListener(object : PermissionListener{
+                        override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
+                            startCamera()
+                        }
 
+                        override fun onPermissionRationaleShouldBeShown(
+                            p0: PermissionRequest?,
+                            p1: PermissionToken?
+                        ) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
+                            Toast.makeText(activity,"This permission is required",Toast.LENGTH_LONG).show()
+                        }
+
+                    }).check()
             }
             ibAccept.setOnClickListener{
                 //val direc = File(context?.filesDir,App.storagePdf)
@@ -93,6 +123,14 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                     //creatorCamViewModel?.createPdf(direc,documents2Edit,adapter.getPages())
                     creatorCamViewModel?.createPdf()
                 }
+            }
+        }
+    }
+
+    fun startCamera(){
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also {
+                takePictureIntent -> takePictureIntent.resolveActivity(requireActivity().packageManager).also {
+            startActivityForResult(takePictureIntent,Constants.REQUEST_IMAGE_CAPTURE)
             }
         }
     }
@@ -128,6 +166,14 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     override fun onNameDocSelected(name: String, uri: Uri?, size: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             creatorCamViewModel.savePdf(name)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == Constants.REQUEST_IMAGE_CAPTURE &&
+           resultCode == RESULT_OK){
+            val imageBitmap = data!!.extras!!.get("data") as Bitmap //getting "miniatura"
+            creatorCamViewModel.newPageFromCamera(imageBitmap)
         }
     }
 }

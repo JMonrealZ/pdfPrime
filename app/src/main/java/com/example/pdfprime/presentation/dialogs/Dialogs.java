@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.provider.OpenableColumns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.example.pdfprime.App;
 import com.example.pdfprime.R;
 
 public class Dialogs {
@@ -60,7 +62,16 @@ public class Dialogs {
                 dialog.dismiss();
             }
         });
+
         dialog.show();
+        etDocNameDialog.requestFocus();
+        etDocNameDialog.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(etDocNameDialog, InputMethodManager.SHOW_IMPLICIT);
+            }
+        },150);
     }
 
     public static void createSelectNameDoc(final Fragment fragment, final Context ctx, LayoutInflater layoutInflater){
@@ -104,7 +115,16 @@ public class Dialogs {
                 dialog.dismiss();
             }
         });
+
         dialog.show();
+        etDocNameDialog.requestFocus();
+        etDocNameDialog.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(etDocNameDialog, InputMethodManager.SHOW_IMPLICIT);
+            }
+        },150);
     }
 
     public static void dissmis(){

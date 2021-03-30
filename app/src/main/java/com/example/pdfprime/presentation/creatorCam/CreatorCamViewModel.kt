@@ -1,6 +1,7 @@
 package com.example.pdfprime.presentation.creatorCam
 
 import android.content.Context
+import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pdfprime.App
@@ -77,6 +78,13 @@ class CreatorCamViewModel(
         val newDocume = PdfCreator2.createPdf(pages.value!!.toMutableList())
         isLoading.postValue(false)
         newDocument.postValue(newDocume)
+    }
+
+    fun newPageFromCamera(bitmap : Bitmap){
+        val newPage = Page("",bitmap,"",pages.value!!.size,-1)
+        val newPages = pages!!.value!!.toMutableList()
+        newPages.add(newPage)
+        pages.postValue(newPages)
     }
 
     suspend fun savePdf(docName : String){

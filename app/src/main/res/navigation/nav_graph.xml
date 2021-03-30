@@ -13,6 +13,9 @@
             android:name="DOCUMENT"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_creatorCamFrag_to_documentFrag"
+            app:destination="@id/documentFrag" />
     </fragment>
     <fragment
         android:id="@+id/creatorTxtFrag"
