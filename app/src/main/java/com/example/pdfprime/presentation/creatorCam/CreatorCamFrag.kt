@@ -16,6 +16,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentCreatorCamBinding
@@ -47,6 +49,29 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     private lateinit var adapter : CreatorCamRecyclerViewAdapter
     private lateinit var creatorCamViewModel: CreatorCamViewModel
     private lateinit var documents2Edit : String
+    //Drag and drop pages
+    private val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
+                or ItemTouchHelper.DOWN
+                or ItemTouchHelper.START
+                or ItemTouchHelper.END,0){
+        var int = 0
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            val adapter = recyclerView.adapter as CreatorCamRecyclerViewAdapter
+            val from = viewHolder.adapterPosition
+            val to = target.adapterPosition
+            adapter.moveItem(from,to)
+            return true
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            TODO("Not yet implemented")
+        }
+    }
+    private val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
@@ -80,6 +105,8 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
 
             }
         }
+
+        itemTouchHelper.attachToRecyclerView(binding.rvPages)
     }
 
     private fun initRecyclerView() {

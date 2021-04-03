@@ -29,8 +29,6 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     }
 
     fun setList(newList : MutableList<Page>){
-        //Todo: Como distinguir cuando se elimina una pagina de cuando se carga por primera vez? Guardando page eliminada
-        //todo: en una variable global?
         if(newList.size == (pages.size - 1)){
             //A page has been deleted
             pages.remove(deletedPage)
@@ -38,6 +36,7 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
             pages = newList
         }
         else {
+            //A page has been added
             pages = newList
             notifyDataSetChanged()
         }
@@ -58,6 +57,10 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
 
     fun getPages() : MutableList<Page>{
         return pages
+    }
+
+    fun moveItem(from : Int, to : Int){
+        notifyItemMoved(from,to)
     }
 }
 
