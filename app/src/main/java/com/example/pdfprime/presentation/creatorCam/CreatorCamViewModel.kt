@@ -54,7 +54,7 @@ class CreatorCamViewModel(
         for(docName in documentsToEditArray) {
             var images = RendererCoroutines.renderPages(direc, docName, this)
             for (originalPage in 0 until images.size) {
-                newPages.add(Page(docName, images[originalPage], ""/*, pageNumberNewDoc*/, originalPage))
+                newPages.add(Page(docName, images[originalPage], "", originalPage))
                 pageNumberNewDoc++
             }
         }
@@ -62,16 +62,6 @@ class CreatorCamViewModel(
         pages.postValue(newPages)
         isLoading.postValue(false)
     }
-
-    /**
-     * This method is old method
-     */
-//    fun createPdf(direc : File,oldDocName : String,list : MutableList<Page>){
-//        isLoading.postValue(true)
-//        val newDocume = PdfCreator.createPdf(direc,oldDocName,list,this)
-//        isLoading.postValue(false)
-//        newDocument.postValue(newDocume)
-//    }
 
     fun createPdf(){
         isLoading.postValue(true)
@@ -96,22 +86,9 @@ class CreatorCamViewModel(
         isLoadingMessage.postValue(message)
     }
 
-//    override fun onDeletePage(page: Page) {
-//        val newPages = pages.value?.toMutableList()
-//        newPages?.remove(page)
-//        //Updating pageNumber for UI
-//        for(newPageNumber in 0 until newPages!!.size){
-//            newPages[newPageNumber].pageNumber = newPageNumber
-//        }
-//        pages.postValue(newPages)
-//    }
-    override fun onDeletePage(/*page: Page*/ pageNumber: Int) {
+    override fun onDeletePage(pageNumber: Int) {
         val newPages = pages.value?.toMutableList()
         newPages?.removeAt(pageNumber)
-        //Updating pageNumber for UI
-//        for(newPageNumber in 0 until newPages!!.size){
-//            newPages[newPageNumber].pageNumber = newPageNumber
-//        }
         pages.postValue(newPages)
     }
 }
