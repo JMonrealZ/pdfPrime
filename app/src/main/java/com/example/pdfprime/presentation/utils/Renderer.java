@@ -18,43 +18,43 @@ public class Renderer {
     public static ParcelFileDescriptor parcelFileDescriptor;
     public static ArrayList<Bitmap> pages;
 
-    public static Bitmap renderPage(Context context, String nameDoc, int pageNumber) throws IOException {
-        File directory = new File(context.getFilesDir(), App.storagePdf);
-        directory.mkdir();
-        File file = new File(directory,nameDoc);
-        parcelFileDescriptor = ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);
-        if(parcelFileDescriptor != null){
-            pdfRenderer = new PdfRenderer(parcelFileDescriptor);
-        }
-        if(pdfRenderer.getPageCount() <= pageNumber){
-            return null;
-        }
-        page = pdfRenderer.openPage(pageNumber);
-        Bitmap bitmap = Bitmap.createBitmap(page.getWidth(),page.getHeight(),Bitmap.Config.ARGB_8888);
-        page.render(bitmap,null,null,PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
-        page.close();
-        pdfRenderer.close();
-        return bitmap;
-    }
-
-    public static List<Bitmap> renderPages(Context context, String nameDoc) throws IOException {
-        File directory = new File(context.getFilesDir(), App.storagePdf);
-        directory.mkdir();
-        File file = new File(directory,nameDoc);
-        parcelFileDescriptor = ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);
-        if(parcelFileDescriptor != null){
-            pdfRenderer = new PdfRenderer(parcelFileDescriptor);
-        }
-        pages = new ArrayList<Bitmap>();
-        int totalPages = pdfRenderer.getPageCount();
-        for(int i = 0; i < totalPages; i++){
-            PdfRenderer.Page currentPage = pdfRenderer.openPage(i);
-            Bitmap bitmap = Bitmap.createBitmap(currentPage.getWidth(),currentPage.getHeight(),Bitmap.Config.ARGB_8888);
-            currentPage.render(bitmap,null,null,PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
-            pages.add(bitmap);
-            currentPage.close();
-        }
-        pdfRenderer.close();
-        return pages;
-    }
+//    public static Bitmap renderPage(Context context, String nameDoc, int pageNumber) throws IOException {
+//        File directory = new File(context.getFilesDir(), App.storagePdf);
+//        directory.mkdir();
+//        File file = new File(directory,nameDoc);
+//        parcelFileDescriptor = ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);
+//        if(parcelFileDescriptor != null){
+//            pdfRenderer = new PdfRenderer(parcelFileDescriptor);
+//        }
+//        if(pdfRenderer.getPageCount() <= pageNumber){
+//            return null;
+//        }
+//        page = pdfRenderer.openPage(pageNumber);
+//        Bitmap bitmap = Bitmap.createBitmap(page.getWidth(),page.getHeight(),Bitmap.Config.ARGB_8888);
+//        page.render(bitmap,null,null,PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
+//        page.close();
+//        pdfRenderer.close();
+//        return bitmap;
+//    }
+//
+//    public static List<Bitmap> renderPages(Context context, String nameDoc) throws IOException {
+//        File directory = new File(context.getFilesDir(), App.storagePdf);
+//        directory.mkdir();
+//        File file = new File(directory,nameDoc);
+//        parcelFileDescriptor = ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);
+//        if(parcelFileDescriptor != null){
+//            pdfRenderer = new PdfRenderer(parcelFileDescriptor);
+//        }
+//        pages = new ArrayList<Bitmap>();
+//        int totalPages = pdfRenderer.getPageCount();
+//        for(int i = 0; i < totalPages; i++){
+//            PdfRenderer.Page currentPage = pdfRenderer.openPage(i);
+//            Bitmap bitmap = Bitmap.createBitmap(currentPage.getWidth(),currentPage.getHeight(),Bitmap.Config.ARGB_8888);
+//            currentPage.render(bitmap,null,null,PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
+//            pages.add(bitmap);
+//            currentPage.close();
+//        }
+//        pdfRenderer.close();
+//        return pages;
+//    }
 }

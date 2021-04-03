@@ -14,11 +14,11 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_page,parent,false)
         return PageViewHolder(listItem,
-            {pageSelected : Page -> onDeletePageClickListener(pageSelected)}
+            {pageSelected : /*Page*/ Int -> onDeletePageClickListener(pageSelected)}
         )
     }
 
-    private lateinit var deletedPage : Page
+    private var deletedPage : Int = 0   //Backuping deleted page after updating ViewModel
 
     override fun getItemCount(): Int {
         return pages.size
@@ -31,9 +31,9 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     fun setList(newList : MutableList<Page>){
         if(newList.size == (pages.size - 1)){
             //A page has been deleted
-            pages.remove(deletedPage)
-            notifyItemRemoved(deletedPage.pageNumber)
-            pages = newList
+            pages.removeAt(deletedPage)
+            notifyItemRemoved(deletedPage)
+//            pages = newList
         }
         else {
             //A page has been added
@@ -42,9 +42,11 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
         }
     }
 
-    private fun onDeletePageClickListener(page : Page){
-        deletedPage = page
-        pageOperationInterface.onDeletePage(page)
+    private fun onDeletePageClickListener(/*page : Page*/ pageNumber : Int){
+//        deletedPage = page
+//        pageOperationInterface.onDeletePage(page)
+        deletedPage = pageNumber
+        pageOperationInterface.onDeletePage(pageNumber)
     }
 
 //    fun deletePage(page : Page){
@@ -64,13 +66,14 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     }
 }
 
-class PageViewHolder(val view : View,private val clickListener : (Page)->Unit) : RecyclerView.ViewHolder(view){
+class PageViewHolder(val view : View,private val clickListener : (/*Page*/Int)->Unit) : RecyclerView.ViewHolder(view){
     fun bind(page: Page){
         view.apply {
             Glide.with(this).load(page.image).into(ivImage)
 //                ivImage.setImageBitmap(page.image)
 //                tvPageNumber.text = (page.pageNumber + 1).toString()
-                tvDeletePage.setOnClickListener { clickListener(page)}
+
+            tvDeletePage.setOnClickListener { clickListener(/*page*/adapterPosition)}
         }
     }
 }
