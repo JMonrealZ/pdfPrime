@@ -14,7 +14,7 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_page,parent,false)
         return PageViewHolder(listItem,
-            {pageSelected : /*Page*/ Int -> onDeletePageClickListener(pageSelected)}
+            {pageSelected : Int -> onDeletePageClickListener(pageSelected)}
         )
     }
 
@@ -33,7 +33,6 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
             //A page has been deleted
             pages.removeAt(deletedPage)
             notifyItemRemoved(deletedPage)
-//            pages = newList
         }
         else {
             //A page has been added
@@ -42,20 +41,10 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
         }
     }
 
-    private fun onDeletePageClickListener(/*page : Page*/ pageNumber : Int){
-//        deletedPage = page
-//        pageOperationInterface.onDeletePage(page)
+    private fun onDeletePageClickListener(pageNumber : Int){
         deletedPage = pageNumber
         pageOperationInterface.onDeletePage(pageNumber)
     }
-
-//    fun deletePage(page : Page){
-//        pages.remove(page)
-//        for(pageNumber in 0 until pages.size){    //updating pageNumber
-//            pages[pageNumber].pageNumber = pageNumber
-//        }
-//        notifyItemRemoved(page.pageNumber)
-//    }
 
     fun getPages() : MutableList<Page>{
         return pages
@@ -70,9 +59,6 @@ class PageViewHolder(val view : View,private val clickListener : (/*Page*/Int)->
     fun bind(page: Page){
         view.apply {
             Glide.with(this).load(page.image).into(ivImage)
-//                ivImage.setImageBitmap(page.image)
-//                tvPageNumber.text = (page.pageNumber + 1).toString()
-
             tvDeletePage.setOnClickListener { clickListener(/*page*/adapterPosition)}
         }
     }
