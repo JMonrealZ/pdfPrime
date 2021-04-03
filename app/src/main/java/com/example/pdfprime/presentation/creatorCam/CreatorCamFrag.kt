@@ -54,16 +54,15 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                 or ItemTouchHelper.DOWN
                 or ItemTouchHelper.START
                 or ItemTouchHelper.END,0){
-        var int = 0
         override fun onMove(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
         ): Boolean {
-            val adapter = recyclerView.adapter as CreatorCamRecyclerViewAdapter
-            val from = viewHolder.adapterPosition
-            val to = target.adapterPosition
-            adapter.moveItem(from,to)
+            (recyclerView.adapter as CreatorCamRecyclerViewAdapter).moveItem(
+                viewHolder.adapterPosition,
+                target.adapterPosition
+            )
             return true
         }
 

@@ -91,4 +91,12 @@ class CreatorCamViewModel(
         newPages?.removeAt(pageNumber)
         pages.postValue(newPages)
     }
+
+    override fun onMovePage(from: Int, to: Int) {
+        val newPages = pages.value?.toMutableList()
+        val pageToMove = newPages!![from]
+        newPages.removeAt(from)
+        newPages.add(to,pageToMove)
+        pages.postValue(newPages)
+    }
 }

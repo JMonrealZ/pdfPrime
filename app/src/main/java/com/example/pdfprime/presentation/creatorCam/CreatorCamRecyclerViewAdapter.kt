@@ -19,6 +19,8 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     }
 
     private var deletedPage : Int = 0   //Backuping deleted page after updating ViewModel
+    private var from : Int = 0      //Backuping from in moving action
+    private var to : Int = 0        //Backuping to in moving action
 
     override fun getItemCount(): Int {
         return pages.size
@@ -29,16 +31,36 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     }
 
     fun setList(newList : MutableList<Page>){
-        if(newList.size == (pages.size - 1)){
-            //A page has been deleted
-            pages.removeAt(deletedPage)
-            notifyItemRemoved(deletedPage)
+        when(pages.size - newList.size){
+            1 ->{ //A page has been deleted
+                pages.removeAt(deletedPage)
+                notifyItemRemoved(deletedPage)
+            }
+            0 ->{ //A page has been moved
+                pages = newList
+                notifyItemMoved(from,to)
+            }
+            -1 -> { //A page has been added
+                pages = newList
+                notifyDataSetChanged()
+            }
+            else -> {
+                pages = newList
+                notifyDataSetChanged()
+            }
+
         }
-        else {
-            //A page has been added
-            pages = newList
-            notifyDataSetChanged()
-        }
+
+//        if(newList.size == (pages.size - 1)){
+//            //A page has been deleted
+//            pages.removeAt(deletedPage)
+//            notifyItemRemoved(deletedPage)
+//        }
+//        else {
+//            //A page has been added
+//            pages = newList
+//            notifyDataSetChanged()
+//        }
     }
 
     private fun onDeletePageClickListener(pageNumber : Int){
@@ -51,7 +73,9 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     }
 
     fun moveItem(from : Int, to : Int){
-        notifyItemMoved(from,to)
+        this.from = from
+        this.to = to
+        pageOperationInterface.onMovePage(from,to)
     }
 }
 

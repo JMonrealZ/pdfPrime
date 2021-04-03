@@ -1,5 +1,6 @@
 package com.example.pdfprime.presentation.creatorCam
 
 interface PageOperationInterface {
-    fun onDeletePage(/*page : Page*/ pageNumber : Int)
+    fun onDeletePage(pageNumber : Int)
+    fun onMovePage(from : Int, to : Int)
 }
