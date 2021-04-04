@@ -11,5 +11,7 @@ class ViewerViewModel(
 ) : ViewModel() {
     var pdfName : MutableLiveData<String> = MutableLiveData()
 
-
+    fun setpdfName(docName : String){
+        pdfName.postValue(docName)
+    }
 }

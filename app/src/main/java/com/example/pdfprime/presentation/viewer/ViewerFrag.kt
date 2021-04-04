@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentViewerBinding
@@ -47,11 +48,25 @@ class ViewerFrag : Fragment() {
             document2View = requireArguments().getString(Constants.DOCUMENT, "")
             if(document2View.isNotEmpty()){
                 binding.pdfViewer.fromFile(File(File(context?.filesDir,App.storagePdf),document2View)).load()
+                viewerViewModel.setpdfName(document2View)
             }
         }
     }
-    private fun setListeners(){
 
+    private fun setListeners(){
+        binding.apply {
+            ibDelete.setOnClickListener{
+
+            }
+            ibEdit.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(Constants.DOCUMENT,document2View)
+                NavHostFragment.findNavController(this@ViewerFrag).navigate(R.id.action_viewerFrag_to_creatorCamFrag,bundle)
+            }
+            ibShare.setOnClickListener {
+
+            }
+        }
     }
 
     private fun setObservers() {

@@ -46,6 +46,9 @@
             android:name="DOCUMENT"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_viewerFrag_to_creatorCamFrag"
+            app:destination="@id/creatorCamFrag" />
     </fragment>
     <fragment
         android:id="@+id/bottomSheetNewDoc"

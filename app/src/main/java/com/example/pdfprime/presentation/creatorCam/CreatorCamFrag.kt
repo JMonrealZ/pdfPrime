@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -174,7 +175,6 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                 if(it){
                     llContent.visibility = View.GONE
                     llLoading.visibility = View.VISIBLE
-
                 }else{
                     llContent.visibility = View.VISIBLE
                     llLoading.visibility = View.GONE

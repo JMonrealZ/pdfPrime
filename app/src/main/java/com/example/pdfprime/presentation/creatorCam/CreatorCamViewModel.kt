@@ -50,12 +50,12 @@ class CreatorCamViewModel(
 
         var documentsToEditArray = if(docsName.contains(",")) docsName.split(",") else listOf(docsName)
 
-        var pageNumberNewDoc = 0
+        //var pageNumberNewDoc = 0
         for(docName in documentsToEditArray) {
             var images = RendererCoroutines.renderPages(direc, docName, this)
             for (originalPage in 0 until images.size) {
                 newPages.add(Page(docName, images[originalPage], "", originalPage))
-                pageNumberNewDoc++
+                //pageNumberNewDoc++
             }
         }
 
