@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,7 @@ import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
 import com.example.pdfprime.presentation.utils.PdfCreator2
+import com.example.pdfprime.presentation.utils.Utilities
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.DexterBuilder
 import com.karumi.dexter.PermissionToken
@@ -38,6 +40,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+import java.io.IOException
 import java.util.jar.Manifest
 import javax.inject.Inject
 
@@ -50,6 +53,8 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     private lateinit var adapter : CreatorCamRecyclerViewAdapter
     private lateinit var creatorCamViewModel: CreatorCamViewModel
     private lateinit var documents2Edit : String
+    private var photoUri : Uri? = null
+
     //Drag and drop pages
     private val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
                 or ItemTouchHelper.DOWN
@@ -157,7 +162,22 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     fun startCamera(){
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also {
                 takePictureIntent -> takePictureIntent.resolveActivity(requireActivity().packageManager).also {
-            startActivityForResult(takePictureIntent,Constants.REQUEST_IMAGE_CAPTURE)
+
+            val photoFile : File? = try{
+                Utilities.Camera.createImageFile()
+            }catch (ex : IOException){
+                null
+            }
+
+            photoFile?.also {
+                photoUri = FileProvider.getUriForFile(
+                    requireContext(),
+                "com.example.pdfprime.fileprovider",
+                it)
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoUri)
+                //takePictureIntent.putExtra()
+                startActivityForResult(takePictureIntent,Constants.REQUEST_IMAGE_CAPTURE)
+            }
             }
         }
     }
@@ -198,8 +218,12 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == Constants.REQUEST_IMAGE_CAPTURE &&
            resultCode == RESULT_OK){
-            val imageBitmap = data!!.extras!!.get("data") as Bitmap //getting "miniatura"
-            creatorCamViewModel.newPageFromCamera(imageBitmap)
+
+            if(photoUri != null)
+                creatorCamViewModel.newPageFromCamera(photoUri)
+
+            photoUri = null
+
         }
     }
 }

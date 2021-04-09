@@ -82,7 +82,10 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
 class PageViewHolder(val view : View,private val clickListener : (/*Page*/Int)->Unit) : RecyclerView.ViewHolder(view){
     fun bind(page: Page){
         view.apply {
-            Glide.with(this).load(page.image).into(ivImage)
+            Glide.with(this).load(
+                if(page.image != null) page.image
+                else page.imageUri
+            ).into(ivImage)
             tvDeletePage.setOnClickListener { clickListener(/*page*/adapterPosition)}
         }
     }

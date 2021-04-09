@@ -2,6 +2,7 @@ package com.example.pdfprime.presentation.creatorCam
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pdfprime.App
@@ -54,7 +55,7 @@ class CreatorCamViewModel(
         for(docName in documentsToEditArray) {
             var images = RendererCoroutines.renderPages(direc, docName, this)
             for (originalPage in 0 until images.size) {
-                newPages.add(Page(docName, images[originalPage], "", originalPage))
+                newPages.add(Page(docName, images[originalPage], null, originalPage))
                 //pageNumberNewDoc++
             }
         }
@@ -70,8 +71,8 @@ class CreatorCamViewModel(
         newDocument.postValue(newDocume)
     }
 
-    fun newPageFromCamera(bitmap : Bitmap){
-        val newPage = Page("",bitmap,""/*,pages.value!!.size*/,-1)
+    fun newPageFromCamera(/*bitmap : Bitmap,*/ imageUri : Uri?){
+        val newPage = Page("",null,imageUri,-1)
         val newPages = pages!!.value!!.toMutableList()
         newPages.add(newPage)
         pages.postValue(newPages)
