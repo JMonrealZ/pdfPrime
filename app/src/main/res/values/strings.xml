@@ -5,33 +5,33 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
 
-    <string name="titleNewDoc">Nuevo documento</string>
-    <string name="titleButtonNewDocDis">Dispositivo</string>
-    <string name="titleButtonNewDocCam">Cámara</string>
-    <string name="titleButtonNewDocTxt">Editor de texto</string>
-    <string name="titleButtonSaveDoc">Guardar</string>
-    <string name="titleButtonDiscardDoc">Descartar</string>
+    <string name="titleNewDoc">New document</string>
+    <string name="titleButtonNewDocDis">Device</string>
+    <string name="titleButtonNewDocCam">Camera</string>
+    <string name="titleButtonNewDocTxt">Text editor</string>
+    <string name="titleButtonSaveDoc">Save</string>
+    <string name="titleButtonDiscardDoc">Dismiss</string>
 
-    <string name="titleButtonEditDoc">Editar</string>
-    <string name="titleButtonShareDoc">Compartir</string>
-    <string name="titleButtonDeleteDoc">Eliminar</string>
-    <string name="titleButtonOpenDoc">Abrir</string>
+    <string name="titleButtonEditDoc">Edit</string>
+    <string name="titleButtonShareDoc">Share</string>
+    <string name="titleButtonDeleteDoc">Delete</string>
+    <string name="titleButtonOpenDoc">Open</string>
 
-    <string name="txtWriteSomething">Por favor escribe un nombre valido</string>
-    <string name="txtFileAlreadyExists">Ya existe un nombre guardado con este nombre</string>
+    <string name="txtWriteSomething">Please, write a valid name</string>
+    <string name="txtFileAlreadyExists">There is already a file with this name</string>
 
-    <string name="txtPreviewRendering">Renderizando %s de %s</string>
-    <string name="txtPreviewRenderingDocument">%s,renderizando %s de %s</string>
-    <string name="txtPreviewCreating">Extrayendo página %s de %s</string>
-    <string name="txtCreatingDocument">Creando nuevo documento…</string>
+    <string name="txtPreviewRendering">Rendering %s of %s</string>
+    <string name="txtPreviewRenderingDocument">%s,rendering %s de %s</string>
+    <string name="txtPreviewCreating">Extracting page %s of %s</string>
+    <string name="txtCreatingDocument">Creating new document…</string>
 
     <!--Texto de botones de navegacion-->
-    <string name="titleButtonHome">Inicio</string>
-    <string name="titleButtonCamara">Cámara</string>
-    <string name="titleButtonRateUs">Calificanos</string>
-    <string name="titleButtonReachUs">Contacto</string>
-    <string name="titleButtonThanks">Agradecimientos</string>
-    <string name="titleButtonAboutUs">Acerca de nosotros</string>
-    <string name="titleButtonSettings">Ajustes</string>
+    <string name="titleButtonHome">Homepage</string>
+    <string name="titleButtonCamara">Camera</string>
+    <string name="titleButtonRateUs">Rate us</string>
+    <string name="titleButtonReachUs">Reach us</string>
+    <string name="titleButtonThanks">Acknowledgements</string>
+    <string name="titleButtonAboutUs">About us</string>
+    <string name="titleButtonSettings">Settings</string>
 
 </resources>

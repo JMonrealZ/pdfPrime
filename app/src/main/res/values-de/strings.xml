@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">PdfPrime</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="titleNewDoc">a</string>
+    <string name="titleButtonNewDocDis">a</string>
+    <string name="titleButtonNewDocCam">a</string>
+    <string name="titleButtonNewDocTxt">a</string>
+    <string name="titleButtonSaveDoc">a</string>
+    <string name="titleButtonDiscardDoc">a</string>
+
+    <string name="titleButtonEditDoc">a</string>
+    <string name="titleButtonShareDoc">a</string>
+    <string name="titleButtonDeleteDoc">a</string>
+    <string name="titleButtonOpenDoc">a</string>
+
+    <string name="txtWriteSomething">a</string>
+    <string name="txtFileAlreadyExists">a</string>
+
+    <string name="txtPreviewRendering">a</string>
+    <string name="txtPreviewRenderingDocument">a</string>
+    <string name="txtPreviewCreating">a</string>
+    <string name="txtCreatingDocument">a</string>
+
+    <!--Texto de botones de navegacion-->
+    <string name="titleButtonHome">a</string>
+    <string name="titleButtonCamara">a</string>
+    <string name="titleButtonRateUs">a</string>
+    <string name="titleButtonReachUs">a</string>
+    <string name="titleButtonThanks">a</string>
+    <string name="titleButtonAboutUs">a</string>
+    <string name="titleButtonSettings">a</string>
+    <string name="hello_blank_fragment">a</string>
+    <string name="Open">a</string>
+    <string name="Close">a</string>
+
+</resources>

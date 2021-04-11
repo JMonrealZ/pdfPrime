@@ -1,0 +1,37 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">a</string>
+    <string name="Open">Abrir</string>
+    <string name="Close">Cerrar</string>
+
+    <string name="titleNewDoc">Nuevo documento</string>
+    <string name="titleButtonNewDocDis">Dispositivo</string>
+    <string name="titleButtonNewDocCam">Cámara</string>
+    <string name="titleButtonNewDocTxt">Editor de texto</string>
+    <string name="titleButtonSaveDoc">Guardar</string>
+    <string name="titleButtonDiscardDoc">Descartar</string>
+
+    <string name="titleButtonEditDoc">Editar</string>
+    <string name="titleButtonShareDoc">Compartir</string>
+    <string name="titleButtonDeleteDoc">Eliminar</string>
+    <string name="titleButtonOpenDoc">Abrir</string>
+
+    <string name="txtWriteSomething">Por favor escribe un nombre valido</string>
+    <string name="txtFileAlreadyExists">Ya existe un nombre guardado con este nombre</string>
+
+    <string name="txtPreviewRendering">Renderizando %s de %s</string>
+    <string name="txtPreviewRenderingDocument">%s,renderizando %s de %s</string>
+    <string name="txtPreviewCreating">Extrayendo página %s de %s</string>
+    <string name="txtCreatingDocument">Creando nuevo documento…</string>
+
+    <!--Texto de botones de navegacion-->
+    <string name="titleButtonHome">Inicio</string>
+    <string name="titleButtonCamara">Cámara</string>
+    <string name="titleButtonRateUs">Calificanos</string>
+    <string name="titleButtonReachUs">Contacto</string>
+    <string name="titleButtonThanks">Agradecimientos</string>
+    <string name="titleButtonAboutUs">Acerca de nosotros</string>
+    <string name="titleButtonSettings">Ajustes</string>
+    <string name="app_name">PdfPrime</string>
+
+</resources>
