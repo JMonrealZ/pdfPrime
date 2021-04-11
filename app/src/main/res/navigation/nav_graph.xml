@@ -55,4 +55,9 @@
         android:name="com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetNewDoc"
         android:label="BottomSheetNewDoc"
         tools:layout="@layout/bottom_sheet_new_doc"/>
+    <fragment
+        android:id="@+id/settingsFrag"
+        android:name="com.example.pdfprime.presentation.settings.SettingsFrag"
+        android:label="SettingsFrag"
+        tools:layout="@layout/fragment_settings"/>
 </navigation>

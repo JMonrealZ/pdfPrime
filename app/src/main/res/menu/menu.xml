@@ -31,7 +31,7 @@
         android:icon="@drawable/ic_person_24"/>
 
     <item
-        android:id="@+id/btnSettings"
+        android:id="@+id/settingsFrag"
         android:title="@string/titleButtonSettings"
         android:icon="@drawable/ic_settings_24"/>
 </menu>

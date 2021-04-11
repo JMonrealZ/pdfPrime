@@ -9,6 +9,7 @@ import com.example.pdfprime.presentation.di.core.AppModule
 import com.example.pdfprime.presentation.di.core.DaggerAppComponent
 import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
+import com.example.pdfprime.presentation.di.settings.SettingsSubcomponent
 import com.example.pdfprime.presentation.di.viewer.ViewerSubcomponent
 import com.example.pdfprime.presentation.utils.Constants
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader
@@ -33,6 +34,10 @@ class App : Application() , Injector{
 
     override fun createViewerSubComponent(): ViewerSubcomponent {
         return appComponent.viewerSubcomponent().create()
+    }
+
+    override fun createSettingsSubComponent(): SettingsSubcomponent {
+        return appComponent.settingsSubcomponent().create()
     }
 
     companion object{
