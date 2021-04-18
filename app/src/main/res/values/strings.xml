@@ -33,5 +33,17 @@
     <string name="titleButtonThanks">Acknowledgements</string>
     <string name="titleButtonAboutUs">About us</string>
     <string name="titleButtonSettings">Settings</string>
+    <string name="titlePageSize">Page size</string>
+    <string name="A0" translatable="false">A0</string>
+    <string name="A1" translatable="false">A1</string>
+    <string name="A2" translatable="false">A2</string>
+    <string name="A3" translatable="false">A3</string>
+    <string name="A4" translatable="false">A4</string>
+    <string name="A5" translatable="false">A5</string>
+    <string name="A6" translatable="false">A6</string>
+    <string name="letterSize">Letter</string>
+    <string name="legalSize">Legal</string>
+    <string name="pageSize" translatable="false">%s x %s</string>
+    <string name="headerSpinnerPageSize">Select a page size</string>
 
 </resources>

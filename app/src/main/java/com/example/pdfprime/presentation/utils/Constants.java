@@ -15,4 +15,8 @@ public class Constants {
     public static final String DOCUMENT = "DOCUMENT";
 
     public static final int REQUEST_IMAGE_CAPTURE = 200;
+
+
+    //Keys of shared preferences
+    public static final String PAGE_SIZE = "PAGE_SIZE";
 }

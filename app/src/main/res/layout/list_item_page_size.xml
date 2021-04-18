@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/ivPageSizeSelected"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_check_24"
+        android:layout_weight="1"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="5">
+
+        <TextView
+            android:id="@+id/tvPageSizeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A0"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPageSizeDimen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1500 mm X 1500 mm"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivPopup"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_arrow_down_24"
+        android:layout_weight="1"/>
+
+</LinearLayout>

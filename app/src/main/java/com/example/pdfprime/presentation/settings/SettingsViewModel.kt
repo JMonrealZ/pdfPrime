@@ -1,4 +1,6 @@
 package com.example.pdfprime.presentation.settings
 
-class SettingsViewModel {
+import androidx.lifecycle.ViewModel
+
+class SettingsViewModel : ViewModel() {
 }

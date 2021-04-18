@@ -2,6 +2,7 @@ package com.example.pdfprime
 
 import android.app.Application
 import android.content.Context
+import android.graphics.pdf.PdfDocument
 import com.example.pdfprime.presentation.bottomSheetMenus.BottomSheetOption
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.di.core.AppComponent
@@ -11,7 +12,10 @@ import com.example.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.example.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import com.example.pdfprime.presentation.di.settings.SettingsSubcomponent
 import com.example.pdfprime.presentation.di.viewer.ViewerSubcomponent
+import com.example.pdfprime.presentation.settings.PageSize
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.Utilities
+import com.tom_roush.pdfbox.pdmodel.common.PDRectangle
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader
 
 class App : Application() , Injector{
@@ -22,6 +26,18 @@ class App : Application() , Injector{
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(applicationContext))
             .build()
+
+        pageSizes = mutableListOf<PageSize>().apply {
+            add(PageSize(PDRectangle.A0,PDRectangle.A0.toString(),getString(R.string.A0),"",false))
+            add(PageSize(PDRectangle.A1,PDRectangle.A1.toString(),getString(R.string.A1),"",false))
+            add(PageSize(PDRectangle.A2,PDRectangle.A2.toString(),getString(R.string.A2),"",false))
+            add(PageSize(PDRectangle.A3,PDRectangle.A3.toString(),getString(R.string.A3),"",false))
+            add(PageSize(PDRectangle.A4,PDRectangle.A4.toString(),getString(R.string.A4),"",false))
+            add(PageSize(PDRectangle.A5,PDRectangle.A5.toString(),getString(R.string.A5),"",false))
+            add(PageSize(PDRectangle.A6,PDRectangle.A6.toString(),getString(R.string.A6),"",false))
+            add(PageSize(PDRectangle.LEGAL,PDRectangle.LEGAL.toString(),getString(R.string.legalSize),"",false))
+            add(PageSize(PDRectangle.LETTER,PDRectangle.LETTER.toString(),getString(R.string.letterSize),"",false))
+        }
     }
 
     override fun createMyDocumentsSubComponent(): MyDocumentsSubcomponent {
@@ -47,9 +63,11 @@ class App : Application() , Injector{
         lateinit var newDocBottomSheetOptions : ArrayList<BottomSheetOption>
         lateinit var clickDocBottomSheetOptions : ArrayList<BottomSheetOption>
         lateinit var appContext : Context
+        lateinit var pageSizes : MutableList<PageSize>
     }
 
     init{
+        appContext = this
         storagePdf = "PDFS"
         storagePagPdf = "IMAGES"
         storageFirstPagePdf = "FIRSTPAGE"
@@ -68,7 +86,5 @@ class App : Application() , Injector{
             add(BottomSheetOption(R.drawable.ic_share_24,Constants.DOC_SHARE,R.string.titleButtonShareDoc))
             add(BottomSheetOption(R.drawable.ic_delete_24,Constants.DOC_DELETE,R.string.titleButtonDeleteDoc))
         }
-
-        appContext = this
     }
 }

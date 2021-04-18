@@ -33,5 +33,9 @@
     <string name="hello_blank_fragment">a</string>
     <string name="Open">a</string>
     <string name="Close">a</string>
+    <string name="titlePageSize">a</string>
+    <string name="letterSize">a</string>
+    <string name="legalSize">a</string>
+    <string name="headerSpinnerPageSize">a</string>
 
 </resources>

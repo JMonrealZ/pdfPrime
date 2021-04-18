@@ -33,5 +33,9 @@
     <string name="titleButtonAboutUs">Acerca de nosotros</string>
     <string name="titleButtonSettings">Ajustes</string>
     <string name="app_name">PdfPrime</string>
+    <string name="titlePageSize">Tamaño de página</string>
+    <string name="letterSize">Carta</string>
+    <string name="legalSize">Oficio</string>
+    <string name="headerSpinnerPageSize">Selecciona un tamaño de página</string>
 
 </resources>
