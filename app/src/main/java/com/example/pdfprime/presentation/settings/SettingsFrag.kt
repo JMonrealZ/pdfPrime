@@ -4,19 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentSettingsBinding
 import com.example.pdfprime.presentation.di.Injector
-import com.example.pdfprime.presentation.myDocuments.MyDocumentsViewModel
-import com.example.pdfprime.presentation.myDocuments.MyDocumentsViewModelFactory
-import com.example.pdfprime.presentation.utils.Constants
-import com.example.pdfprime.presentation.utils.Utilities
-import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
 
 /**
@@ -26,7 +22,7 @@ class SettingsFrag : Fragment(){
     @Inject lateinit var factory : SettingsViewModelFactory
     private lateinit var binding : FragmentSettingsBinding
     private lateinit var settingsViewModel : SettingsViewModel
-
+    private lateinit var adapter : PageSizeAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
@@ -43,15 +39,31 @@ class SettingsFrag : Fragment(){
 
         settingsViewModel = ViewModelProvider(this,factory).get(SettingsViewModel::class.java)
 
-        val adapter = PageSizeAdapter(requireContext(),R.layout.list_item_page_size,App.pageSizes)
+        adapter = PageSizeAdapter(requireContext(),R.layout.list_item_page_size, mutableListOf())
         binding.spPageSize.adapter = adapter
     }
 
     private fun setListeners(){
-
+        binding.apply {
+            spPageSize.onItemSelectedListener = onItemSelectedListener
+        }
     }
 
     private fun setObservers(){
+        settingsViewModel.pagesSizes.observe(viewLifecycleOwner, Observer{
+            adapter.clear()
+            adapter.addAll(it)
+        })
+    }
+
+    private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        override fun onNothingSelected(p0: AdapterView<*>?) {
+            //Do nothing
+        }
+
+        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+            settingsViewModel.updatePageSizeDefault(p2)
+        }
 
     }
 }

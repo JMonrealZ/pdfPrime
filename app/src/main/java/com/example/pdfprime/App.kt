@@ -28,6 +28,8 @@ class App : Application() , Injector{
             .build()
 
         pageSizes = mutableListOf<PageSize>().apply {
+            add(PageSize(PDRectangle.LETTER,PDRectangle.LETTER.toString(),getString(R.string.letterSize),"",false))
+            add(PageSize(PDRectangle.LEGAL,PDRectangle.LEGAL.toString(),getString(R.string.legalSize),"",false))
             add(PageSize(PDRectangle.A0,PDRectangle.A0.toString(),getString(R.string.A0),"",false))
             add(PageSize(PDRectangle.A1,PDRectangle.A1.toString(),getString(R.string.A1),"",false))
             add(PageSize(PDRectangle.A2,PDRectangle.A2.toString(),getString(R.string.A2),"",false))
@@ -35,8 +37,6 @@ class App : Application() , Injector{
             add(PageSize(PDRectangle.A4,PDRectangle.A4.toString(),getString(R.string.A4),"",false))
             add(PageSize(PDRectangle.A5,PDRectangle.A5.toString(),getString(R.string.A5),"",false))
             add(PageSize(PDRectangle.A6,PDRectangle.A6.toString(),getString(R.string.A6),"",false))
-            add(PageSize(PDRectangle.LEGAL,PDRectangle.LEGAL.toString(),getString(R.string.legalSize),"",false))
-            add(PageSize(PDRectangle.LETTER,PDRectangle.LETTER.toString(),getString(R.string.letterSize),"",false))
         }
     }
 

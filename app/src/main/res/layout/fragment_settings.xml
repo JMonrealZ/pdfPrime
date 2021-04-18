@@ -31,8 +31,5 @@
             tools:listitem="@layout/list_item_page_size"/>
 
     </LinearLayout>
-
-
-
 </androidx.core.widget.NestedScrollView>
 </layout>
