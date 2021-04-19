@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.pdfprime.App;
 import com.example.pdfprime.R;
+import com.example.pdfprime.presentation.utils.Utilities;
 
 public class Dialogs {
     public static AlertDialog dialog;
@@ -74,7 +75,7 @@ public class Dialogs {
         },150);
     }
 
-    public static void createSelectNameDoc(final Fragment fragment, final Context ctx, LayoutInflater layoutInflater){
+    public static void createSelectNameDoc(final Fragment fragment, final Context ctx, LayoutInflater layoutInflater, int title){
 
         //Getting info from file(uri)
 //        Cursor cursor = ctx.getContentResolver().query(uri,null,null,null,null);
@@ -93,6 +94,8 @@ public class Dialogs {
         final EditText etDocNameDialog = customLayout.findViewById(R.id.etDocNameDialog);
         Button btnCancelDialog = customLayout.findViewById(R.id.btnCancelDialog);
         Button btnSaveDialog = customLayout.findViewById(R.id.btnSaveDialog);
+
+        tvTitleDialog.setText(title);
         etDocNameDialog.setText("Document");
 
         /*final AlertDialog */dialog = builder.create();
@@ -101,8 +104,12 @@ public class Dialogs {
             @Override
             public void onClick(View view) {
                 String nameSelected = etDocNameDialog.getText().toString();
-                if(nameSelected.length() > 0)
-                    ((NameDocDialogInterface)fragment).onNameDocSelected(nameSelected + ".pdf",null,0);
+                if(nameSelected.length() > 0) {
+                    if(Utilities.Files.exist(nameSelected + ".pdf"))
+                        tvFeedbackDialog.setText(R.string.txtFileAlreadyExists);
+                    else
+                        ((NameDocDialogInterface) fragment).onNameDocSelected(nameSelected + ".pdf", null, 0);
+                }
                 else {
                     tvFeedbackDialog.setText(R.string.txtWriteSomething);
                 }

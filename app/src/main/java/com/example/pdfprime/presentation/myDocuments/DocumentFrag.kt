@@ -1,5 +1,7 @@
 package com.example.pdfprime.presentation.myDocuments
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -65,6 +67,8 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         adapter = DocumentRecyclerViewAdapter(listOf<Document>(),{docSelected : Document -> documentClickListener(docSelected)},myDocumentsViewModel.getInterface())
 
         bottomSheetSelectedDoc = BottomSheetSelectedDoc(Document(),this)
+
+        binding.llMultiselection.visibility = View.GONE
     }
 
     private fun initRecyclerView() {
@@ -117,7 +121,28 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
             if(it != null){
                 adapter.notifyDataSetChanged()
                 binding.apply {
-                    llMultiselection.visibility = if (it) View.VISIBLE else View.GONE
+                    //llMultiselection.visibility = if (it) View.VISIBLE else View.GONE
+                    //Animation
+                    if(it){
+                        llMultiselection.visibility = View.VISIBLE
+                        llMultiselection.animate()
+                            .alpha(1f)
+                            .setDuration(100L)
+                            .setListener(object : AnimatorListenerAdapter(){
+                                override fun onAnimationEnd(animation: Animator?) {
+                                    llMultiselection.visibility = View.VISIBLE
+                                }
+                            })
+                    }else{
+                        llMultiselection.animate()
+                            .alpha(0f)
+                            .setDuration(100L)
+                            .setListener(object : AnimatorListenerAdapter(){
+                                override fun onAnimationEnd(animation: Animator?) {
+                                    llMultiselection.visibility = View.GONE
+                                }
+                            })
+                    }
                     fabNewDoc.visibility = if (it) View.GONE else View.VISIBLE
                 }
 

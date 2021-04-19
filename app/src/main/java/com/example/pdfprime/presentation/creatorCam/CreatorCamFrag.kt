@@ -205,7 +205,7 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
             binding.tvRenderingProgress.text = it
         })
         creatorCamViewModel.newDocumentObserver().observe(viewLifecycleOwner, Observer {
-            Dialogs.createSelectNameDoc(this@CreatorCamFrag, context,layoutInflater)
+            Dialogs.createSelectNameDoc(this@CreatorCamFrag, context,layoutInflater, R.string.titleChooseNameDoc)
         })
     }
 

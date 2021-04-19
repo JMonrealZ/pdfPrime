@@ -44,8 +44,7 @@
                         <LinearLayout
                             android:id="@+id/llMultiselection"
                             android:layout_width="0dp"
-                            android:layout_height="25dp"
-                            android:background="@color/colorPrimary"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"

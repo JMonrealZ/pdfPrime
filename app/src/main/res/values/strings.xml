@@ -45,5 +45,6 @@
     <string name="legalSize">Legal</string>
     <string name="pageSize" translatable="false">%s x %s</string>
     <string name="headerSpinnerPageSize">Select a page size</string>
+    <string name="titleChooseNameDoc">Write a name for this document</string>
 
 </resources>

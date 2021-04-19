@@ -76,7 +76,7 @@ class App : Application() , Injector{
         newDocBottomSheetOptions.apply {
             add(BottomSheetOption(R.drawable.ic_note_add_24,Constants.NEWDOC_DIS,R.string.titleButtonNewDocDis))
             add(BottomSheetOption(R.drawable.ic_camera_24,Constants.NEWDOC_CAM,R.string.titleButtonNewDocCam))
-            add(BottomSheetOption(R.drawable.ic_keyboard_24,Constants.NEWDOC_TXT,R.string.titleButtonNewDocTxt))
+//            add(BottomSheetOption(R.drawable.ic_keyboard_24,Constants.NEWDOC_TXT,R.string.titleButtonNewDocTxt)) //I am not goint to implement this
         }
 
         clickDocBottomSheetOptions = ArrayList()

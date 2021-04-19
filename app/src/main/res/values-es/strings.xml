@@ -37,5 +37,6 @@
     <string name="letterSize">Carta</string>
     <string name="legalSize">Oficio</string>
     <string name="headerSpinnerPageSize">Selecciona un tamaño de página</string>
+    <string name="titleChooseNameDoc">Escribe un nombre para este documento</string>
 
 </resources>

@@ -32,10 +32,36 @@ class Utilities {
         }
     }
 
-    object Directories{
+    /**
+     * For directories used in project
+     */
+    object Direc{
+        fun pdfs() : File{
+            return createDirec(App.storagePdf)
+        }
 
+        fun img() : File{
+            return createDirec(App.storagePagPdf)
+        }
+
+        private fun createDirec(folder : String) : File{
+            return File(App.appContext.filesDir,folder)
+        }
     }
 
+    companion object Files{
+        fun exist(fileName : String) : Boolean{
+            val direc = Direc.pdfs()
+            if(!direc.exists()) //It means directory no exists and it hasn't been added any pdf document
+                direc.mkdir()
+            val file = File(direc,fileName)
+            return file.exists()
+        }
+    }
+
+    /**
+     * Shared preferences
+     */
     object Shp{
         /**
          * Returns a int based on a key supplied, if it doesn't exists returns a 0
