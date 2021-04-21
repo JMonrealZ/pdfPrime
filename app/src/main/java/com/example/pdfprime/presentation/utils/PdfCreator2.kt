@@ -18,9 +18,8 @@ object PdfCreator2 {
         var newDoc = PDDocument()
 
         //Initialize and creating catalog of documents
-        var documentos = mutableMapOf(
-            Pair(list[0].owner,PDDocument.load(File(direc,list[0].owner)))
-        )
+        val documentos = mutableMapOf<String,PDDocument>()
+
         list.forEach{
             if(!documentos.containsKey(it.owner) && !it.owner.equals(""))
                 documentos[it.owner] = PDDocument.load(File(direc,it.owner))

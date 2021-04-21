@@ -73,7 +73,9 @@ class CreatorCamViewModel(
 
     fun newPageFromCamera(/*bitmap : Bitmap,*/ imageUri : Uri?){
         val newPage = Page("",null,imageUri,-1)
-        val newPages = pages!!.value!!.toMutableList()
+        val newPages =
+            if(pages.value == null) mutableListOf()
+            else pages!!.value!!.toMutableList()
         newPages.add(newPage)
         pages.postValue(newPages)
     }
