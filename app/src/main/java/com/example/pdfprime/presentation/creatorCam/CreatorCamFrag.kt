@@ -28,6 +28,7 @@ import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
 import com.example.pdfprime.presentation.utils.PdfCreator2
+import com.example.pdfprime.presentation.utils.RendererCoroutines
 import com.example.pdfprime.presentation.utils.Utilities
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.DexterBuilder
@@ -212,6 +213,7 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     override fun onNameDocSelected(name: String, uri: Uri?, size: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             creatorCamViewModel.savePdf(name)
+            RendererCoroutines.createFistPage(name)
         }
     }
 

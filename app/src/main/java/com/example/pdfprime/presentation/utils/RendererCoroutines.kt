@@ -60,9 +60,9 @@ object RendererCoroutines {
 
     fun createFistPage(name : String){
         val baos = ByteArrayOutputStream()
-        renderFirstPage(File(App.appContext.filesDir,App.storagePdf),name)
+        renderFirstPage(Utilities.Direc.pdfs(),name)
             .compress(Bitmap.CompressFormat.PNG,0,baos)
-        val directory = File(App.appContext.filesDir,App.storageFirstPagePdf)
+        val directory = Utilities.Direc.firstPage()
         if(!directory.exists())
             directory.mkdir()
         val firstPage = File(directory,name.substring(0,name.length-3) + "png")

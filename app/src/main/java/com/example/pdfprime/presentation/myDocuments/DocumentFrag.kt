@@ -29,6 +29,7 @@ import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
 import com.example.pdfprime.presentation.utils.RendererCoroutines
+import com.example.pdfprime.presentation.utils.Utilities
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -203,26 +204,12 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    fun savePdfOnDisk(uri : Uri, name : String){
-        val pdfBytes = context?.contentResolver?.openInputStream(uri)?.buffered().use {
-            it?.readBytes()
-        }
-
-        val path = context?.filesDir
-        val directory = File(path,App.storagePdf)
-        directory.mkdir()
-        val file = File(directory,name)
-        FileOutputStream(file).use {
-            it.write(pdfBytes)
-        }
-    }
-
     companion object {
     }
 
     override fun onNameDocSelected(name: String, uri: Uri?, size: Int) {
         if (uri != null) {
-            savePdfOnDisk(uri,name)
+            Utilities.saveOnDisk(uri,name,App.storagePdf)
             RendererCoroutines.createFistPage(name)
         }
         val newDoc = Document(0,name,size)

@@ -3,9 +3,11 @@ package com.example.pdfprime.presentation.utils
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Environment
 import com.example.pdfprime.App
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -44,6 +46,10 @@ class Utilities {
             return createDirec(App.storagePagPdf)
         }
 
+        fun firstPage() : File{
+            return createDirec(App.storageFirstPagePdf)
+        }
+
         private fun createDirec(folder : String) : File{
             return File(App.appContext.filesDir,folder)
         }
@@ -56,6 +62,21 @@ class Utilities {
                 direc.mkdir()
             val file = File(direc,fileName)
             return file.exists()
+        }
+
+        fun saveOnDisk(uri : Uri, name : String, folder : String){
+            val pdfBytes = App.appContext.contentResolver?.openInputStream(uri)?.buffered().use {
+                it?.readBytes()
+            }
+
+            val path = App.appContext.filesDir
+
+            val directory = File(path,folder)
+            directory.mkdir()
+            val file = File(directory,name)
+            FileOutputStream(file).use {
+                it.write(pdfBytes)
+            }
         }
     }
 
