@@ -19,4 +19,9 @@ public class Constants {
 
     //Keys of shared preferences
     public static final String PAGE_SIZE = "PAGE_SIZE";
+
+
+    //Default values for first instalation
+    public static final String IMAGE_QUA_K = "IMAGE_QUA_K";
+    public static final float IMAGE_QUA_DEF = 0.2F;
 }

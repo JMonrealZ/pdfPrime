@@ -1,5 +1,7 @@
 package com.example.pdfprime.presentation.utils
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import com.example.pdfprime.App
 import com.example.pdfprime.presentation.creatorCam.Page
@@ -44,18 +46,31 @@ object PdfCreator2 {
         //Object to add elements to page
         var contentStream = PDPageContentStream(document,page)
 
+        //region old code, it didnt let us to compress images
         //Load images(input Stream)
-        var inStream = pageUri?.let {
-            App.appContext.contentResolver.openInputStream(it)?.buffered().use {
-                it?.readBytes()?.inputStream()
-            }
-        }
+//        var inStream = pageUri?.let {
+//            App.appContext.contentResolver.openInputStream(it)?.buffered().use {
+//                it?.readBytes()?.inputStream()
+//            }
+//        }
 //        var inStream = InputStream()
 
         //Drawing image
-        var pageImage = JPEGFactory.createFromStream(document,inStream)
-        pageImage.height = 2208
-        pageImage.width = 2208
+//        var pageImage = JPEGFactory.createFromStream(document,inStream)
+//        pageImage.height = 2208
+//        pageImage.width = 2208
+        //endregion
+
+        val parcelFileDescriptor = pageUri?.let { App.appContext.contentResolver.openFileDescriptor(it,"r") }
+        val fileDescriptor = parcelFileDescriptor?.fileDescriptor
+        val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+        parcelFileDescriptor?.close()
+
+        val pageImage = JPEGFactory.createFromImage(
+            document,
+            image,
+            Utilities.Shp.getFloat(Constants.IMAGE_QUA_K,Constants.IMAGE_QUA_DEF)
+        )
 
         contentStream.drawImage(pageImage,0f,0f,PDRectangle.A0.width,PDRectangle.A0.height)
         page.rotation = 90

@@ -133,6 +133,30 @@ class Utilities {
         }
 
         /**
+         * Returns a float based on a key supplied, if doesn't exists returns defValue
+         */
+        fun getFloat(key : String) : Float {
+            return getFloat(key,0f)
+        }
+
+        /**
+         * Returns a string based on a key supplied,if it doesn't exists returns defValue
+         */
+        fun getFloat(key : String, defValue : Float) : Float{
+            return getFile().getFloat(key,defValue)
+        }
+
+        /**
+         * Stores a Float in shared preferences based on key value
+         */
+        fun setFloat(key : String, value : Float){
+            with(getFile().edit()){
+                putFloat(key,value)
+                commit()
+            }
+        }
+
+        /**
          * Provides shared preferences file
          */
         private fun getFile() : SharedPreferences{

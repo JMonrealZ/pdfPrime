@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -46,14 +47,25 @@ class SettingsFrag : Fragment(){
     private fun setListeners(){
         binding.apply {
             spPageSize.onItemSelectedListener = onItemSelectedListener
+            sbPageQuality.setOnSeekBarChangeListener(onSeekBarChangeListener)
         }
     }
 
     private fun setObservers(){
-        settingsViewModel.pagesSizes.observe(viewLifecycleOwner, Observer{
-            adapter.clear()
-            adapter.addAll(it)
-        })
+        settingsViewModel.apply {
+            getPagesSizes().observe(viewLifecycleOwner, Observer{
+                adapter.clear()
+                adapter.addAll(it)
+            })
+            getImagesPagesQuality().observe(viewLifecycleOwner, Observer {
+                binding.apply {
+                    tvPageQuality.text = (it * 100F).toString()
+                }
+            })
+        }
+
+
+
     }
 
     private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -65,5 +77,12 @@ class SettingsFrag : Fragment(){
             settingsViewModel.updatePageSizeDefault(p2)
         }
 
+    }
+
+    var a : Int = 0
+    private val onSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener{
+        override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) = binding.tvPageQuality.setText(p1.toFloat().toString())
+        override fun onStartTrackingTouch(p0: SeekBar?) {}
+        override fun onStopTrackingTouch(p0: SeekBar?) = settingsViewModel.updatePageQualityDefault(p0!!.progress.toFloat() / 100)
     }
 }

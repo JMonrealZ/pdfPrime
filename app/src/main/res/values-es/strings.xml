@@ -38,5 +38,6 @@
     <string name="legalSize">Oficio</string>
     <string name="headerSpinnerPageSize">Selecciona un tamaño de página</string>
     <string name="titleChooseNameDoc">Escribe un nombre para este documento</string>
+    <string name="titleImagePageQuality">Calidad de las fotografias</string>
 
 </resources>

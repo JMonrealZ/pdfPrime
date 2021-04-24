@@ -38,5 +38,6 @@
     <string name="legalSize">a</string>
     <string name="headerSpinnerPageSize">a</string>
     <string name="titleChooseNameDoc">a</string>
+    <string name="titleImagePageQuality">a</string>
 
 </resources>
