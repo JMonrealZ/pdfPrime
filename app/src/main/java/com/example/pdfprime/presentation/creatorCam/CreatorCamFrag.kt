@@ -184,30 +184,42 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     }
 
     private fun setObservers(){
-        creatorCamViewModel.pagesObserver().observe(viewLifecycleOwner, Observer {
-            if(it != null){
-                adapter.setList(it.toMutableList())
-            }
-            else
-                Toast.makeText(context,"couldn't render pages", Toast.LENGTH_LONG).show()
-        })
-        creatorCamViewModel.isLoadingObserver().observe(viewLifecycleOwner, Observer {
-            binding.apply {
-                if(it){
-                    llContent.visibility = View.GONE
-                    llLoading.visibility = View.VISIBLE
-                }else{
-                    llContent.visibility = View.VISIBLE
-                    llLoading.visibility = View.GONE
+        creatorCamViewModel.apply {
+            pagesObserver().observe(viewLifecycleOwner, Observer {
+                if (it != null) {
+                    adapter.setList(it.toMutableList())
+                } else
+                    Toast.makeText(context, "couldn't render pages", Toast.LENGTH_LONG).show()
+            })
+            isLoadingObserver().observe(viewLifecycleOwner, Observer {
+                binding.apply {
+                    if (it) {
+                        llContent.visibility = View.GONE
+                        llLoading.visibility = View.VISIBLE
+                    } else {
+                        llContent.visibility = View.VISIBLE
+                        llLoading.visibility = View.GONE
+                    }
                 }
-            }
-        })
-        creatorCamViewModel.isLoadingMessageObserver().observe(viewLifecycleOwner, Observer {
-            binding.tvRenderingProgress.text = it
-        })
-        creatorCamViewModel.newDocumentObserver().observe(viewLifecycleOwner, Observer {
-            Dialogs.createSelectNameDoc(this@CreatorCamFrag, context,layoutInflater, R.string.titleChooseNameDoc)
-        })
+            })
+            isLoadingMessageObserver().observe(viewLifecycleOwner, Observer {
+                binding.tvRenderingProgress.text = it
+            })
+            newDocumentObserver().observe(viewLifecycleOwner, Observer {
+                Dialogs.createSelectNameDoc(
+                    this@CreatorCamFrag,
+                    context,
+                    layoutInflater,
+                    R.string.titleChooseNameDoc
+                )
+            })
+            finishFlag().observe(viewLifecycleOwner, Observer {
+                if(it) {
+                    NavHostFragment.findNavController(this@CreatorCamFrag).navigate(R.id.action_creatorCamFrag_to_documentFrag)
+
+                }
+            })
+        }
     }
 
     override fun onNameDocSelected(name: String, uri: Uri?, size: Int) {

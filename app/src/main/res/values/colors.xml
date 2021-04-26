@@ -9,4 +9,6 @@
     <color name="colorBackDocDetails">#8CBDBEBF</color>
 
     <color name="closeBackground">#FF0000</color>
+
+    <color name="transparent">#00FFFFFF</color>
 </resources>

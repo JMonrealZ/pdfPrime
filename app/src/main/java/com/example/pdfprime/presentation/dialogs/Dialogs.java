@@ -107,8 +107,10 @@ public class Dialogs {
                 if(nameSelected.length() > 0) {
                     if(Utilities.Files.exist(nameSelected + ".pdf"))
                         tvFeedbackDialog.setText(R.string.txtFileAlreadyExists);
-                    else
+                    else{
                         ((NameDocDialogInterface) fragment).onNameDocSelected(nameSelected + ".pdf", null, 0);
+                        dialog.dismiss();
+                    }
                 }
                 else {
                     tvFeedbackDialog.setText(R.string.txtWriteSomething);

@@ -20,6 +20,7 @@ class CreatorCamViewModel(
     private var isLoading : MutableLiveData<Boolean> = MutableLiveData()
     private var isLoadingMessage : MutableLiveData<String> = MutableLiveData()
     private var newDocument : MutableLiveData<PDDocument> = MutableLiveData()
+    private var finished : MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun pagesObserver() : MutableLiveData<List<Page>>{
         return pages
@@ -39,6 +40,10 @@ class CreatorCamViewModel(
 
     fun getInterface() : PageOperationInterface {
         return this
+    }
+
+    fun finishFlag() : MutableLiveData<Boolean>{
+        return finished
     }
 
     fun renderPages(docsName : String, context : Context){
@@ -83,6 +88,7 @@ class CreatorCamViewModel(
     suspend fun savePdf(docName : String){
         newDocument.value?.save(File(Utilities.Direc.pdfs(),docName))
         insertPdfUseCase.execute(Document(0,docName,50,null))
+        finished.postValue(true)
     }
 
     override fun onProgressUpdate(message: String) {
