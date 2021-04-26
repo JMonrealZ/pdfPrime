@@ -16,19 +16,9 @@
         android:icon="@drawable/ic_star_24"/>
 
     <item
-        android:id="@+id/btnReachUs"
+        android:id="@+id/reachusFrag"
         android:title="@string/titleButtonReachUs"
         android:icon="@drawable/ic_email_24"/>
-
-    <item
-        android:id="@+id/btnThanks"
-        android:title="@string/titleButtonThanks"
-        android:icon="@drawable/ic_emoji_people_24"/>
-
-    <item
-        android:id="@+id/btnAboutUs"
-        android:title="@string/titleButtonAboutUs"
-        android:icon="@drawable/ic_person_24"/>
 
     <item
         android:id="@+id/settingsFrag"

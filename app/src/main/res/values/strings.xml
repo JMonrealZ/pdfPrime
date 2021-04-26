@@ -29,7 +29,7 @@
     <string name="titleButtonHome">Homepage</string>
     <string name="titleButtonCamara">Camera</string>
     <string name="titleButtonRateUs">Rate us</string>
-    <string name="titleButtonReachUs">Reach us</string>
+    <string name="titleButtonReachUs">"Reach us/Acknowledgements "</string>
     <string name="titleButtonThanks">Acknowledgements</string>
     <string name="titleButtonAboutUs">About us</string>
     <string name="titleButtonSettings">Settings</string>
@@ -47,5 +47,10 @@
     <string name="headerSpinnerPageSize">Select a page size</string>
     <string name="titleChooseNameDoc">Write a name for this document</string>
     <string name="titleImagePageQuality">Quality of pictures</string>
+    <string name="titleReachus">About us</string>
+    <string name="txtAboutMe">This complete application has been developed only by me, Ivan Monreal. You can share your experience using this app sending us a mail to the next mail:</string>
+    <string name="txtEmail" translatable="false"><u>ivan.monreal@hotmail.com</u></string>
+    <string name="txtThanks">I thank to all developers who had invested their time doing incredible job and making open source projects, without them I would never be possible to finish this app, I will mention them then:</string>
+    <string name="txtSubjectEmail">Feedback pdfprime</string>
 
 </resources>

@@ -60,4 +60,10 @@
         android:name="com.example.pdfprime.presentation.settings.SettingsFrag"
         android:label="SettingsFrag"
         tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/reachusFrag"
+        android:name="com.example.pdfprime.presentation.reachus.ReachusFrag"
+        android:label="ReachusFrag"
+        tools:layout="@layout/fragment_reachus"/>
 </navigation>

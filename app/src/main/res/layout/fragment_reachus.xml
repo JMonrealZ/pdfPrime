@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titleReachus"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="35sp"/>
+
+        <TextView
+            android:id="@+id/tvAboutMe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtAboutMe"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:layout_below="@id/tvTitle"/>
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtEmail"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_blue_light"
+            android:layout_below="@id/tvAboutMe"/>
+
+        <TextView
+            android:id="@+id/titleThanks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titleButtonThanks"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:layout_below="@id/tvEmail"/>
+
+        <TextView
+            android:id="@+id/tvThanks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtThanks"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:layout_below="@id/titleThanks"/>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
+</layout>

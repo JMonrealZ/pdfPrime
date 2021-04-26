@@ -26,6 +26,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MainActivity">
 <!--            <intent-filter>-->
@@ -34,7 +35,6 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-
         <!--            android.support.v4.content.FileProvider-->
         <provider
             android:name="androidx.core.content.FileProvider"

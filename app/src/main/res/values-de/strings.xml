@@ -39,5 +39,9 @@
     <string name="headerSpinnerPageSize">a</string>
     <string name="titleChooseNameDoc">a</string>
     <string name="titleImagePageQuality">a</string>
+    <string name="titleReachus">a</string>
+    <string name="txtAboutMe">a</string>
+    <string name="txtThanks">a</string>
+    <string name="txtSubjectEmail">a</string>
 
 </resources>
