@@ -39,45 +39,29 @@ object PdfCreator2 {
     }
 
     private fun newPageFromUri(document : PDDocument, pageUri : Uri?) : PDDocument{
-        var page = PDPage(getDefaultPDRectangle())
+        val defPDRectangle = getDefaultPDRectangle()
+        var page = PDPage(defPDRectangle)
         document.addPage(page)
-
 
         //Object to add elements to page
         var contentStream = PDPageContentStream(document,page)
-
-        //region old code, it didnt let us to compress images
-        //Load images(input Stream)
-//        var inStream = pageUri?.let {
-//            App.appContext.contentResolver.openInputStream(it)?.buffered().use {
-//                it?.readBytes()?.inputStream()
-//            }
-//        }
-//        var inStream = InputStream()
-
-        //Drawing image
-//        var pageImage = JPEGFactory.createFromStream(document,inStream)
-//        pageImage.height = 2208
-//        pageImage.width = 2208
-        //endregion
 
         val parcelFileDescriptor = pageUri?.let { App.appContext.contentResolver.openFileDescriptor(it,"r") }
         val fileDescriptor = parcelFileDescriptor?.fileDescriptor
         val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
         parcelFileDescriptor?.close()
 
+        //Resizing image
+        val resizedImage = Bitmap.createScaledBitmap(image,defPDRectangle.width.toInt(),defPDRectangle.height.toInt(),true)
+
         val pageImage = JPEGFactory.createFromImage(
             document,
-            image,
+            resizedImage,
             Utilities.Shp.getFloat(Constants.IMAGE_QUA_K,Constants.IMAGE_QUA_DEF)
         )
 
-        contentStream.drawImage(pageImage,0f,0f,PDRectangle.A0.width,PDRectangle.A0.height)
+        contentStream.drawImage(pageImage,0f,0f,defPDRectangle.width,defPDRectangle.height)
         page.rotation = 90
-
-//        contentStream.addRect(5F,500F,100F,100F)
-//        contentStream.setNonStrokingColor(0,255,125)
-//        contentStream.fill()
 
         contentStream.close()
 
