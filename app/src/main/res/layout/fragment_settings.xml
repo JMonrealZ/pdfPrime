@@ -49,7 +49,6 @@
             android:textAlignment="center"
             android:layout_below="@id/llPageSize"/>
 
-
         <LinearLayout
             android:id="@+id/llQualityImages"
             android:layout_width="match_parent"
@@ -70,6 +69,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFingerPrint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llQualityImages"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFingerPrint"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:text="@string/txtAskFingerPrint" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swFingerPrint"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
     </RelativeLayout>

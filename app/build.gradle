@@ -95,4 +95,6 @@ dependencies {
 
     //For permissions
     implementation 'com.karumi:dexter:6.2.2'
+
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha03"
 }

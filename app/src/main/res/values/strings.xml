@@ -52,5 +52,8 @@
     <string name="txtEmail" translatable="false"><u>ivan.monreal@hotmail.com</u></string>
     <string name="txtThanks">I thank to all developers who had invested their time doing incredible job and making open source projects, without them I would never be possible to finish this app, I will mention them then:</string>
     <string name="txtSubjectEmail">Feedback pdfprime</string>
+    <string name="txtAskFingerPrint">Request finger print on app starting</string>
+    <string name="titleVerifyId">Identify yourself</string>
+    <string name="txtVerifyId">Place your finger on the sensor</string>
 
 </resources>

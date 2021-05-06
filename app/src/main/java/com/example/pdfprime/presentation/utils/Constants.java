@@ -1,5 +1,7 @@
 package com.example.pdfprime.presentation.utils;
 
+import static java.lang.Boolean.FALSE;
+
 public class Constants {
     //Options for BottomSheets
     public static final int NEWDOC_DIS = 1;
@@ -23,5 +25,9 @@ public class Constants {
 
     //Default values for first instalation
     public static final String IMAGE_QUA_K = "IMAGE_QUA_K";
+    public static final String ASK_FP_K = "ASK_FP_K";
+
+
     public static final float IMAGE_QUA_DEF = 0.2F;
+    public static final Boolean ASK_FP_DEF = false;
 }

@@ -1,11 +1,19 @@
 package com.example.pdfprime.presentation.settings
 
+import android.content.Intent
+import android.media.audiofx.BassBoost
 import android.os.Bundle
+import android.provider.Settings
+import android.provider.Settings.ACTION_BIOMETRIC_ENROLL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.SeekBar
+import android.widget.Toast
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,6 +37,7 @@ class SettingsFrag : Fragment(){
         initVariables(inflater,container)
         setListeners()
         setObservers()
+        initBiometrics()
         return binding.root
     }
 
@@ -84,5 +93,28 @@ class SettingsFrag : Fragment(){
         override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) = binding.tvPageQuality.setText(p1.toFloat().toString())
         override fun onStartTrackingTouch(p0: SeekBar?) {}
         override fun onStopTrackingTouch(p0: SeekBar?) = settingsViewModel.updatePageQualityDefault(p0!!.progress.toFloat() / 100)
+    }
+
+    fun initBiometrics(){
+        val biometricManager = BiometricManager.from(requireContext())
+        when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
+            BiometricManager.BIOMETRIC_SUCCESS ->
+                settingsViewModel.updateBiometricReaderFlag(true)
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
+                settingsViewModel.updateBiometricReaderFlag(false)
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
+                settingsViewModel.updateBiometricReaderFlag(false) //Todo here when is needed?
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                // Prompts the user to create credentials that your app accepts.
+//                val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
+//                    putExtra(
+//                        Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+//                        BIOMETRIC_STRONG or DEVICE_CREDENTIAL
+//                    )
+//                }
+//                startActivityForResult(enrollIntent, 100)
+                settingsViewModel.updateBiometricEnrollFlag(false)
+            }
+        }
     }
 }

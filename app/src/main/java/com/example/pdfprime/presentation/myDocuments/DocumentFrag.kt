@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +37,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
+import java.util.concurrent.Executor
 import javax.inject.Inject
 
 /**
@@ -48,12 +51,18 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     lateinit var bottomSheetNewDoc : BottomSheetNewDoc
     lateinit var bottomSheetSelectedDoc: BottomSheetSelectedDoc
 
+    //For biometrict requests
+    private lateinit var executor: Executor
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
         initRecyclerView()
         setListeners()
         //insertNewDocTest()
         setObservers()
+        initBiometrics()
         return binding.root
     }
 
@@ -241,5 +250,42 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_viewerFrag,bundle)
     }
 
+    private fun initBiometrics(){
+        executor = ContextCompat.getMainExecutor(requireContext())
+        biometricPrompt = BiometricPrompt(this, executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int,
+                                                   errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(context,
+                        "Authentication error: $errString", Toast.LENGTH_SHORT)
+                        .show()
+                }
 
+                override fun onAuthenticationSucceeded(
+                    result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    Toast.makeText(context,
+                        "Authentication succeeded!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(context, "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle(getString(R.string.titleVerifyId))
+            .setSubtitle(getString(R.string.txtVerifyId))
+            .setNegativeButtonText("Use account password")
+            .build()
+
+        if(true)    //Todo: It's needed to check shp to check if there is a config
+            biometricPrompt.authenticate(promptInfo)
+
+    }
 }

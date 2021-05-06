@@ -43,5 +43,8 @@
     <string name="txtAboutMe">a</string>
     <string name="txtThanks">a</string>
     <string name="txtSubjectEmail">a</string>
+    <string name="txtAskFingerPrint">a</string>
+    <string name="titleVerifyId">a</string>
+    <string name="txtVerifyId">a</string>
 
 </resources>

@@ -43,5 +43,8 @@
     <string name="txtAboutMe">Esta aplciación ha sido completamente desarrollada por mi, Iván Monreal. Puedes compartinos tu experiencia/comentarios al usar la aplicación solo con enviarnos un correo a la siguiente dirección:</string>
     <string name="txtThanks">Agradezco a los desarrolladores que han invertido su tiempo realizando proyectos asombrosos y open source, sin ellos no hubiera sido posible terminar este proyecto, mencionaré a cada uno de ellos:</string>
     <string name="txtSubjectEmail">Retroalimentación pdfprime</string>
+    <string name="txtAskFingerPrint">Solicitar huella al arranque de la aplicación</string>
+    <string name="titleVerifyId">Identificate</string>
+    <string name="txtVerifyId">Coloca tu dedo sobre el sensor</string>
 
 </resources>

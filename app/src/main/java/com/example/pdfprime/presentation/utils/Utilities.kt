@@ -18,7 +18,6 @@ class Utilities {
         @Throws(IOException::class)
         fun createImageFile(): File {
             val timeStamp : String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-//            val storageDir : File? = App.appContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             val storageDir : File? = File(App.appContext.filesDir,App.storagePagPdf)
 
             if(!storageDir!!.exists())
@@ -156,6 +155,29 @@ class Utilities {
             }
         }
 
+        /**
+         * Returns a boolean based on a key supplied, if doesn't exists returns defValue
+         */
+        fun getBoolean(key : String) : Boolean{
+            return getBoolean(key, false)
+        }
+
+        /**
+         * Returns a boolean based on a key supplied, if doesn't exists returns defValue
+         */
+        fun getBoolean(key : String, defValue : Boolean) : Boolean{
+            return getFile().getBoolean(key, defValue)
+        }
+
+        /**
+         * Stores a Boolean in shared preferences based on a key value
+         */
+        fun setBoolean(key : String, value : Boolean){
+            with(getFile().edit()){
+                putBoolean(key,value)
+                commit()
+            }
+        }
         /**
          * Provides shared preferences file
          */

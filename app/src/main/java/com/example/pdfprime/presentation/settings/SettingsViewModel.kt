@@ -5,14 +5,19 @@ import androidx.lifecycle.ViewModel
 import com.example.pdfprime.App
 import com.example.pdfprime.presentation.utils.Constants
 import com.example.pdfprime.presentation.utils.Utilities
-import com.tom_roush.pdfbox.pdmodel.common.PDRectangle
 
 class SettingsViewModel : ViewModel() {
     private var pagesSizes : MutableLiveData<MutableList<PageSize>> = MutableLiveData(App.pageSizes)
-    private var imagesPagesQuality : MutableLiveData<Float> = MutableLiveData(Utilities.Shp.getFloat(Constants.IMAGE_QUA_K,Constants.IMAGE_QUA_DEF))
+    private var imagesPagesQuality : MutableLiveData<Float> = MutableLiveData()
+    private var askBiometricFlag : MutableLiveData<Boolean> = MutableLiveData()
+    private var hasBiometricReaderFlag : MutableLiveData<Boolean> =  MutableLiveData(false)
+    private var nonBiometricEnrollFlag : MutableLiveData<Boolean> =  MutableLiveData(false)
 
     fun getPagesSizes() : MutableLiveData<MutableList<PageSize>> = pagesSizes
     fun getImagesPagesQuality() : MutableLiveData<Float> = imagesPagesQuality
+    fun getAskBiometricFlag() : MutableLiveData<Boolean> = askBiometricFlag //Configure ask for validation or not
+    fun getBiometricReaderFlag() : MutableLiveData<Boolean> = hasBiometricReaderFlag //Device has a reader?
+    fun getBiometricEnrollFlag() : MutableLiveData<Boolean> = nonBiometricEnrollFlag //Device has a enrolled finger/face?
 
     fun updatePageSizeDefault(position : Int){
         val newPagesSize = pagesSizes.value
@@ -27,6 +32,10 @@ class SettingsViewModel : ViewModel() {
         imagesPagesQuality.postValue(value)
     }
 
+    fun updateBiometricReaderFlag(hasBiometric : Boolean) = hasBiometricReaderFlag.postValue(hasBiometric)
+    fun updateAskBiometricFlag(requestFp : Boolean) = askBiometricFlag.postValue(requestFp)
+    fun updateBiometricEnrollFlag(hasEnrolledFp : Boolean) = nonBiometricEnrollFlag.postValue(hasEnrolledFp)
+
     init {
         //Loading custom page sizes and setting default
         val pageSizeDefault = Utilities.Shp.getString(Constants.PAGE_SIZE)
@@ -38,5 +47,8 @@ class SettingsViewModel : ViewModel() {
                 it.isSelected = it.pdRectangleName == pageSizeDefault
             }
         pagesSizes.postValue(newPagesSizes)
+
+        imagesPagesQuality.postValue(Utilities.Shp.getFloat(Constants.IMAGE_QUA_K,Constants.IMAGE_QUA_DEF))
+        askBiometricFlag.postValue(Utilities.Shp.getBoolean(Constants.ASK_FP_K,Constants.ASK_FP_DEF))
     }
 }
