@@ -29,19 +29,8 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         setSupportActionBar(binding.appBarMain.toolbar)
         setListeners()
-        setImagesVersion()
-    }
-
-    private fun setImagesVersion() {
-        Glide.with(this).load(Uri.parse("file:///android_asset/pdfPrime.png"))
-            .into(binding.appBarMain.ivLogotipo)
-        val header = binding.navView.getHeaderView(0);
-        Glide.with(this).load(Uri.parse("file:///android_asset/pdfPrime.png"))
-            .into(header.ivMenuHeader)
-
         binding.navView.tvVersion.text = packageManager.getPackageInfo(packageName,0).versionName
     }
-
     private fun setListeners(){
         /*Settings for controller of drawer layout*/
         dcMenu.setDrawerLayout(drawerLayout)

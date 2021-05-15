@@ -21,12 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_splash)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_splash)
-        binding.apply {
-            Glide.with(this@SplashActivity).load(Uri.parse("file:///android_asset/pdfPrime.png"))
-                .into(ivSplash)
-        }
 
         //Hinding status bar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
