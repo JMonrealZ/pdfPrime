@@ -21,6 +21,7 @@ class CreatorCamViewModel(
     private var isLoadingMessage : MutableLiveData<String> = MutableLiveData()
     private var newDocument : MutableLiveData<PDDocument> = MutableLiveData()
     private var finished : MutableLiveData<Boolean> = MutableLiveData(false)
+    private var pageToCrop : MutableLiveData<Page?> = MutableLiveData(null)
 
     fun pagesObserver() : MutableLiveData<List<Page>>{
         return pages
@@ -45,6 +46,8 @@ class CreatorCamViewModel(
     fun finishFlag() : MutableLiveData<Boolean>{
         return finished
     }
+
+    fun pageToCropOberver() : MutableLiveData<Page?> = pageToCrop
 
     fun renderPages(docsName : String, context : Context){
         if(pages.value != null)
@@ -85,6 +88,13 @@ class CreatorCamViewModel(
         pages.postValue(newPages)
     }
 
+    fun newCroppedImage(newUri : Uri?){
+        val newPages = pages.value
+        val index = newPages!!.indexOfFirst { it.imageUri == pageToCrop.value?.imageUri }
+        newPages!![index].imageUri = newUri
+        pages.postValue(newPages)
+    }
+
     suspend fun savePdf(docName : String){
         newDocument.value?.save(File(Utilities.Direc.pdfs(),docName))
         insertPdfUseCase.execute(Document(0,docName,50,null))
@@ -107,5 +117,9 @@ class CreatorCamViewModel(
         newPages.removeAt(from)
         newPages.add(to,pageToMove)
         pages.postValue(newPages)
+    }
+
+    override fun onClickPage(page: Page?) {
+        pageToCrop.postValue(page)
     }
 }

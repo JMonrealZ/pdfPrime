@@ -14,7 +14,8 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_page,parent,false)
         return PageViewHolder(listItem,
-            {pageSelected : Int -> onDeletePageClickListener(pageSelected)}
+            {pageSelected : Int -> onDeletePageClickListener(pageSelected)},
+            {pageSelected : Page? -> onClickPageListener(pageSelected)}
         )
     }
 
@@ -36,9 +37,12 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
                 pages.removeAt(deletedPage)
                 notifyItemRemoved(deletedPage)
             }
-            0 ->{ //A page has been moved
+            0 ->{ //A page has been cropped or moved
                 pages = newList
-                notifyItemMoved(from,to)
+                if(from == to)
+                    notifyDataSetChanged()
+                else
+                    notifyItemMoved(from,to)
             }
             -1 -> { //A page has been added
                 pages = newList
@@ -68,6 +72,10 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
         pageOperationInterface.onDeletePage(pageNumber)
     }
 
+    private fun onClickPageListener(page : Page?){
+        pageOperationInterface.onClickPage(page)
+    }
+
     fun getPages() : MutableList<Page>{
         return pages
     }
@@ -79,14 +87,18 @@ class CreatorCamRecyclerViewAdapter(private var pages : MutableList<Page>,
     }
 }
 
-class PageViewHolder(val view : View,private val clickListener : (/*Page*/Int)->Unit) : RecyclerView.ViewHolder(view){
+class PageViewHolder(val view : View,
+                     private val clickListenerDelete : (Int)->Unit,
+                     private val clickListener : (Page?)->Unit
+) : RecyclerView.ViewHolder(view){
     fun bind(page: Page){
         view.apply {
             Glide.with(this).load(
                 if(page.image != null) page.image
                 else page.imageUri
             ).into(ivImage)
-            tvDeletePage.setOnClickListener { clickListener(/*page*/adapterPosition)}
+            tvDeletePage.setOnClickListener { clickListenerDelete(/*page*/adapterPosition)}
+            ivImage.setOnClickListener{clickListener(page)} //(click listener to the complete view)
         }
     }
 }

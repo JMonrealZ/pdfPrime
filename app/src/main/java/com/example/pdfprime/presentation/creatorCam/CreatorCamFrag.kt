@@ -2,47 +2,44 @@ package com.example.pdfprime.presentation.creatorCam
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.databinding.FragmentCreatorCamBinding
 import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
-import com.example.pdfprime.presentation.utils.PdfCreator2
+import com.example.pdfprime.presentation.utils.Constants.REQUEST_IMAGE_CAPTURE
+import com.example.pdfprime.presentation.utils.Constants.REQUEST_IMAGE_CROP
 import com.example.pdfprime.presentation.utils.RendererCoroutines
 import com.example.pdfprime.presentation.utils.Utilities
 import com.karumi.dexter.Dexter
-import com.karumi.dexter.DexterBuilder
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.IOException
-import java.util.jar.Manifest
 import javax.inject.Inject
 
 /**
@@ -219,6 +216,29 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
 
                 }
             })
+            pageToCropOberver().observe(viewLifecycleOwner, Observer {
+                if(it != null){
+//                    val destinationFileName: String = "SampleCropImage.jpg"
+                    val sourceFileNameArray = it.imageUri.toString().split("/")
+                    val sourceFileName = sourceFileNameArray[sourceFileNameArray.size - 1]  //getting source file's name
+                    val destinationFileName =
+                        if(!sourceFileName.contains("Cropped"))
+                            sourceFileName.substring(0,sourceFileName.length - 4) + "Cropped1.jpg"
+                        else{
+                            //This page has already been cropped
+                            val fileNameSplitted = sourceFileName.split("Cropped")
+                            val numberStr = fileNameSplitted[1].replace(".jpg","")
+                            val number = numberStr.toInt() + 1  //number of cropping
+                            fileNameSplitted[0] + "Cropped" + (number) + ".jpg"
+                        }
+
+
+                    val uCrop = it.imageUri?.let { it1 ->
+                        UCrop.of(it1, Uri.fromFile(File(Utilities.Direc.img(), destinationFileName)))
+                    }
+                    uCrop!!.start(requireActivity(),this@CreatorCamFrag, REQUEST_IMAGE_CROP)
+                }
+            })
         }
     }
 
@@ -230,14 +250,31 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == Constants.REQUEST_IMAGE_CAPTURE &&
-           resultCode == RESULT_OK){
+        if(resultCode == RESULT_OK){
+            when(requestCode){
+                REQUEST_IMAGE_CAPTURE -> {
+                    if(photoUri != null)
+                        creatorCamViewModel.newPageFromCamera(photoUri)
+                    photoUri = null
+                }
+                REQUEST_IMAGE_CROP -> {
+                    //creatorCamViewModel.newCroppedImage(data?.data)
+                    val uri = data?.let { UCrop.getOutput(it) }
+                    creatorCamViewModel.newCroppedImage(uri)
 
-            if(photoUri != null)
-                creatorCamViewModel.newPageFromCamera(photoUri)
+//                    uri?.let { ResultActivity.startWithUri(requireContext(), it) }
+                }
+            }
 
-            photoUri = null
+//            if(photoUri != null)
+//                creatorCamViewModel.newPageFromCamera(photoUri)
+
+//            photoUri = null
 
         }
+
+
     }
+
+
 }
