@@ -9,6 +9,7 @@ import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.data.entities.Document
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.Constants.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
@@ -31,10 +32,10 @@ class BottomSheetSelectedDoc(
 
     private fun onOptionSelected( option : BottomSheetOption){
         when(option.idOption){
-            Constants.DOC_EDIT -> docOperationInterface.onEditDoc(documentSelected)
-            Constants.DOC_SHARE -> docOperationInterface.onShareDoc(documentSelected)
-            Constants.DOC_DELETE -> docOperationInterface.onDeleteDoc(documentSelected)
-            Constants.DOC_OPEN -> docOperationInterface.onOpenDoc(documentSelected)
+            DOC_EDIT -> docOperationInterface.onEditDoc(documentSelected)
+            DOC_SHARE -> docOperationInterface.onShareDoc(documentSelected)
+            DOC_DELETE -> docOperationInterface.onDeleteDoc(documentSelected)
+            DOC_OPEN -> docOperationInterface.onOpenDoc(documentSelected)
         }
         super.dismiss()
     }

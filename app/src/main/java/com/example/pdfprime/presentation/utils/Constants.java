@@ -7,6 +7,7 @@ public class Constants {
     public static final int NEWDOC_DIS = 1;
     public static final int NEWDOC_CAM = 2;
     public static final int NEWDOC_TXT = 3;
+    public static final int NEWDOC_GAL = 4;
 
     public static final int DOC_EDIT = 101;
     public static final int DOC_SHARE = 102;
@@ -15,9 +16,11 @@ public class Constants {
 
     //Name of data between destinations
     public static final String DOCUMENT = "DOCUMENT";
+    public static final String IMAGES = "IMAGES";
 
     public static final int REQUEST_IMAGE_CAPTURE = 200;
     public static final int REQUEST_IMAGE_CROP = 201;
+    public static final int REQUEST_IMAGES_GAL = 202;
 
     //Keys of shared preferences
     public static final String PAGE_SIZE = "PAGE_SIZE";

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pdfprime.App
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.Constants.IMAGE_QUA_K
 import com.example.pdfprime.presentation.utils.Utilities
 
 class SettingsViewModel : ViewModel() {
@@ -28,7 +29,7 @@ class SettingsViewModel : ViewModel() {
     }
 
     fun updatePageQualityDefault(value : Float){
-        Utilities.Shp.setFloat(Constants.IMAGE_QUA_K,value)
+        Utilities.Shp.setFloat(IMAGE_QUA_K,value)
         imagesPagesQuality.postValue(value)
     }
 

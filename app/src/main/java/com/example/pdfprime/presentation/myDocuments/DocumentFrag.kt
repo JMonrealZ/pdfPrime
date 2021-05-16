@@ -30,6 +30,7 @@ import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.Constants.*
 import com.example.pdfprime.presentation.utils.RendererCoroutines
 import com.example.pdfprime.presentation.utils.Utilities
 import kotlinx.coroutines.CoroutineScope
@@ -203,13 +204,29 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
-            data?.data?.also {
-                    it -> Dialogs.createSelectNameDoc(this@DocumentFrag,context,layoutInflater,it)
-            }
-        }else{
+        if(/*requestCode == 1 && */resultCode == Activity.RESULT_OK){
+//            data?.data?.also {
+//                    it -> Dialogs.createSelectNameDoc(this@DocumentFrag,context,layoutInflater,it)
+//            }
 
-        }
+            when(requestCode){
+                NEWDOC_DIS ->{
+                    data?.data?.also {
+                        it -> Dialogs.createSelectNameDoc(this@DocumentFrag,context,layoutInflater,it)
+                    }
+                }
+
+                NEWDOC_GAL ->{
+                    val bundle = Bundle()
+                    bundle.putParcelable(IMAGES,data!!.clipData)
+                    NavHostFragment.findNavController(this@DocumentFrag).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
+
+                }
+            }
+
+
+        }//else{
+        //}
         super.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -284,7 +301,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
             .setNegativeButtonText("Use account password")
             .build()
 
-        if(true)    //Todo: It's needed to check shp to check if there is a config
+        if(false)    //Todo: It's needed to check shp to check if there is a config
             biometricPrompt.authenticate(promptInfo)
 
     }

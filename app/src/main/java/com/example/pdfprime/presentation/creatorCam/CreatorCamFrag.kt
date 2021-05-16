@@ -1,9 +1,11 @@
 package com.example.pdfprime.presentation.creatorCam
 
 import android.app.Activity.RESULT_OK
+import android.content.ClipData
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -24,15 +26,16 @@ import com.example.pdfprime.presentation.di.Injector
 import com.example.pdfprime.presentation.dialogs.Dialogs
 import com.example.pdfprime.presentation.dialogs.NameDocDialogInterface
 import com.example.pdfprime.presentation.utils.Constants
-import com.example.pdfprime.presentation.utils.Constants.REQUEST_IMAGE_CAPTURE
-import com.example.pdfprime.presentation.utils.Constants.REQUEST_IMAGE_CROP
+import com.example.pdfprime.presentation.utils.Constants.*
 import com.example.pdfprime.presentation.utils.RendererCoroutines
 import com.example.pdfprime.presentation.utils.Utilities
 import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
 import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.CoroutineScope
@@ -96,16 +99,26 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
         adapter = CreatorCamRecyclerViewAdapter(arrayListOf(),creatorCamViewModel.getInterface())
 
         if(arguments != null) {
-            documents2Edit = requireArguments().getString(Constants.DOCUMENT, "")
-            if(documents2Edit.isNotEmpty()){
-                CoroutineScope(Dispatchers.IO).launch { context?.let {
-                    creatorCamViewModel.renderPages(documents2Edit,
-                        it
-                    ) }
+            val args = requireArguments()
+            if(args.containsKey(DOCUMENT)) {
+                documents2Edit = args.getString(DOCUMENT, "")
+                if (documents2Edit.isNotEmpty()) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        context?.let {
+                            creatorCamViewModel.renderPages(
+                                documents2Edit,
+                                it
+                            )
+                        }
+                    }
                 }
-            }else{
-                //Todo: se creara un pdf desde la camara
+            }
 
+            if(args.containsKey(IMAGES)){
+                val uris = args.getParcelable<ClipData>(IMAGES)
+                CoroutineScope(Dispatchers.IO).launch {
+                    creatorCamViewModel.renderPages(uris)
+                }
             }
         }
 
@@ -142,7 +155,7 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                         }
 
                         override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-                            Toast.makeText(activity,"This permission is required",Toast.LENGTH_LONG).show()
+                            Toast.makeText(activity,R.string.txtPermissionRequired,Toast.LENGTH_LONG).show()
                         }
 
                     }).check()
@@ -153,6 +166,12 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                     //creatorCamViewModel?.createPdf(direc,documents2Edit,adapter.getPages())
                     creatorCamViewModel?.createPdf()
                 }
+            }
+            ibGallery.setOnClickListener {
+                val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
+                fileIntent.type = "image/*"
+                fileIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true)
+                startActivityForResult(fileIntent, REQUEST_IMAGES_GAL)
             }
         }
     }
@@ -174,7 +193,7 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                 it)
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoUri)
                 //takePictureIntent.putExtra()
-                startActivityForResult(takePictureIntent,Constants.REQUEST_IMAGE_CAPTURE)
+                startActivityForResult(takePictureIntent,REQUEST_IMAGE_CAPTURE)
             }
             }
         }
@@ -237,6 +256,25 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                         UCrop.of(it1, Uri.fromFile(File(Utilities.Direc.img(), destinationFileName)))
                     }
                     uCrop!!.start(requireActivity(),this@CreatorCamFrag, REQUEST_IMAGE_CROP)
+
+//                    Dexter.withContext(activity)
+//                        .withPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE,
+//                                         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                                         android.Manifest.permission.CAMERA
+//                        ).withListener(object : MultiplePermissionsListener {
+//                            override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
+//
+//                            }
+//
+//                            override fun onPermissionRationaleShouldBeShown(
+//                                p0: MutableList<PermissionRequest>?,
+//                                p1: PermissionToken?
+//                            ) {
+//                                Toast.makeText(activity,R.string.txtPermissionRequired,Toast.LENGTH_LONG).show()
+//                            }
+//                        }
+//                        ).check()
+
                 }
             })
         }
@@ -263,6 +301,11 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                     creatorCamViewModel.newCroppedImage(uri)
 
 //                    uri?.let { ResultActivity.startWithUri(requireContext(), it) }
+                }
+                REQUEST_IMAGES_GAL -> {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        creatorCamViewModel.renderPages(data!!.clipData)
+                    }
                 }
             }
 

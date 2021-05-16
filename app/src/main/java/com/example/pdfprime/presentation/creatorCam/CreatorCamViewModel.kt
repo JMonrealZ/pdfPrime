@@ -1,8 +1,10 @@
 package com.example.pdfprime.presentation.creatorCam
 
+import android.content.ClipData
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pdfprime.App
@@ -67,6 +69,20 @@ class CreatorCamViewModel(
                 //pageNumberNewDoc++
             }
         }
+
+        pages.postValue(newPages)
+        isLoading.postValue(false)
+    }
+
+    fun renderPages(uris : ClipData?){
+        isLoading.postValue(true)
+        val newPages = if(pages.value == null)
+            ArrayList()
+        else
+            pages.value as ArrayList<Page>
+
+        for(index in 0 until uris!!.itemCount)
+            newPages.add(Page("",null, uris.getItemAt(index).uri,0))
 
         pages.postValue(newPages)
         isLoading.postValue(false)

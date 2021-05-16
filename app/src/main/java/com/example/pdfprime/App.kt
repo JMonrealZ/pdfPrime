@@ -14,6 +14,7 @@ import com.example.pdfprime.presentation.di.settings.SettingsSubcomponent
 import com.example.pdfprime.presentation.di.viewer.ViewerSubcomponent
 import com.example.pdfprime.presentation.settings.PageSize
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.Constants.*
 import com.example.pdfprime.presentation.utils.Utilities
 import com.tom_roush.pdfbox.pdmodel.common.PDRectangle
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader
@@ -74,17 +75,19 @@ class App : Application() , Injector{
 
         newDocBottomSheetOptions = ArrayList()
         newDocBottomSheetOptions.apply {
-            add(BottomSheetOption(R.drawable.ic_note_add_24,Constants.NEWDOC_DIS,R.string.titleButtonNewDocDis))
-            add(BottomSheetOption(R.drawable.ic_camera_24,Constants.NEWDOC_CAM,R.string.titleButtonNewDocCam))
+            add(BottomSheetOption(R.drawable.ic_note_add_24,NEWDOC_DIS,R.string.titleButtonNewDocDis))
+            add(BottomSheetOption(R.drawable.ic_add_photo_24,NEWDOC_GAL,R.string.titleButtonNewDocGal))
+            add(BottomSheetOption(R.drawable.ic_camera_24,NEWDOC_CAM,R.string.titleButtonNewDocCam))
 //            add(BottomSheetOption(R.drawable.ic_keyboard_24,Constants.NEWDOC_TXT,R.string.titleButtonNewDocTxt)) //I am not goint to implement this
+
         }
 
         clickDocBottomSheetOptions = ArrayList()
         clickDocBottomSheetOptions.apply {
-            add(BottomSheetOption(R.drawable.ic_open_in_full_24,Constants.DOC_OPEN,R.string.titleButtonOpenDoc))
-            add(BottomSheetOption(R.drawable.ic_edit_24,Constants.DOC_EDIT,R.string.titleButtonEditDoc))
-            add(BottomSheetOption(R.drawable.ic_share_24,Constants.DOC_SHARE,R.string.titleButtonShareDoc))
-            add(BottomSheetOption(R.drawable.ic_delete_24,Constants.DOC_DELETE,R.string.titleButtonDeleteDoc))
+            add(BottomSheetOption(R.drawable.ic_open_in_full_24,DOC_OPEN,R.string.titleButtonOpenDoc))
+            add(BottomSheetOption(R.drawable.ic_edit_24,DOC_EDIT,R.string.titleButtonEditDoc))
+            add(BottomSheetOption(R.drawable.ic_share_24,DOC_SHARE,R.string.titleButtonShareDoc))
+            add(BottomSheetOption(R.drawable.ic_delete_24,DOC_DELETE,R.string.titleButtonDeleteDoc))
         }
     }
 }

@@ -55,5 +55,7 @@
     <string name="txtAskFingerPrint">Request finger print on app starting</string>
     <string name="titleVerifyId">Identify yourself</string>
     <string name="txtVerifyId">Place your finger on the sensor</string>
+    <string name="titleButtonNewDocGal">Gallery</string>
+    <string name="txtPermissionRequired">This permission is required</string>
 
 </resources>

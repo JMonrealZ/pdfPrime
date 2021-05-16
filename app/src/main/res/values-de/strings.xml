@@ -46,5 +46,7 @@
     <string name="txtAskFingerPrint">a</string>
     <string name="titleVerifyId">a</string>
     <string name="txtVerifyId">a</string>
+    <string name="titleButtonNewDocGal">a</string>
+    <string name="txtPermissionRequired">a</string>
 
 </resources>

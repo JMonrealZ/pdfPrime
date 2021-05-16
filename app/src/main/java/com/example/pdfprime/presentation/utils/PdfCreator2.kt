@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import com.example.pdfprime.App
 import com.example.pdfprime.presentation.creatorCam.Page
+import com.example.pdfprime.presentation.utils.Constants.IMAGE_QUA_DEF
+import com.example.pdfprime.presentation.utils.Constants.IMAGE_QUA_K
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.pdmodel.PDPage
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream
@@ -57,7 +59,7 @@ object PdfCreator2 {
         val pageImage = JPEGFactory.createFromImage(
             document,
             resizedImage,
-            Utilities.Shp.getFloat(Constants.IMAGE_QUA_K,Constants.IMAGE_QUA_DEF)
+            Utilities.Shp.getFloat(IMAGE_QUA_K,IMAGE_QUA_DEF)
         )
 
         contentStream.drawImage(pageImage,0f,0f,defPDRectangle.width,defPDRectangle.height)

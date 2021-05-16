@@ -43,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:src="@drawable/pdfprime"/>
+            android:src="@drawable/pdfprimewhite"/>
     </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

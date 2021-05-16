@@ -46,5 +46,7 @@
     <string name="txtAskFingerPrint">Solicitar huella al arranque de la aplicación</string>
     <string name="titleVerifyId">Identificate</string>
     <string name="txtVerifyId">Coloca tu dedo sobre el sensor</string>
+    <string name="titleButtonNewDocGal">Galería</string>
+    <string name="txtPermissionRequired">El permiso es requerido</string>
 
 </resources>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pdfprime.App
 import com.example.pdfprime.R
 import com.example.pdfprime.presentation.utils.Constants
+import com.example.pdfprime.presentation.utils.Constants.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
@@ -33,9 +34,10 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(){
 
     private fun onOptionSelected( option : BottomSheetOption){
         when(option.idOption){
-            Constants.NEWDOC_DIS -> openFileBrowser()
-            Constants.NEWDOC_CAM -> NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorCamFrag)
-            Constants.NEWDOC_TXT -> NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorTxtFrag)
+            NEWDOC_DIS -> openFileBrowser()
+            NEWDOC_CAM -> NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorCamFrag)
+//            Constants.NEWDOC_TXT -> NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorTxtFrag)
+            NEWDOC_GAL -> openFileBrowserImages()
         }
         super.dismiss()
     }
@@ -44,9 +46,17 @@ class BottomSheetNewDoc() : BottomSheetDialogFragment(){
         parentFrag = fragment
     }
 
-    fun openFileBrowser(){
+    private fun openFileBrowser(){
         val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
         fileIntent.type = "application/pdf"
-        parentFrag.startActivityForResult(fileIntent,1)
+//        parentFrag.startActivityForResult(fileIntent,1)
+        parentFrag.startActivityForResult(fileIntent,NEWDOC_DIS)
+    }
+
+    private fun openFileBrowserImages(){
+        val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
+        fileIntent.type = "image/*"
+        fileIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true)
+        parentFrag.startActivityForResult(fileIntent,NEWDOC_GAL)
     }
 }
