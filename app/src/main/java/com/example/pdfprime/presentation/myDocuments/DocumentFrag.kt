@@ -238,7 +238,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
             Utilities.saveOnDisk(uri,name,App.storagePdf)
             RendererCoroutines.createFistPage(name)
         }
-        val newDoc = Document(0,name,size)
+        val newDoc = Document(0,name,size.toLong())
         CoroutineScope(Dispatchers.IO).launch{
             myDocumentsViewModel.insertPdf(newDoc)
         }

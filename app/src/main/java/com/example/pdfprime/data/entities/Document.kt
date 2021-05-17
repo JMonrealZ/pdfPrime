@@ -11,7 +11,7 @@ data class Document(
 
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "INDEX_DOC") var id: Int,
     @ColumnInfo(name = "NAME_DOC") var name : String,
-    @ColumnInfo(name = "SIZE_DOC") var size : Int,
+    @ColumnInfo(name = "SIZE_DOC") var size : Long,
     @Ignore var firstPage : Bitmap? = null,
     @Ignore var isSelected : Boolean = false
     ){

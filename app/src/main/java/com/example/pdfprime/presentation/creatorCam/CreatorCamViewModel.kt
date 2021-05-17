@@ -112,8 +112,9 @@ class CreatorCamViewModel(
     }
 
     suspend fun savePdf(docName : String){
-        newDocument.value?.save(File(Utilities.Direc.pdfs(),docName))
-        insertPdfUseCase.execute(Document(0,docName,50,null))
+        val file = File(Utilities.Direc.pdfs(),docName)
+        newDocument.value?.save(file)
+        insertPdfUseCase.execute(Document(0,docName, (file.length() / 1024L),null))
         finished.postValue(true)
     }
 
