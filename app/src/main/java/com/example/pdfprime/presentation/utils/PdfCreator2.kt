@@ -34,13 +34,13 @@ object PdfCreator2 {
             if(documentos[it.owner] != null)
                 newDoc.addPage(documentos[it.owner]?.getPage(it.originalPage))
             else
-                newDoc = newPageFromUri(newDoc,it.imageUri)
+                newDoc = newPageFromUri(newDoc,it.imageUri, it.originalPage)
         }
 
         return newDoc
     }
 
-    private fun newPageFromUri(document : PDDocument, pageUri : Uri?) : PDDocument{
+    private fun newPageFromUri(document : PDDocument, pageUri : Uri?, source : Int) : PDDocument{
         val defPDRectangle = getDefaultPDRectangle()
         var page = PDPage(defPDRectangle)
         document.addPage(page)
@@ -63,7 +63,8 @@ object PdfCreator2 {
         )
 
         contentStream.drawImage(pageImage,0f,0f,defPDRectangle.width,defPDRectangle.height)
-        page.rotation = 90
+        if(source == -1)
+            page.rotation = 90
 
         contentStream.close()
 

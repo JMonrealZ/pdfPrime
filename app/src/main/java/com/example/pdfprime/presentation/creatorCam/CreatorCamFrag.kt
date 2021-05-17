@@ -117,7 +117,8 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
             if(args.containsKey(IMAGES)){
                 val uris = args.getParcelable<ClipData>(IMAGES)
                 CoroutineScope(Dispatchers.IO).launch {
-                    creatorCamViewModel.renderPages(uris)
+                    if(uris != null)
+                        creatorCamViewModel.renderPages(uris)
                 }
             }
         }

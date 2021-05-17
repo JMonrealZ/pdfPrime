@@ -81,8 +81,9 @@ class CreatorCamViewModel(
         else
             pages.value as ArrayList<Page>
 
+        //-2 means that uri comes from gallery
         for(index in 0 until uris!!.itemCount)
-            newPages.add(Page("",null, uris.getItemAt(index).uri,0))
+            newPages.add(Page("",null, uris.getItemAt(index).uri,-2))
 
         pages.postValue(newPages)
         isLoading.postValue(false)
@@ -96,6 +97,7 @@ class CreatorCamViewModel(
     }
 
     fun newPageFromCamera(/*bitmap : Bitmap,*/ imageUri : Uri?){
+        //-1 means that uri comes from camera
         val newPage = Page("",null,imageUri,-1)
         val newPages =
             if(pages.value == null) mutableListOf()
