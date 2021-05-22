@@ -31,4 +31,6 @@ public class Constants {
 
     public static final float IMAGE_QUA_DEF = 0.2F;
     public static final Boolean ASK_FP_DEF = false;
+
+    public static final String DELIMITER = "*:?<>";
 }

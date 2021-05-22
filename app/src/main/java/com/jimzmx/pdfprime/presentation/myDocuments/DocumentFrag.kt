@@ -107,7 +107,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
             }
             ibEditMultiselection.setOnClickListener{
                 val bundle = Bundle()
-                bundle.putString(Constants.DOCUMENT,adapter.getDocsSelected())
+                bundle.putString(DOCUMENT,adapter.getDocsSelected())
                 NavHostFragment.findNavController(this@DocumentFrag).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
                 myDocumentsViewModel.cancelMultiselection()
             }
@@ -261,7 +261,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
 
     override fun onOpenDoc(document: Document) {
         val bundle = Bundle()
-        bundle.putString(Constants.DOCUMENT,document.name)
+        bundle.putString(DOCUMENT,document.name)
         NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_viewerFrag,bundle)
     }
 

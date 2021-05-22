@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.jimzmx.pdfprime.App
 import com.jimzmx.pdfprime.R
 import com.jimzmx.pdfprime.data.entities.Document
+import com.jimzmx.pdfprime.presentation.utils.Constants.DELIMITER
 import com.jimzmx.pdfprime.presentation.utils.Multiselection
 import kotlinx.android.synthetic.main.list_item_document.view.*
 import java.io.File
@@ -43,9 +44,11 @@ class DocumentRecyclerViewAdapter(private var documents : List<Document>,
         var docs = ""
         documents.forEach {
             if(it.isSelected)
-                docs += it.name + ","
+//                docs += it.name + ","
+                docs += it.name + DELIMITER
         }
-        docs = docs.substring(0,docs.length - 1)    //deleting final comma
+//        docs = docs.substring(0,docs.length - 1)    //deleting final comma
+        docs = docs.substring(0,docs.length - DELIMITER.length)    //deleting final delimiter
         return docs
     }
 

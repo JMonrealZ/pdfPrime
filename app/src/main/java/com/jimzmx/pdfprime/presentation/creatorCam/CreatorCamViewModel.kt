@@ -9,6 +9,7 @@ import com.jimzmx.pdfprime.App
 import com.jimzmx.pdfprime.data.entities.Document
 import com.jimzmx.pdfprime.domain.usecase.InsertPdfUseCase
 import com.jimzmx.pdfprime.presentation.utils.*
+import com.jimzmx.pdfprime.presentation.utils.Constants.DELIMITER
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import java.io.File
 
@@ -57,7 +58,10 @@ class CreatorCamViewModel(
         var newPages = ArrayList<Page>()
         var direc = File(context.filesDir,App.storagePdf)
 
-        var documentsToEditArray = if(docsName.contains(",")) docsName.split(",") else listOf(docsName)
+//        var documentsToEditArray = if(docsName.contains(",")) docsName.split(",") else listOf(docsName)
+        var documentsToEditArray =
+            if(docsName.contains(DELIMITER)) docsName.split(DELIMITER)
+            else listOf(docsName)
 
         //var pageNumberNewDoc = 0
         for(docName in documentsToEditArray) {
