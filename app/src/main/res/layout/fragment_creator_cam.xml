@@ -5,7 +5,7 @@
     <data>
         <variable
             name="creatorCamViewModel"
-            type="com.example.pdfprime.presentation.creatorCam.CreatorCamViewModel"/>
+            type="com.jimzmx.pdfprime.presentation.creatorCam.CreatorCamViewModel"/>
     </data>
 
 <FrameLayout
