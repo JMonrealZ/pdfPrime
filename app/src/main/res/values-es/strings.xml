@@ -48,5 +48,8 @@
     <string name="txtVerifyId">Coloca tu dedo sobre el sensor</string>
     <string name="titleButtonNewDocGal">Galería</string>
     <string name="txtPermissionRequired">El permiso es requerido</string>
+    <string name="titleSettingsPage">Página</string>
+    <string name="titleSettingsDoc">Documento</string>
+    <string name="titleSettingsSec">Seguridad</string>
 
 </resources>

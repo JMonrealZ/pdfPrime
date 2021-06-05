@@ -10,4 +10,7 @@
     <dimen name="imgSizeSquareBS">40dp</dimen>
 
     <dimen name="pbHeight">35dp</dimen>
+
+    <!--Title size of letters from settings fragment-->
+    <dimen name="titleSizeSettings">18sp</dimen>
 </resources>

@@ -48,5 +48,8 @@
     <string name="txtVerifyId">a</string>
     <string name="titleButtonNewDocGal">a</string>
     <string name="txtPermissionRequired">a</string>
+    <string name="titleSettingsPage">a</string>
+    <string name="titleSettingsDoc">a</string>
+    <string name="titleSettingsSec">a</string>
 
 </resources>

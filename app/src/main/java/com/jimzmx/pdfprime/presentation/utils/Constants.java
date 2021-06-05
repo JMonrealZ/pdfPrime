@@ -20,17 +20,15 @@ public class Constants {
     public static final int REQUEST_IMAGE_CROP = 201;
     public static final int REQUEST_IMAGES_GAL = 202;
 
-    //Keys of shared preferences
-    public static final String PAGE_SIZE = "PAGE_SIZE";
-
-
     //Default values for first instalation
+    public static final String PAGE_SIZE_K = "PAGE_SIZE_K";
     public static final String IMAGE_QUA_K = "IMAGE_QUA_K";
     public static final String ASK_FP_K = "ASK_FP_K";
 
 
     public static final float IMAGE_QUA_DEF = 0.2F;
     public static final Boolean ASK_FP_DEF = false;
+    public static final String PAGE_SIZE_DEF = "[0.0,0.0,612.0,792.0]";
 
     public static final String DELIMITER = "*:?<>";
 }

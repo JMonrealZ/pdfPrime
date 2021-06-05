@@ -45,6 +45,7 @@ class SettingsFrag : Fragment(){
 
         adapter = PageSizeAdapter(requireContext(),R.layout.list_item_page_size, mutableListOf())
         binding.spPageSize.adapter = adapter
+        binding.settingsViewModel = settingsViewModel
     }
 
     private fun setListeners(){
@@ -60,15 +61,16 @@ class SettingsFrag : Fragment(){
                 adapter.clear()
                 adapter.addAll(it)
             })
-            getImagesPagesQuality().observe(viewLifecycleOwner, Observer {
+            imagesPagesQuality.observe(viewLifecycleOwner, Observer {
                 binding.apply {
                     tvPageQuality.text = (it * 100F).toString()
                 }
             })
+            pageSizeDef.observe(viewLifecycleOwner, Observer {
+                val index = settingsViewModel.getPagesSizes().value?.indexOf(it)
+                binding.spPageSize.setSelection(index!!)
+            })
         }
-
-
-
     }
 
     private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener{

@@ -57,5 +57,8 @@
     <string name="txtVerifyId">Place your finger on the sensor</string>
     <string name="titleButtonNewDocGal">Gallery</string>
     <string name="txtPermissionRequired">This permission is required</string>
+    <string name="titleSettingsPage">Page</string>
+    <string name="titleSettingsDoc">Document</string>
+    <string name="titleSettingsSec">Security</string>
 
 </resources>

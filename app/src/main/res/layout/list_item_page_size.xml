@@ -26,14 +26,16 @@
             android:layout_height="wrap_content"
             android:text="A0"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp"/>
 
         <TextView
             android:id="@+id/tvPageSizeDimen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1500 mm X 1500 mm"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            android:layout_marginLeft="3dp"/>
 
     </LinearLayout>
 

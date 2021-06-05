@@ -70,7 +70,7 @@ object PdfCreator2 {
     }
 
     private fun getDefaultPDRectangle() : PDRectangle{
-        val defaultPageSize = Utilities.Shp.getString(Constants.PAGE_SIZE,PDRectangle.A0.toString())
+        val defaultPageSize = Utilities.Shp.getString(Constants.PAGE_SIZE_K,PDRectangle.A0.toString())
         var pageSize : PDRectangle = PDRectangle.A0
         App.pageSizes.forEach {
             if(defaultPageSize == it.pdRectangleName)

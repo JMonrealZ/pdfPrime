@@ -2,6 +2,14 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="settingsViewModel"
+            type="com.jimzmx.pdfprime.presentation.settings.SettingsViewModel"
+            />
+    </data>
+
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,16 +19,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tvPageSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titleSettingsDoc"
+            android:layout_marginStart="5dp"
+            android:textSize="@dimen/titleSizeSettings"
+            android:textStyle="bold"/>
+
         <LinearLayout
             android:id="@+id/llPageSize"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_below="@id/tvPageSettings">
 
             <TextView
                 android:id="@+id/tvPageSize"
@@ -62,21 +78,41 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:max="100"
-                android:min="0"/>
+                android:min="0"
+                android:progress="@{settingsViewModel.imagesPagesQuality.intValue()}"/>
 
             <TextView
                 android:id="@+id/tvPageQuality"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textAlignment="center"/>
 
         </LinearLayout>
+
+        <View
+            android:id="@+id/vDoc"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackDocDetails"
+            android:layout_below="@+id/llQualityImages"/>
+
+        <TextView
+            android:id="@+id/tvSecuritySettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titleSettingsSec"
+            android:layout_marginStart="5dp"
+            android:textSize="@dimen/titleSizeSettings"
+            android:layout_below="@+id/vDoc"
+            android:textStyle="bold"/>
+
 
         <LinearLayout
             android:id="@+id/llFingerPrint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/llQualityImages"
+            android:layout_below="@id/tvSecuritySettings"
             android:orientation="horizontal">
 
             <TextView
