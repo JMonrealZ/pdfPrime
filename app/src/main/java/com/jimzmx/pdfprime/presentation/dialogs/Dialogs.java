@@ -8,14 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.jimzmx.pdfprime.App;
 import com.jimzmx.pdfprime.R;
 import com.jimzmx.pdfprime.presentation.utils.Utilities;
+
+import org.w3c.dom.Text;
+
+import static com.jimzmx.pdfprime.presentation.utils.Constants.NSAF_NOT_EDITABLE_PAGE_K;
 
 public class Dialogs {
     public static AlertDialog dialog;
@@ -131,6 +138,33 @@ public class Dialogs {
                 imm.showSoftInput(etDocNameDialog, InputMethodManager.SHOW_IMPLICIT);
             }
         },150);
+    }
+
+    public static void createMessageDialog(Context ctx,LayoutInflater layoutInflater, int icon, int message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        View customLayout = layoutInflater.inflate(R.layout.dialog_user_message, null);
+        builder.setView(customLayout);
+
+        ImageView ivMessage = customLayout.findViewById(R.id.ivMessage);
+        TextView tvMessage = customLayout.findViewById(R.id.tvMessage);
+        final CheckBox chbNotShowAgain = customLayout.findViewById(R.id.chbNotShowAgain);
+        Button btnAceptar = customLayout.findViewById(R.id.btnAceptar);
+
+        ivMessage.setImageResource(icon);
+        tvMessage.setText(message);
+
+        dialog = builder.create();
+
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utilities.Shp.INSTANCE.setBoolean(NSAF_NOT_EDITABLE_PAGE_K, chbNotShowAgain.isChecked());
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
     }
 
     public static void dissmis(){

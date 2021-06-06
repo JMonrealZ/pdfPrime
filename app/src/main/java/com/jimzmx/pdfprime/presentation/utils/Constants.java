@@ -24,11 +24,13 @@ public class Constants {
     public static final String PAGE_SIZE_K = "PAGE_SIZE_K";
     public static final String IMAGE_QUA_K = "IMAGE_QUA_K";
     public static final String ASK_FP_K = "ASK_FP_K";
+    public static final String NSAF_NOT_EDITABLE_PAGE_K = "NSAF_NOT_EDITABLE_PAGE_K"; //NOT SHOW AGAIN FLAG
 
 
     public static final float IMAGE_QUA_DEF = 0.2F;
     public static final Boolean ASK_FP_DEF = false;
     public static final String PAGE_SIZE_DEF = "[0.0,0.0,612.0,792.0]";
+    public static final Boolean NSAF_NOT_EDITABLE_PAGE_DEF = false;
 
     public static final String DELIMITER = "*:?<>";
 }

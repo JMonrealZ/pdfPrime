@@ -120,6 +120,9 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
         }
 
         itemTouchHelper.attachToRecyclerView(binding.rvPages)
+
+//        creatorCamViewModel.setLayoutInflater(layoutInflater)
+        creatorCamViewModel.setContext(requireActivity())
     }
 
     private fun initRecyclerView() {

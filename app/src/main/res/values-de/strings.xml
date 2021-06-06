@@ -51,5 +51,8 @@
     <string name="titleSettingsPage">a</string>
     <string name="titleSettingsDoc">a</string>
     <string name="titleSettingsSec">a</string>
+    <string name="titleCheckboxNotShowAgain">a</string>
+    <string name="txtAccept">a</string>
+    <string name="txtNotEditablePage">a</string>
 
 </resources>

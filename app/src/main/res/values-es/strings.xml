@@ -51,5 +51,8 @@
     <string name="titleSettingsPage">Página</string>
     <string name="titleSettingsDoc">Documento</string>
     <string name="titleSettingsSec">Seguridad</string>
+    <string name="titleCheckboxNotShowAgain">No mostrar de nuevo</string>
+    <string name="txtAccept">Aceptar</string>
+    <string name="txtNotEditablePage">Solo imagenes pueden ser editadas por el momento</string>
 
 </resources>
