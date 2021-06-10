@@ -107,6 +107,20 @@ class CreatorCamViewModel(
         isLoading.postValue(false)
     }
 
+    fun renderPage(uri : Uri){
+        isLoading.postValue(true)
+        val newPages = if(pages.value == null)
+            ArrayList()
+        else
+            pages.value as ArrayList<Page>
+
+        //-2 means that uri comes from gallery
+        newPages.add(Page("",null, uri /*uris.getItemAt(index).uri*/,-2))
+
+        pages.postValue(newPages)
+        isLoading.postValue(false)
+    }
+
     fun createPdf(){
         isLoading.postValue(true)
         val newDocume = PdfCreator2.createPdf(pages.value!!.toMutableList())

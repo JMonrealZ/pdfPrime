@@ -304,7 +304,10 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                 }
                 REQUEST_IMAGES_GAL -> {
                     CoroutineScope(Dispatchers.IO).launch {
-                        creatorCamViewModel.renderPages(data!!.clipData)
+                        if(data!!.clipData != null)
+                            creatorCamViewModel.renderPages(data.clipData)
+                        else
+                            data.data?.let { creatorCamViewModel.renderPage(it) }
                     }
                 }
             }
