@@ -15,6 +15,7 @@ public class Constants {
     //Name of data between destinations
     public static final String DOCUMENT = "DOCUMENT";
     public static final String IMAGES = "IMAGES";
+    public static final String IMAGE = "IMAGE";
 
     public static final int REQUEST_IMAGE_CAPTURE = 200;
     public static final int REQUEST_IMAGE_CROP = 201;

@@ -216,7 +216,11 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
 
                 NEWDOC_GAL ->{
                     val bundle = Bundle()
-                    bundle.putParcelable(IMAGES,data!!.clipData)
+                    if(data!!.clipData != null)
+                        bundle.putParcelable(IMAGES, data.clipData)
+                    else if(data.data != null)
+                        bundle.putParcelable(IMAGE,data.data)
+
                     NavHostFragment.findNavController(this@DocumentFrag).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
 
                 }

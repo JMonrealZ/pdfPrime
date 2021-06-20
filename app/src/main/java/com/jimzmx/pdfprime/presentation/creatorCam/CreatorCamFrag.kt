@@ -117,6 +117,13 @@ class CreatorCamFrag : Fragment() , NameDocDialogInterface{
                         creatorCamViewModel.renderPages(uris)
                 }
             }
+
+            if(args.containsKey(IMAGE)){
+                val uri = args.getParcelable<Uri>(IMAGE)
+                CoroutineScope(Dispatchers.IO).launch {
+                    creatorCamViewModel.renderPage(uri!!)
+                }
+            }
         }
 
         itemTouchHelper.attachToRecyclerView(binding.rvPages)
