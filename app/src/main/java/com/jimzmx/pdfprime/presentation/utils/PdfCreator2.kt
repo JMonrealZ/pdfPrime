@@ -61,8 +61,10 @@ object PdfCreator2 {
         )
 
         contentStream.drawImage(pageImage,0f,0f,defPDRectangle.width,defPDRectangle.height)
-        if(source == -1)
-            page.rotation = 90
+
+//        if(source == -1)
+//            page.rotation = 90
+        page.rotation = pageUri!!.fixRotation()
 
         contentStream.close()
 
