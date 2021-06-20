@@ -54,5 +54,6 @@
     <string name="titleCheckboxNotShowAgain">a</string>
     <string name="txtAccept">a</string>
     <string name="txtNotEditablePage">a</string>
+    <string name="txtBackAgainToExit">a</string>
 
 </resources>

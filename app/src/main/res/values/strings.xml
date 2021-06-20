@@ -64,5 +64,6 @@
     <string name="titleCheckboxNotShowAgain">Not show again</string>
     <string name="txtAccept">Accept</string>
     <string name="txtNotEditablePage">Only pictures are editable for now.</string>
+    <string name="txtBackAgainToExit">Press again to exit</string>
 
 </resources>
