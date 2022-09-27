@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:text="@string/titleReachus"
             android:textAlignment="center"
-            android:textStyle="bold"
-            android:textSize="35sp"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvAboutMe"
@@ -40,11 +40,11 @@
             android:id="@+id/titleThanks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tvEmail"
             android:text="@string/titleButtonThanks"
             android:textAlignment="center"
-            android:textStyle="bold"
-            android:textSize="35sp"
-            android:layout_below="@id/tvEmail"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvThanks"

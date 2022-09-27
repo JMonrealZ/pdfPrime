@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">PdfPrime</string>
+    <string name="app_name" translatable="false">PdfPrime</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
 
@@ -21,8 +20,8 @@
     <string name="txtFileAlreadyExists">There is already a file with this name</string>
 
     <string name="txtPreviewRendering">Rendering %s of %s</string>
-    <string name="txtPreviewRenderingDocument">%s,rendering %s de %s</string>
-    <string name="txtPreviewCreating">Extracting page %s of %s</string>
+    <string name="txtPreviewRenderingDocument">%s,rendering %s of %s</string>
+    <string name="txtPreviewCreating">Extracting pages %s of %s</string>
     <string name="txtCreatingDocument">Creating new document…</string>
 
     <!--Texto de botones de navegacion-->
@@ -50,9 +49,9 @@
     <string name="titleReachus">About us</string>
     <string name="txtAboutMe">This complete application has been developed only by me, Ivan Monreal. You can share your experience using this app sending us a mail to the next mail:</string>
     <string name="txtEmail" translatable="false"><u>ivan.monreal@hotmail.com</u></string>
-    <string name="txtThanks">I thank to all developers who had invested their time doing incredible job and making open source projects, without them I would never be possible to finish this app, I will mention them then:</string>
+    <string name="txtThanks">I thank to all developers who had invested their time doing incredible job and making open source projects, without them I would never be possible to finish this app:</string>
     <string name="txtSubjectEmail">Feedback pdfprime</string>
-    <string name="txtAskFingerPrint">Request finger print on app starting</string>
+    <string name="txtAskFingerPrint">Request fingerprint on app starting</string>
     <string name="titleVerifyId">Identify yourself</string>
     <string name="txtVerifyId">Place your finger on the sensor</string>
     <string name="titleButtonNewDocGal">Gallery</string>
@@ -65,5 +64,6 @@
     <string name="txtAccept">Accept</string>
     <string name="txtNotEditablePage">Only pictures are editable for now.</string>
     <string name="txtBackAgainToExit">Press again to exit</string>
+    <string name="titleSettingsLanguage">Language</string>
 
 </resources>

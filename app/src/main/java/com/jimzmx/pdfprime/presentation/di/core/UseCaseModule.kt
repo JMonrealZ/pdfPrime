@@ -41,4 +41,9 @@ class UseCaseModule {
 //    fun createPdfUseCase(direc : File, oldDocName : String, list : MutableList<Page>, progressUpdater: ProgressUpdater) : CreatePdfUseCase {
 //        return CreatePdfUseCase(direc,oldDocName,list,progressUpdater)
 //    }
+
+    @Provides
+    fun setLanguageUseCase() : SetLenguageUseCase {
+        return SetLenguageUseCase()
+    }
 }

@@ -1,5 +1,6 @@
 package com.jimzmx.pdfprime.presentation.di.settings
 
+import com.jimzmx.pdfprime.domain.usecase.SetLenguageUseCase
 import com.jimzmx.pdfprime.presentation.settings.SettingsViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -9,7 +10,7 @@ class SettingsModule {
 
     @SettingsScope
     @Provides
-    fun provideSettingsViewModelFactory() : SettingsViewModelFactory{
-        return SettingsViewModelFactory()
+    fun provideSettingsViewModelFactory(setLenguageUseCase: SetLenguageUseCase) : SettingsViewModelFactory{
+        return SettingsViewModelFactory(setLenguageUseCase)
     }
 }

@@ -34,4 +34,9 @@ public class Constants {
     public static final Boolean NSAF_NOT_EDITABLE_PAGE_DEF = false;
 
     public static final String DELIMITER = "*:?<>";
+
+    public static final String LanSpa = "es";
+    public static final String LanGer = "de";
+    public static final String LanEng = "en";
+
 }

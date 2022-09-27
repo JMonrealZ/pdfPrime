@@ -1,5 +1,6 @@
 package com.jimzmx.pdfprime.presentation.settings
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.jimzmx.pdfprime.R
 import com.jimzmx.pdfprime.databinding.FragmentSettingsBinding
 import com.jimzmx.pdfprime.presentation.di.Injector
+import com.jimzmx.pdfprime.presentation.utils.Constants
+import com.jimzmx.pdfprime.presentation.utils.Test
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -31,7 +38,7 @@ class SettingsFrag : Fragment(){
         initVariables(inflater,container)
         setListeners()
         setObservers()
-        initBiometrics()
+        //initBiometrics()
         return binding.root
     }
 
@@ -52,7 +59,36 @@ class SettingsFrag : Fragment(){
         binding.apply {
             spPageSize.onItemSelectedListener = onItemSelectedListener
             sbPageQuality.setOnSeekBarChangeListener(onSeekBarChangeListener)
+
+            //TODO: change the location of these lines to use cases
+            ivSpanish.setOnClickListener{
+//                Test.setLenguage(context, "es")
+                setLenguage(Constants.LanSpa)
+            }
+            ivEnglish.setOnClickListener{
+//                Test.setLenguage(context, "en")
+                setLenguage(Constants.LanEng)
+            }
+            ivGerman.setOnClickListener{
+//                Test.setLenguage(context, "de")
+                setLenguage(Constants.LanGer)
+
+            }
+            ivTrash.setOnClickListener {
+                Test.getLenguage()
+            }
+
+
+
         }
+    }
+
+    private fun setLenguage(Lan : String){
+        CoroutineScope(Dispatchers.IO).launch {
+            context?.let { settingsViewModel.setLaguage(it,Lan) }
+        }
+
+        (context as Activity).recreate()
     }
 
     private fun setObservers(){
@@ -113,4 +149,10 @@ class SettingsFrag : Fragment(){
             }
         }
     }
+
+//    fun setLanguage(){
+//
+//        Test.setLenguage(context)
+//
+//    }
 }

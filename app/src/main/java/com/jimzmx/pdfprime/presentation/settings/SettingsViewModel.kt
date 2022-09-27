@@ -1,13 +1,18 @@
 package com.jimzmx.pdfprime.presentation.settings
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jimzmx.pdfprime.App
+import com.jimzmx.pdfprime.domain.usecase.SetLenguageUseCase
 import com.jimzmx.pdfprime.presentation.utils.Constants
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.jimzmx.pdfprime.presentation.utils.Utilities
+import kotlinx.coroutines.withContext
 
-class SettingsViewModel : ViewModel() {
+class SettingsViewModel(
+    private val setLenguageUseCase: SetLenguageUseCase
+) : ViewModel() {
     private var pagesSizes : MutableLiveData<MutableList<PageSize>> = MutableLiveData(App.pageSizes)
     var pageSizeDef : MutableLiveData<PageSize> = MutableLiveData(
         App.pageSizes.first {
@@ -42,9 +47,13 @@ class SettingsViewModel : ViewModel() {
     fun updateAskBiometricFlag(requestFp : Boolean) = askBiometricFlag.postValue(requestFp)
     fun updateBiometricEnrollFlag(hasEnrolledFp : Boolean) = nonBiometricEnrollFlag.postValue(hasEnrolledFp)
 
+    fun setLaguage(ctx : Context, lan : String){
+        setLenguageUseCase.execute(ctx ,lan)
+    }
+
     init {
         //Loading custom page sizes and setting default
-        val pageSizeDefault = Utilities.Shp.getString(Constants.PAGE_SIZE_K)
+        val pageSizeDefault = Utilities.Shp.getString(PAGE_SIZE_K)
         val newPagesSizes = pagesSizes.value
         if(pageSizeDefault == "")
             newPagesSizes!![0].isSelected = true

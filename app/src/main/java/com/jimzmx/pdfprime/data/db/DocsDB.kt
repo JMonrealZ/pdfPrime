@@ -6,7 +6,7 @@ import com.jimzmx.pdfprime.data.entities.Document
 
 @Database(entities = [Document::class],
     version = 1,
-    exportSchema = false
+    exportSchema = false //Todo: What exactly this means?
 )
 abstract class DocsDB : RoomDatabase(){
     abstract fun documentsDao() : DocumentsDao

@@ -1,59 +1,58 @@
 <resources>
-    <string name="app_name">PdfPrime</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="titleNewDoc">a</string>
-    <string name="titleButtonNewDocDis">a</string>
-    <string name="titleButtonNewDocCam">a</string>
-    <string name="titleButtonNewDocTxt">a</string>
-    <string name="titleButtonSaveDoc">a</string>
-    <string name="titleButtonDiscardDoc">a</string>
+    <string name="titleNewDoc">Neues Dokument</string>
+    <string name="titleButtonNewDocDis">Gerät</string>
+    <string name="titleButtonNewDocCam">Kamera</string>
+    <string name="titleButtonNewDocTxt">Texteditor</string>
+    <string name="titleButtonSaveDoc">Sparen</string>
+    <string name="titleButtonDiscardDoc">Verwerfen</string>
 
-    <string name="titleButtonEditDoc">a</string>
-    <string name="titleButtonShareDoc">a</string>
-    <string name="titleButtonDeleteDoc">a</string>
-    <string name="titleButtonOpenDoc">a</string>
+    <string name="titleButtonEditDoc">Bearbeiten</string>
+    <string name="titleButtonShareDoc">Teilen</string>
+    <string name="titleButtonDeleteDoc">Löschen</string>
+    <string name="titleButtonOpenDoc">Offen</string>
 
-    <string name="txtWriteSomething">a</string>
-    <string name="txtFileAlreadyExists">a</string>
+    <string name="txtWriteSomething">Bitte schreiben Sie einen gültigen Namen</string>
+    <string name="txtFileAlreadyExists">Es gibt bereits eine Datei mit diesem Namen</string>
 
-    <string name="txtPreviewRendering">a</string>
-    <string name="txtPreviewRenderingDocument">a</string>
-    <string name="txtPreviewCreating">a</string>
-    <string name="txtCreatingDocument">a</string>
+    <string name="txtPreviewRendering">Rendern %s von %s</string>
+    <string name="txtPreviewRenderingDocument">%s, rendern %s von %s</string>
+    <string name="txtPreviewCreating">Seiten von %s extrahieren</string>
+    <string name="txtCreatingDocument">Neues Dokument erstellen…</string>
 
     <!--Texto de botones de navegacion-->
-    <string name="titleButtonHome">a</string>
-    <string name="titleButtonCamara">a</string>
-    <string name="titleButtonRateUs">a</string>
-    <string name="titleButtonReachUs">a</string>
-    <string name="titleButtonThanks">a</string>
-    <string name="titleButtonAboutUs">a</string>
-    <string name="titleButtonSettings">a</string>
-    <string name="hello_blank_fragment">a</string>
-    <string name="Open">a</string>
-    <string name="Close">a</string>
-    <string name="titlePageSize">a</string>
-    <string name="letterSize">a</string>
-    <string name="legalSize">a</string>
-    <string name="headerSpinnerPageSize">a</string>
-    <string name="titleChooseNameDoc">a</string>
-    <string name="titleImagePageQuality">a</string>
-    <string name="titleReachus">a</string>
-    <string name="txtAboutMe">a</string>
-    <string name="txtThanks">a</string>
-    <string name="txtSubjectEmail">a</string>
-    <string name="txtAskFingerPrint">a</string>
-    <string name="titleVerifyId">a</string>
-    <string name="txtVerifyId">a</string>
-    <string name="titleButtonNewDocGal">a</string>
-    <string name="txtPermissionRequired">a</string>
-    <string name="titleSettingsPage">a</string>
-    <string name="titleSettingsDoc">a</string>
-    <string name="titleSettingsSec">a</string>
-    <string name="titleCheckboxNotShowAgain">a</string>
-    <string name="txtAccept">a</string>
-    <string name="txtNotEditablePage">a</string>
-    <string name="txtBackAgainToExit">a</string>
+    <string name="titleButtonHome">Startseite</string>
+    <string name="titleButtonCamara">Kamera</string>
+    <string name="titleButtonRateUs">Bewerten Sie uns</string>
+    <string name="titleButtonReachUs">Erreichen Sie uns/Anerkennungen</string>
+    <string name="titleButtonThanks">Anerkennung</string>
+    <string name="titleButtonAboutUs">Über uns</string>
+    <string name="titleButtonSettings">Einstellungen</string>
+    <string name="Open">Offen</string>
+    <string name="Close">schließen</string>
+    <string name="titlePageSize">Seitengröße</string>
+    <string name="letterSize">Buchstabenseitengröße</string>
+    <string name="legalSize">legale Seitengröße</string>
+    <string name="headerSpinnerPageSize">Wählen Sie eine Seitengröße aus</string>
+    <string name="titleChooseNameDoc">Schreiben Sie einen Namen für dieses Dokument</string>
+    <string name="titleImagePageQuality">Qualität der Bilder</string>
+    <string name="titleReachus">Über uns</string>
+    <string name="txtAboutMe">Diese vollständige Anwendung wurde nur von mir, Ivan Monreal, entwickelt. Sie können Ihre Erfahrungen mit dieser App teilen und uns eine E -Mail an die nächste Mail senden:</string>
+    <string name="txtThanks">Ich danke allen Entwicklern, die ihre Zeit investiert hatten, um unglaubliche Arbeit zu leisten und Open -Source -Projekte zu machen, ohne sie wäre ich niemals möglich, diese App zu beenden:</string>
+    <string name="txtSubjectEmail">Feedback pdfprime</string>
+    <string name="txtAskFingerPrint">Fordern Sie den Fingerabdruck auf App Start an</string>
+    <string name="titleVerifyId">Identifizieren Sie sich</string>
+    <string name="txtVerifyId">Legen Sie Ihren Finger auf den Sensor</string>
+    <string name="titleButtonNewDocGal">Galerie</string>
+    <string name="txtPermissionRequired">Diese Genehmigung ist erforderlich</string>
+    <string name="titleSettingsPage">Buchseite</string>
+    <string name="titleSettingsDoc">Dokumentieren</string>
+    <string name="titleSettingsSec">Sicherheit</string>
+    <string name="titleCheckboxNotShowAgain">Nicht noch einmal zeigen</string>
+    <string name="txtAccept">Annehmen</string>
+    <string name="txtNotEditablePage">Für den Moment sind nur Bilder bearbeitet.</string>
+    <string name="txtBackAgainToExit">Drücken Sie erneut, um zu beenden</string>
+    <string name="titleSettingsLanguage">Sprache</string>
 
 </resources>

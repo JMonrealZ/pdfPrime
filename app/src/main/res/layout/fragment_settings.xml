@@ -23,10 +23,10 @@
             android:id="@+id/tvPageSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titleSettingsDoc"
             android:layout_marginStart="5dp"
+            android:text="@string/titleSettingsDoc"
             android:textSize="@dimen/titleSizeSettings"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/llPageSize"
@@ -44,7 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="@string/titlePageSize"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="@dimen/textSizeSettings"/>
 
             <Spinner
                 android:id="@+id/spPageSize"
@@ -53,7 +54,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/outline_spinner"
                 android:spinnerMode="dropdown"
-                tools:listitem="@layout/list_item_page_size" />
+                tools:listitem="@layout/list_item_page_size"/>
 
         </LinearLayout>
 
@@ -61,9 +62,10 @@
             android:id="@+id/tvTitlePageQuality"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/llPageSize"
             android:text="@string/titleImagePageQuality"
             android:textAlignment="center"
-            android:layout_below="@id/llPageSize"/>
+            android:textSize="@dimen/textSizeSettings"/>
 
         <LinearLayout
             android:id="@+id/llQualityImages"
@@ -97,15 +99,15 @@
             android:background="@color/colorBackDocDetails"
             android:layout_below="@+id/llQualityImages"/>
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tvSecuritySettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titleSettingsSec"
-            android:layout_marginStart="5dp"
-            android:textSize="@dimen/titleSizeSettings"
             android:layout_below="@+id/vDoc"
-            android:textStyle="bold"/>
+            android:layout_marginStart="5dp"
+            android:text="@string/titleSettingsSec"
+            android:textSize="@dimen/titleSizeSettings"
+            android:textStyle="bold" />
 
 
         <LinearLayout
@@ -128,7 +130,54 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
 
+        </LinearLayout>-->
+
+        <TextView
+            android:id="@+id/tvLenguageSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vDoc"
+            android:layout_marginStart="5dp"
+            android:text="@string/titleSettingsLanguage"
+            android:textSize="@dimen/titleSizeSettings"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvLenguageSettings"
+            android:layoutDirection="ltr">
+
+            <ImageView
+                android:id="@+id/ivSpanish"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_mexico"/>
+
+            <ImageView
+                android:id="@+id/ivEnglish"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_usa"/>
+
+            <ImageView
+                android:id="@+id/ivGerman"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_germany"/>
+
+            <ImageView
+                android:id="@+id/ivTrash"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_germany"/>
+
         </LinearLayout>
+
+
+
+
+
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>
