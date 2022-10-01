@@ -2,6 +2,7 @@ package com.jimzmx.pdfprime
 
 import android.app.Application
 import android.content.Context
+import android.graphics.BitmapFactory
 import com.jimzmx.pdfprime.presentation.bottomSheetMenus.BottomSheetOption
 import com.jimzmx.pdfprime.presentation.di.Injector
 import com.jimzmx.pdfprime.presentation.di.core.AppComponent
@@ -11,6 +12,7 @@ import com.jimzmx.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.jimzmx.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import com.jimzmx.pdfprime.presentation.di.settings.SettingsSubcomponent
 import com.jimzmx.pdfprime.presentation.di.viewer.ViewerSubcomponent
+import com.jimzmx.pdfprime.presentation.reachus.Acknowledgement
 import com.jimzmx.pdfprime.presentation.settings.PageSize
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.tom_roush.pdfbox.pdmodel.common.PDRectangle
@@ -34,6 +36,12 @@ class App : Application() , Injector{
             add(PageSize(PDRectangle.A4,PDRectangle.A4.toString(),getString(R.string.A4),"",false))
             add(PageSize(PDRectangle.A5,PDRectangle.A5.toString(),getString(R.string.A5),"",false))
             add(PageSize(PDRectangle.A6,PDRectangle.A6.toString(),getString(R.string.A6),"",false))
+        }
+
+        acknowledgements = mutableListOf<Acknowledgement>().apply {
+//            add(Acknowledgement(R.drawable.ic_camera_24, "testa","testb","testc")) //todo: add acknoledgements
+            add(Acknowledgement(R.mipmap.ic_mexico, getString(R.string.titleAckFlaticon),getString(R.string.txtAckFlaticon),getString(R.string.urlAckFlaticon)))
+//            add(Acknowledgement(R.mipmap.ic_mexico, getString(R.string.),getString(R.string.),getString(R.string.)))
         }
     }
 
@@ -61,6 +69,7 @@ class App : Application() , Injector{
         lateinit var clickDocBottomSheetOptions : ArrayList<BottomSheetOption>
         lateinit var appContext : Context
         lateinit var pageSizes : MutableList<PageSize>
+        lateinit var acknowledgements : MutableList<Acknowledgement>
     }
 
     init{

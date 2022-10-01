@@ -124,7 +124,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
                 context?.let { it1 -> adapter.setList(it, it1) }
             }
             else
-                Toast.makeText(context,"nothing found",Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"nothing found",Toast.LENGTH_LONG).show() //todo: modify this line to use it with translator android
         })
         myDocumentsViewModel.getIsmultiselectionObserver().observe(viewLifecycleOwner, Observer{
             if(it != null){
@@ -249,7 +249,7 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
 
     override fun onEditDoc(document: Document) {
         val bundle = Bundle()
-        bundle.putString(Constants.DOCUMENT,document.name)
+        bundle.putString(DOCUMENT,document.name)
         NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
     }
 

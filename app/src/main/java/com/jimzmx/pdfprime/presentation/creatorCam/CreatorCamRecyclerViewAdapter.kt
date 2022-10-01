@@ -96,9 +96,9 @@ class PageViewHolder(val view : View,
             Glide.with(this).load(
                 if(page.image != null) page.image
                 else page.imageUri
-            ).into(ivImage)
+            ).into(ivImagePage)
             tvDeletePage.setOnClickListener { clickListenerDelete(/*page*/adapterPosition)}
-            ivImage.setOnClickListener{clickListener(page)} //(click listener to the complete view)
+            ivImagePage.setOnClickListener{clickListener(page)} //(click listener to the complete view)
         }
     }
 }

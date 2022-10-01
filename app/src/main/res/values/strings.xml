@@ -4,7 +4,7 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
 
-    <string name="titleNewDoc">New document</string>
+    <string name="titleNewDoc">https://www.flaticon.es/</string>
     <string name="titleButtonNewDocDis">Device</string>
     <string name="titleButtonNewDocCam">Camera</string>
     <string name="titleButtonNewDocTxt">Text editor</string>
@@ -65,5 +65,8 @@
     <string name="txtNotEditablePage">Only pictures are editable for now.</string>
     <string name="txtBackAgainToExit">Press again to exit</string>
     <string name="titleSettingsLanguage">Language</string>
+    <string name="titleAckFlaticon" translatable="false">Flaticon</string>
+    <string name="urlAckFlaticon" translatable="false">https://www.flaticon.es/</string>
+    <string name="txtAckFlaticon">Flag icons created by Freepik</string>
 
 </resources>

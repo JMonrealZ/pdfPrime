@@ -14,4 +14,6 @@
     <!--Title size of letters from settings fragment-->
     <dimen name="titleSizeSettings">14sp</dimen>
     <dimen name="textSizeSettings">12sp</dimen>
+
+    <dimen name="imgSizeAcknowledgement">50dp</dimen>
 </resources>

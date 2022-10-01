@@ -54,5 +54,6 @@
     <string name="txtNotEditablePage">Für den Moment sind nur Bilder bearbeitet.</string>
     <string name="txtBackAgainToExit">Drücken Sie erneut, um zu beenden</string>
     <string name="titleSettingsLanguage">Sprache</string>
+    <string name="txtAckFlaticon">Flaggensymbole erstellt von Freepik</string>
 
 </resources>

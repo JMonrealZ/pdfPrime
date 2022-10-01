@@ -54,5 +54,6 @@
     <string name="txtNotEditablePage">Solo imagenes pueden ser editadas por el momento</string>
     <string name="txtBackAgainToExit">Presione nuevamente para salir</string>
     <string name="titleSettingsLanguage">Idioma</string>
+    <string name="txtAckFlaticon">Banderas iconos creados por Freepik</string>
 
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivImageAck"
+        android:layout_width="@dimen/imgSizeAcknowledgement"
+        android:layout_height="@dimen/imgSizeAcknowledgement"/>
+
+    <LinearLayout
+        android:id="@+id/llText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNameAck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flaticon"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDescAck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flag icons created by Freepik" />
+
+        <TextView
+            android:id="@+id/tvUrlAck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="https://www.flaticon.es/"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+</LinearLayout>
