@@ -55,5 +55,10 @@
     <string name="txtBackAgainToExit">Drücken Sie erneut, um zu beenden</string>
     <string name="titleSettingsLanguage">Sprache</string>
     <string name="txtAckFlaticon">Flaggensymbole erstellt von Freepik</string>
+    <string name="txtAckUcrop">Bibliothek zum Bearbeiten von Bildern</string>
+    <string name="txtAckSpinKit">Bibliothek zum Erstellen cooler Ladeanimationen</string>
+    <string name="txtAckPdfViewer">Bibliothek zum Anzeigen von PDF-Dateien</string>
+    <string name="txtAckPdfBox">Bibliothek zum Rendern, Erstellen und Zusammenführen von PDF-Dateien</string>
+    <string name="txtAckCanva">Online-App für die Logoerstellung</string>
 
 </resources>

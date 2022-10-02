@@ -11,4 +11,7 @@
     <color name="closeBackground">#FF0000</color>
 
     <color name="transparent">#00FFFFFF</color>
+
+    <color name="separatorView">#8CC8C3C3</color>
+
 </resources>

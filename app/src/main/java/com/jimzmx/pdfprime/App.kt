@@ -39,9 +39,13 @@ class App : Application() , Injector{
         }
 
         acknowledgements = mutableListOf<Acknowledgement>().apply {
-//            add(Acknowledgement(R.drawable.ic_camera_24, "testa","testb","testc")) //todo: add acknoledgements
             add(Acknowledgement(R.mipmap.ic_mexico, getString(R.string.titleAckFlaticon),getString(R.string.txtAckFlaticon),getString(R.string.urlAckFlaticon)))
-//            add(Acknowledgement(R.mipmap.ic_mexico, getString(R.string.),getString(R.string.),getString(R.string.)))
+            add(Acknowledgement(R.drawable.ic_baseline_code_24, getString(R.string.titleAckUcrop),getString(R.string.txtAckUcrop),getString(R.string.urlAckUcrop)))
+            add(Acknowledgement(R.drawable.ic_baseline_code_24, getString(R.string.titleAckSpinKit),getString(R.string.txtAckSpinKit),getString(R.string.urlAckSpinKit)))
+            add(Acknowledgement(R.drawable.ic_baseline_code_24, getString(R.string.titleAckPdfViewer),getString(R.string.txtAckPdfViewer),getString(R.string.urlAckPdfViewer)))
+            add(Acknowledgement(R.drawable.ic_baseline_code_24, getString(R.string.titleAckPdfBox),getString(R.string.txtAckPdfBox),getString(R.string.urlAckPdfBox)))
+            add(Acknowledgement(R.drawable.ic_baseline_design_services_24, getString(R.string.titleAckCanva),getString(R.string.txtAckCanva),getString(R.string.urlAckCanva)))
+//            add(Acknowledgement(R.drawable.ic_baseline_code_24, getString(R.string.),getString(R.string.),getString(R.string.)))
         }
     }
 

@@ -14,9 +14,10 @@ class AcknowledgementRecyclerViewAdapter(private var acknolds : MutableList<Ackn
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AcknowledgementViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItem = layoutInflater.inflate(R.layout.list_item_acknowledgement, parent, false)
-        return AcknowledgementViewHolder(listItem,
+        return AcknowledgementViewHolder(listItem)
+            //,
             //{ackSelected : Acknowledgement -> onClickAckListener(ackSelected)})
-            clickListener)
+            //clickListener)
     }
 
     override fun onBindViewHolder(holder: AcknowledgementViewHolder, position: Int) {
@@ -29,8 +30,7 @@ class AcknowledgementRecyclerViewAdapter(private var acknolds : MutableList<Ackn
 }
 
 class AcknowledgementViewHolder(
-    val view : View,
-    private val clickListener : (Acknowledgement)->Unit
+    val view : View
 ) : RecyclerView.ViewHolder(view){
     fun bind( ack : Acknowledgement, clickListener: (Acknowledgement) -> Unit){
         view.apply {
@@ -38,6 +38,7 @@ class AcknowledgementViewHolder(
             ivImageAck.setImageResource(ack.img)
             tvNameAck.text = ack.name
             tvDescAck.text = ack.description
+            tvUrlAck.text = ack.url
             setOnClickListener{ clickListener(ack)}
         }
     }

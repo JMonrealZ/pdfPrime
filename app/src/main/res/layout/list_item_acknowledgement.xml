@@ -1,40 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/ivImageAck"
-        android:layout_width="@dimen/imgSizeAcknowledgement"
-        android:layout_height="@dimen/imgSizeAcknowledgement"/>
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/llText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvNameAck"
+
+        <ImageView
+            android:id="@+id/ivImageAck"
+            android:layout_width="@dimen/imgSizeAcknowledgement"
+            android:layout_height="@dimen/imgSizeAcknowledgement"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_code_24"/>
+
+        <LinearLayout
+            android:id="@+id/llText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Flaticon"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvDescAck"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Flag icons created by Freepik" />
+            <TextView
+                android:id="@+id/tvNameAck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flaticon"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvUrlAck"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="https://www.flaticon.es/"
-            android:textStyle="italic" />
+            <TextView
+                android:id="@+id/tvDescAck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flag icons created by Freepik" />
+
+            <TextView
+                android:id="@+id/tvUrlAck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="https://www.flaticon.es/"
+                android:textStyle="italic" />
 
     </LinearLayout>
 
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/separatorView"/>
 </LinearLayout>

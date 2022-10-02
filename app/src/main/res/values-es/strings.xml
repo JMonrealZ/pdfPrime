@@ -55,5 +55,10 @@
     <string name="txtBackAgainToExit">Presione nuevamente para salir</string>
     <string name="titleSettingsLanguage">Idioma</string>
     <string name="txtAckFlaticon">Banderas iconos creados por Freepik</string>
+    <string name="txtAckUcrop">Librería usada para editar imagenes</string>
+    <string name="txtAckSpinKit">Librería usda para crear animaciones para cargar contenido</string>
+    <string name="txtAckPdfViewer">Librearía usada para ver archivos pdf</string>
+    <string name="txtAckPdfBox">Librería utilizada para renderizar, crear y fusionar archivos pdf</string>
+    <string name="txtAckCanva">Aplicación usada para creación del logotipo</string>
 
 </resources>

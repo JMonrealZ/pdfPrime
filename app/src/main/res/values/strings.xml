@@ -68,5 +68,20 @@
     <string name="titleAckFlaticon" translatable="false">Flaticon</string>
     <string name="urlAckFlaticon" translatable="false">https://www.flaticon.es/</string>
     <string name="txtAckFlaticon">Flag icons created by Freepik</string>
+    <string name="titleAckUcrop" translatable="false">Ucrop</string>
+    <string name="txtAckUcrop">Library used to edit pictures</string>
+    <string name="urlAckUcrop" translatable="false">https://github.com/Yalantis/uCrop</string>
+    <string name="titleAckSpinKit" translatable="false">Android-SpinKit</string>
+    <string name="txtAckSpinKit">Library used to create cool loading animations</string>
+    <string name="urlAckSpinKit" translatable="false">https://github.com/ybq/Android-SpinKit</string>
+    <string name="titleAckPdfViewer" translatable="false">Android PdfViewer</string>
+    <string name="txtAckPdfViewer">Library used to view pdf files</string>
+    <string name="urlAckPdfViewer" translatable="false">https://github.com/barteksc/AndroidPdfViewer</string>
+    <string name="titleAckPdfBox" translatable="false">PdfBox-Android</string>
+    <string name="txtAckPdfBox">Library used to render, create and merge pdf files</string>
+    <string name="urlAckPdfBox" translatable="false">https://github.com/TomRoush/PdfBox-Android</string>
+    <string name="titleAckCanva" translatable="false">Canva</string>
+    <string name="txtAckCanva">Online app used for logo creation</string>
+    <string name="urlAckCanva" translatable="false">https://www.canva.com</string>
 
 </resources>
