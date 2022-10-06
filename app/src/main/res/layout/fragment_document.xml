@@ -39,7 +39,8 @@
                             android:layout_height="wrap_content"
                             android:text="delete all"
                             app:layout_constraintBottom_toBottomOf="@+id/rvDocuments"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:visibility="gone"/>
 
                         <LinearLayout
                             android:id="@+id/llMultiselection"

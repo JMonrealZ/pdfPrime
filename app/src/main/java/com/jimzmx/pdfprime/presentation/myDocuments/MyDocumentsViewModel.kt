@@ -36,8 +36,9 @@ class MyDocumentsViewModel(
     }
 
     suspend fun deletePdf(idDoc: Int){
-        deletePdfUseCase.execute(idDoc)
-        getPdfs()
+        val res = deletePdfUseCase.execute(idDoc)
+        if(res == 1)
+            getPdfs()
     }
 
     suspend fun insertPdf(documet : Document){

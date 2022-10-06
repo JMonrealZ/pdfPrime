@@ -1,5 +1,6 @@
 package com.jimzmx.pdfprime.presentation.di.core
 
+import android.content.Context
 import com.jimzmx.pdfprime.domain.repository.DocumentRepository
 import com.jimzmx.pdfprime.domain.usecase.*
 import dagger.Module
@@ -8,8 +9,8 @@ import dagger.Provides
 @Module
 class UseCaseModule {
     @Provides
-    fun provideDeletePdfUseCase(documentRepository: DocumentRepository) : DeletePdfUseCase{
-        return DeletePdfUseCase(documentRepository)
+    fun provideDeletePdfUseCase(documentRepository: DocumentRepository, context: Context) : DeletePdfUseCase{
+        return DeletePdfUseCase(documentRepository, context)
     }
 
     @Provides
