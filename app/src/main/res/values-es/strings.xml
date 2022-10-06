@@ -60,5 +60,6 @@
     <string name="txtAckPdfViewer">Librearía usada para ver archivos pdf</string>
     <string name="txtAckPdfBox">Librería utilizada para renderizar, crear y fusionar archivos pdf</string>
     <string name="txtAckCanva">Aplicación usada para creación del logotipo</string>
+    <string name="titleShare">Compartir documento</string>
 
 </resources>

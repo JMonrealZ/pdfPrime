@@ -29,7 +29,6 @@ import com.jimzmx.pdfprime.presentation.bottomSheetMenus.DocOperationInterface
 import com.jimzmx.pdfprime.presentation.di.Injector
 import com.jimzmx.pdfprime.presentation.dialogs.Dialogs
 import com.jimzmx.pdfprime.presentation.dialogs.NameDocDialogInterface
-import com.jimzmx.pdfprime.presentation.utils.Constants
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.jimzmx.pdfprime.presentation.utils.RendererCoroutines
 import com.jimzmx.pdfprime.presentation.utils.Utilities
@@ -253,8 +252,18 @@ class DocumentFrag : Fragment() ,  NameDocDialogInterface, DocOperationInterface
         NavHostFragment.findNavController(this).navigate(R.id.action_documentFrag_to_creatorCamFrag,bundle)
     }
 
+    //Todo: probar este metodo en celular real
     override fun onShareDoc(document: Document) {
+        val sendIntent : Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+//            putExtra(Intent.EXTRA_TEXT,"Test")
+//            type = "text/plain"
+            putExtra(Intent.EXTRA_FROM_STORAGE,getString(R.string.titleShare))
+            type = "file/pdf"
+        }
 
+        val shareIntent = Intent.createChooser(sendIntent,null)
+        startActivity(shareIntent)
     }
 
     override fun onDeleteDoc(document: Document) {

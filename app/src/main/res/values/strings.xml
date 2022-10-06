@@ -4,7 +4,7 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
 
-    <string name="titleNewDoc">https://www.flaticon.es/</string>
+    <string name="titleNewDoc">New document</string>
     <string name="titleButtonNewDocDis">Device</string>
     <string name="titleButtonNewDocCam">Camera</string>
     <string name="titleButtonNewDocTxt">Text editor</string>
@@ -83,5 +83,6 @@
     <string name="titleAckCanva" translatable="false">Canva</string>
     <string name="txtAckCanva">Online app used for logo creation</string>
     <string name="urlAckCanva" translatable="false">https://www.canva.com</string>
+    <string name="titleShare">Share a document</string>
 
 </resources>

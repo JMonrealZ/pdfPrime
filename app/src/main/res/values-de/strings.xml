@@ -60,5 +60,6 @@
     <string name="txtAckPdfViewer">Bibliothek zum Anzeigen von PDF-Dateien</string>
     <string name="txtAckPdfBox">Bibliothek zum Rendern, Erstellen und Zusammenführen von PDF-Dateien</string>
     <string name="txtAckCanva">Online-App für die Logoerstellung</string>
+    <string name="titleShare">Geben Sie ein Dokument frei</string>
 
 </resources>
