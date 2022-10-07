@@ -10,10 +10,10 @@
         android:title="@string/titleButtonCamara"
         android:icon="@drawable/ic_camera_24"/>
 
-    <item
-        android:id="@+id/btnRateUs"
-        android:title="@string/titleButtonRateUs"
-        android:icon="@drawable/ic_star_24"/>
+<!--    <item-->
+<!--        android:id="@+id/btnRateUs"-->
+<!--        android:title="@string/titleButtonRateUs"-->
+<!--        android:icon="@drawable/ic_star_24"/>-->
 
     <item
         android:id="@+id/reachusFrag"

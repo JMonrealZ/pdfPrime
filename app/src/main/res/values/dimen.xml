@@ -16,4 +16,6 @@
     <dimen name="textSizeSettings">12sp</dimen>
 
     <dimen name="imgSizeAcknowledgement">50dp</dimen>
+
+    <dimen name="topPaddingQualityImg">20dp</dimen>
 </resources>

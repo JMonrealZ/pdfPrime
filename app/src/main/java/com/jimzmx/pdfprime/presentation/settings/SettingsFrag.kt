@@ -62,15 +62,12 @@ class SettingsFrag : Fragment(){
 
             //TODO: change the location of these lines to use cases
             ivSpanish.setOnClickListener{
-//                Test.setLenguage(context, "es")
                 setLenguage(Constants.LanSpa)
             }
             ivEnglish.setOnClickListener{
-//                Test.setLenguage(context, "en")
                 setLenguage(Constants.LanEng)
             }
             ivGerman.setOnClickListener{
-//                Test.setLenguage(context, "de")
                 setLenguage(Constants.LanGer)
 
             }
@@ -149,10 +146,4 @@ class SettingsFrag : Fragment(){
             }
         }
     }
-
-//    fun setLanguage(){
-//
-//        Test.setLenguage(context)
-//
-//    }
 }

@@ -31,10 +31,10 @@
             android:id="@+id/tvEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tvAboutMe"
             android:text="@string/txtEmail"
             android:textAlignment="center"
-            android:textColor="@android:color/holo_blue_light"
-            android:layout_below="@id/tvAboutMe"/>
+            android:textColor="@android:color/holo_blue_light" />
 
         <TextView
             android:id="@+id/titleThanks"
