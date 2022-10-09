@@ -15,6 +15,9 @@ android {
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //TODO: API 13, adding code for per-app language preferences
+        //resConfigs("es","en","de")
     }
 
     buildTypes {

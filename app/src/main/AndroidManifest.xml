@@ -19,6 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<!--        TODO: this line has be on application properties once per-app language preferences is recommended for use it-->
+<!--        android:localeConfig="@xml/locales_config"-->
+
         <activity android:name="com.jimzmx.pdfprime.SplashActivity"
             android:noHistory="true">
             <intent-filter>
