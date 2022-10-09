@@ -8,6 +8,9 @@ import com.jimzmx.pdfprime.domain.usecase.SetLenguageUseCase
 import com.jimzmx.pdfprime.presentation.utils.Constants
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.jimzmx.pdfprime.presentation.utils.Utilities
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SettingsViewModel(
@@ -47,8 +50,11 @@ class SettingsViewModel(
     fun updateAskBiometricFlag(requestFp : Boolean) = askBiometricFlag.postValue(requestFp)
     fun updateBiometricEnrollFlag(hasEnrolledFp : Boolean) = nonBiometricEnrollFlag.postValue(hasEnrolledFp)
 
-    fun setLaguage(ctx : Context, lan : String){
-        setLenguageUseCase.execute(ctx ,lan)
+    fun setLaguage(context: Context,lan : String){
+        //TODO: check current language, if it's the same do nothing
+        CoroutineScope(Dispatchers.IO).launch {
+            setLenguageUseCase.execute(context,lan)
+        }
     }
 
     init {

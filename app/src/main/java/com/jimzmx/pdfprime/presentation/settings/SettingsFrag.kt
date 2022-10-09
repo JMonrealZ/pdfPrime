@@ -60,7 +60,7 @@ class SettingsFrag : Fragment(){
             spPageSize.onItemSelectedListener = onItemSelectedListener
             sbPageQuality.setOnSeekBarChangeListener(onSeekBarChangeListener)
 
-            //TODO: change the location of these lines to use cases
+
             ivSpanish.setOnClickListener{
                 setLenguage(Constants.LanSpa)
             }
@@ -69,7 +69,6 @@ class SettingsFrag : Fragment(){
             }
             ivGerman.setOnClickListener{
                 setLenguage(Constants.LanGer)
-
             }
             ivTrash.setOnClickListener {
                 Test.getLenguage()
@@ -81,10 +80,9 @@ class SettingsFrag : Fragment(){
     }
 
     private fun setLenguage(Lan : String){
-        CoroutineScope(Dispatchers.IO).launch {
-            context?.let { settingsViewModel.setLaguage(it,Lan) }
-        }
+        context?.let { settingsViewModel.setLaguage(it, Lan) }
 
+        //It's requiered to recreate activity in order to load the selected lenguage
         (context as Activity).recreate()
     }
 
