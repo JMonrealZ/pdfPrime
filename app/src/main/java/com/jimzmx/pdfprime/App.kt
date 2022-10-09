@@ -13,7 +13,9 @@ import com.jimzmx.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import com.jimzmx.pdfprime.presentation.di.settings.SettingsSubcomponent
 import com.jimzmx.pdfprime.presentation.di.viewer.ViewerSubcomponent
 import com.jimzmx.pdfprime.presentation.reachus.Acknowledgement
+import com.jimzmx.pdfprime.presentation.settings.Language
 import com.jimzmx.pdfprime.presentation.settings.PageSize
+import com.jimzmx.pdfprime.presentation.utils.Constants
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.tom_roush.pdfbox.pdmodel.common.PDRectangle
 
@@ -74,6 +76,7 @@ class App : Application() , Injector{
         lateinit var appContext : Context
         lateinit var pageSizes : MutableList<PageSize>
         lateinit var acknowledgements : MutableList<Acknowledgement>
+        lateinit var languages : ArrayList<Language>
     }
 
     init{
@@ -97,6 +100,13 @@ class App : Application() , Injector{
             add(BottomSheetOption(R.drawable.ic_edit_24,DOC_EDIT,R.string.titleButtonEditDoc))
             add(BottomSheetOption(R.drawable.ic_share_24,DOC_SHARE,R.string.titleButtonShareDoc))
             add(BottomSheetOption(R.drawable.ic_delete_24,DOC_DELETE,R.string.titleButtonDeleteDoc))
+        }
+
+        languages = ArrayList()
+        languages.apply {
+            add(Language("Español",R.mipmap.ic_mexico,LanSpa,false))
+            add(Language("Inglés",R.mipmap.ic_usa, LanEng,true))
+            add(Language("Aleman",R.mipmap.ic_germany, LanGer,false))
         }
     }
 }

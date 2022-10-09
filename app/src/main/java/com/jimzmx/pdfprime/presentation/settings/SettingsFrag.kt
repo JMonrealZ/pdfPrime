@@ -14,15 +14,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.jimzmx.pdfprime.App
 import com.jimzmx.pdfprime.R
 import com.jimzmx.pdfprime.databinding.FragmentSettingsBinding
 import com.jimzmx.pdfprime.presentation.di.Injector
 import com.jimzmx.pdfprime.presentation.utils.Constants
 import com.jimzmx.pdfprime.presentation.utils.Test
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -32,10 +30,12 @@ class SettingsFrag : Fragment(){
     @Inject lateinit var factory : SettingsViewModelFactory
     private lateinit var binding : FragmentSettingsBinding
     private lateinit var settingsViewModel : SettingsViewModel
-    private lateinit var adapter : PageSizeAdapter
+    private lateinit var adapterPageSize : PageSizeAdapter
+    private lateinit var adapterLang : LanguageRecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initVariables(inflater,container)
+        initRecyclerView()
         setListeners()
         setObservers()
         //initBiometrics()
@@ -50,32 +50,17 @@ class SettingsFrag : Fragment(){
 
         settingsViewModel = ViewModelProvider(this,factory).get(SettingsViewModel::class.java)
 
-        adapter = PageSizeAdapter(requireContext(),R.layout.list_item_page_size, mutableListOf())
-        binding.spPageSize.adapter = adapter
+        adapterPageSize = PageSizeAdapter(requireContext(),R.layout.list_item_page_size, mutableListOf())
+        binding.spPageSize.adapter = adapterPageSize
         binding.settingsViewModel = settingsViewModel
+
+        adapterLang = LanguageRecyclerViewAdapter(App.languages, { lanSelected : Language -> lanClickListener(lanSelected)})
     }
 
     private fun setListeners(){
         binding.apply {
             spPageSize.onItemSelectedListener = onItemSelectedListener
             sbPageQuality.setOnSeekBarChangeListener(onSeekBarChangeListener)
-
-
-            ivSpanish.setOnClickListener{
-                setLenguage(Constants.LanSpa)
-            }
-            ivEnglish.setOnClickListener{
-                setLenguage(Constants.LanEng)
-            }
-            ivGerman.setOnClickListener{
-                setLenguage(Constants.LanGer)
-            }
-            ivTrash.setOnClickListener {
-                Test.getLenguage()
-            }
-
-
-
         }
     }
 
@@ -89,18 +74,31 @@ class SettingsFrag : Fragment(){
     private fun setObservers(){
         settingsViewModel.apply {
             getPagesSizes().observe(viewLifecycleOwner, Observer{
-                adapter.clear()
-                adapter.addAll(it)
+                adapterPageSize.clear()
+                adapterPageSize.addAll(it)
             })
             imagesPagesQuality.observe(viewLifecycleOwner, Observer {
                 binding.apply {
                     tvPageQuality.text = (it * 100F).toString()
+                    sbPageQuality.progress = it.toInt()
                 }
             })
             pageSizeDef.observe(viewLifecycleOwner, Observer {
                 val index = settingsViewModel.getPagesSizes().value?.indexOf(it)
                 binding.spPageSize.setSelection(index!!)
             })
+        }
+    }
+
+    private fun lanClickListener(lan : Language){
+        setLenguage(lan.code)
+    }
+
+    private fun initRecyclerView() {
+        binding.rvLanguages.apply {
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            adapter = this@SettingsFrag.adapterLang
+
         }
     }
 

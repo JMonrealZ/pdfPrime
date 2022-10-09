@@ -16,12 +16,10 @@ class SetLenguageUseCase {
      */
     fun execute(context : Context, languageToLoad : String){
         val locale = Locale(languageToLoad)
-        Locale.setDefault(locale)
-        val config = Configuration()
+        //Locale.setDefault(locale) TODO: This line has been commented. is it requiered? It's global, global for all apps?
+        val config = context.resources.configuration;   //We retrieve current configuration to not override other configs
         config.locale = locale
-        context.getResources()
-            .updateConfiguration(config, context.getResources().getDisplayMetrics())
-
-        //(context as Activity).recreate()
+        context.resources
+            .updateConfiguration(config, context.resources.displayMetrics)
     }
 }

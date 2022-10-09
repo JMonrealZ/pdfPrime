@@ -1,7 +1,9 @@
 package com.jimzmx.pdfprime.domain.usecase
 
-class GetLenguageUseCase {
-    fun execute(){
+import android.content.Context
 
+class GetLenguageUseCase {
+    fun execute(context : Context) : String{
+        return context.resources.configuration.locales.toString()
     }
 }

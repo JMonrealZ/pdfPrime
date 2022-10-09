@@ -18,4 +18,9 @@
     <dimen name="imgSizeAcknowledgement">50dp</dimen>
 
     <dimen name="topPaddingQualityImg">20dp</dimen>
+
+
+    <dimen name="imgSizeLanguage">50dp</dimen>
+    <dimen name="imgSizeLanguageSelected">10dp</dimen>
+
 </resources>
