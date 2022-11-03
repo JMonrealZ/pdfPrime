@@ -1,6 +1,6 @@
 package com.jimzmx.pdfprime.presentation.di.viewer
 
-import com.jimzmx.pdfprime.presentation.viewer.ViewerFrag
+import com.jimzmx.pdfprime.presentation.fragments.ViewerFrag
 import dagger.Subcomponent
 
 @ViewerScope

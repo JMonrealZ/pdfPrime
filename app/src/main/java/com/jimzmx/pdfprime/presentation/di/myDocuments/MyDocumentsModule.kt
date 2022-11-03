@@ -1,7 +1,7 @@
 package com.jimzmx.pdfprime.presentation.di.myDocuments
 
 import com.jimzmx.pdfprime.domain.usecase.*
-import com.jimzmx.pdfprime.presentation.myDocuments.MyDocumentsViewModelFactory
+import com.jimzmx.pdfprime.presentation.viewModelFactories.MyDocumentsViewModelFactory
 import dagger.Module
 import dagger.Provides
 

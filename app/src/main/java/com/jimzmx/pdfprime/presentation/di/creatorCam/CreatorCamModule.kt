@@ -1,7 +1,7 @@
 package com.jimzmx.pdfprime.presentation.di.creatorCam
 
 import com.jimzmx.pdfprime.domain.usecase.*
-import com.jimzmx.pdfprime.presentation.creatorCam.CreatorCamViewModelFactory
+import com.jimzmx.pdfprime.presentation.viewModelFactories.CreatorCamViewModelFactory
 import dagger.Module
 import dagger.Provides
 

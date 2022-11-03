@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import com.jimzmx.pdfprime.App
-import com.jimzmx.pdfprime.presentation.creatorCam.Page
+import com.jimzmx.pdfprime.presentation.entities.Page
 import com.jimzmx.pdfprime.presentation.utils.Constants.IMAGE_QUA_DEF
 import com.jimzmx.pdfprime.presentation.utils.Constants.IMAGE_QUA_K
 import com.tom_roush.pdfbox.pdmodel.PDDocument

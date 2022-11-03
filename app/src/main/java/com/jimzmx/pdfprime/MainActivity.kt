@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.jimzmx.pdfprime.databinding.ActivityMainBinding
-import com.jimzmx.pdfprime.presentation.myDocuments.DocumentFrag
+import com.jimzmx.pdfprime.presentation.fragments.DocumentFrag
 import com.jimzmx.pdfprime.presentation.utils.currentNavigationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*

@@ -6,7 +6,7 @@
     app:startDestination="@id/documentFrag">
     <fragment
         android:id="@+id/creatorCamFrag"
-        android:name="com.jimzmx.pdfprime.presentation.creatorCam.CreatorCamFrag"
+        android:name="com.jimzmx.pdfprime.presentation.fragments.CreatorCamFrag"
         android:label="CreatorCamFrag"
         tools:layout="@layout/fragment_creator_cam">
         <argument
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/creatorTxtFrag"
-        android:name="com.jimzmx.pdfprime.presentation.creatorTxt.CreatorTxtFrag"
+        android:name="com.jimzmx.pdfprime.presentation.fragments.CreatorTxtFrag"
         android:label="CreatorTxtFrag"
         tools:layout="@layout/fragment_creator_txt"/>
     <fragment
         android:id="@+id/documentFrag"
-        android:name="com.jimzmx.pdfprime.presentation.myDocuments.DocumentFrag"
+        android:name="com.jimzmx.pdfprime.presentation.fragments.DocumentFrag"
         android:label="DocumentFrag"
         tools:layout="@layout/fragment_document">
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewerFrag"
-        android:name="com.jimzmx.pdfprime.presentation.viewer.ViewerFrag"
+        android:name="com.jimzmx.pdfprime.presentation.fragments.ViewerFrag"
         android:label="ViewerFrag"
         tools:layout="@layout/fragment_viewer">
         <argument
@@ -57,13 +57,13 @@
         tools:layout="@layout/bottom_sheet_new_doc"/>
     <fragment
         android:id="@+id/settingsFrag"
-        android:name="com.jimzmx.pdfprime.presentation.settings.SettingsFrag"
+        android:name="com.jimzmx.pdfprime.presentation.fragments.SettingsFrag"
         android:label="SettingsFrag"
         tools:layout="@layout/fragment_settings"/>
 
     <fragment
         android:id="@+id/reachusFrag"
-        android:name="com.jimzmx.pdfprime.presentation.reachus.ReachusFrag"
+        android:name="com.jimzmx.pdfprime.presentation.fragments.ReachusFrag"
         android:label="ReachusFrag"
         tools:layout="@layout/fragment_reachus"/>
 </navigation>

@@ -1,6 +1,6 @@
 package com.jimzmx.pdfprime.presentation.di.settings
 
-import com.jimzmx.pdfprime.presentation.settings.SettingsFrag
+import com.jimzmx.pdfprime.presentation.fragments.SettingsFrag
 import dagger.Subcomponent
 
 @SettingsScope

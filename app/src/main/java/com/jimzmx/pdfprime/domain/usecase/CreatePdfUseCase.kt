@@ -1,7 +1,7 @@
 package com.jimzmx.pdfprime.domain.usecase
 
 import com.jimzmx.pdfprime.App
-import com.jimzmx.pdfprime.presentation.creatorCam.Page
+import com.jimzmx.pdfprime.presentation.entities.Page
 import com.jimzmx.pdfprime.presentation.utils.ProgressUpdater
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader

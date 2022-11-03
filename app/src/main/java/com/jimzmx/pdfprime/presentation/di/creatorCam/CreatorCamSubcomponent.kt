@@ -1,6 +1,6 @@
 package com.jimzmx.pdfprime.presentation.di.creatorCam
 
-import com.jimzmx.pdfprime.presentation.creatorCam.CreatorCamFrag
+import com.jimzmx.pdfprime.presentation.fragments.CreatorCamFrag
 import dagger.Subcomponent
 
 @CreatorCamScope

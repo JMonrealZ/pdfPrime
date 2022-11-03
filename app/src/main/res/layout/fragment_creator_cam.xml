@@ -5,13 +5,13 @@
     <data>
         <variable
             name="creatorCamViewModel"
-            type="com.jimzmx.pdfprime.presentation.creatorCam.CreatorCamViewModel"/>
+            type="com.jimzmx.pdfprime.presentation.viewModels.CreatorCamViewModel"/>
     </data>
 
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.creatorCam.CreatorCamFrag">
+    tools:context=".presentation.fragments.CreatorCamFrag">
 
     <LinearLayout
         android:id="@+id/llContainer"

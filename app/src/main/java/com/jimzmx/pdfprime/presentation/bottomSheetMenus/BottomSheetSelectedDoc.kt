@@ -10,11 +10,13 @@ import com.jimzmx.pdfprime.R
 import com.jimzmx.pdfprime.data.entities.Document
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.jimzmx.pdfprime.presentation.entities.BottomSheetOption
+import com.jimzmx.pdfprime.presentation.interfaces.IDocOperation
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
 class BottomSheetSelectedDoc(
     private var documentSelected : Document,
-    private val docOperationInterface: DocOperationInterface
+    private val iDocOperation: IDocOperation
 ) : BottomSheetDialogFragment(){
     private lateinit var adapter : OptionBSRecyclerViewAdapter
 
@@ -31,10 +33,10 @@ class BottomSheetSelectedDoc(
 
     private fun onOptionSelected( option : BottomSheetOption){
         when(option.idOption){
-            DOC_EDIT -> docOperationInterface.onEditDoc(documentSelected)
-            DOC_SHARE -> docOperationInterface.onShareDoc(documentSelected)
-            DOC_DELETE -> docOperationInterface.onDeleteDoc(documentSelected)
-            DOC_OPEN -> docOperationInterface.onOpenDoc(documentSelected)
+            DOC_EDIT -> iDocOperation.onEditDoc(documentSelected)
+            DOC_SHARE -> iDocOperation.onShareDoc(documentSelected)
+            DOC_DELETE -> iDocOperation.onDeleteDoc(documentSelected)
+            DOC_OPEN -> iDocOperation.onOpenDoc(documentSelected)
         }
         super.dismiss()
     }

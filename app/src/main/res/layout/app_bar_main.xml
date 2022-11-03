@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <com.jimzmx.pdfprime.presentation.CustomControls.DrawerController
+        <com.jimzmx.pdfprime.presentation.customControls.DrawerController
             android:id="@+id/dcMenu"
             android:src="@drawable/ic_menu_24"
             android:layout_width="0dp"

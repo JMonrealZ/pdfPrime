@@ -1,6 +1,6 @@
 package com.jimzmx.pdfprime.presentation.di.myDocuments
 
-import com.jimzmx.pdfprime.presentation.myDocuments.DocumentFrag
+import com.jimzmx.pdfprime.presentation.fragments.DocumentFrag
 import dagger.Subcomponent
 
 @MyDocumentsScope

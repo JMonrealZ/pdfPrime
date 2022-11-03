@@ -12,6 +12,7 @@ import com.jimzmx.pdfprime.App
 import com.jimzmx.pdfprime.R
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.jimzmx.pdfprime.presentation.entities.BottomSheetOption
 import kotlinx.android.synthetic.main.bottom_sheet_new_doc.view.*
 
 class BottomSheetNewDoc() : BottomSheetDialogFragment(){

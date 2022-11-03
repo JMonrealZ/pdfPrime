@@ -2,8 +2,7 @@ package com.jimzmx.pdfprime
 
 import android.app.Application
 import android.content.Context
-import android.graphics.BitmapFactory
-import com.jimzmx.pdfprime.presentation.bottomSheetMenus.BottomSheetOption
+import com.jimzmx.pdfprime.presentation.entities.BottomSheetOption
 import com.jimzmx.pdfprime.presentation.di.Injector
 import com.jimzmx.pdfprime.presentation.di.core.AppComponent
 import com.jimzmx.pdfprime.presentation.di.core.AppModule
@@ -12,10 +11,9 @@ import com.jimzmx.pdfprime.presentation.di.creatorCam.CreatorCamSubcomponent
 import com.jimzmx.pdfprime.presentation.di.myDocuments.MyDocumentsSubcomponent
 import com.jimzmx.pdfprime.presentation.di.settings.SettingsSubcomponent
 import com.jimzmx.pdfprime.presentation.di.viewer.ViewerSubcomponent
-import com.jimzmx.pdfprime.presentation.reachus.Acknowledgement
-import com.jimzmx.pdfprime.presentation.settings.Language
-import com.jimzmx.pdfprime.presentation.settings.PageSize
-import com.jimzmx.pdfprime.presentation.utils.Constants
+import com.jimzmx.pdfprime.presentation.entities.Acknowledgement
+import com.jimzmx.pdfprime.presentation.entities.Language
+import com.jimzmx.pdfprime.presentation.entities.PageSize
 import com.jimzmx.pdfprime.presentation.utils.Constants.*
 import com.tom_roush.pdfbox.pdmodel.common.PDRectangle
 
